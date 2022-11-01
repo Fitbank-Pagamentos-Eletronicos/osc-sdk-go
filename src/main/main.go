@@ -1,9 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	for i := 1; i < 5; i++ {
-		fmt.Println("Teste de aceitação!")
-	}
+	fmt.Println("Hello, World!")
 }

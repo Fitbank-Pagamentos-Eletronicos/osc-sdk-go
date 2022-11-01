@@ -11,3 +11,4 @@ type AuthResponse struct {
 func OAuth(client_id string, client_secret string, scopes []string) AuthResponse {
 	return AuthResponse{client_id, client_secret, scopes}
 }
+
