@@ -4,7 +4,7 @@ type EducationLevel struct {
 	nome string
 }
 
-
+//Enum de Nivel de Escolaridade
 const (
 	NAO_ALFABETIZADO = EducationLevel{"Não alfabetizado"}
 	ENSINO_FUNDAMENTAL_INCOMPLETO = EducationLevel{"Ensino Fundamental incompleto"}
