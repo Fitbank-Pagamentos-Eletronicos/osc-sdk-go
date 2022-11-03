@@ -2,8 +2,8 @@ package domains
 
 
 type Banks struct {
-	nome string
 	code string
+	name string
 }
 
 const (

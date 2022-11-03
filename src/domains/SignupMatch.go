@@ -15,6 +15,8 @@ type SignupMatch struct {
 	hasOwnHouse    bool
 	hasVehicle     bool
 	hasAndroid     bool
+	products       Products
+	logData        LogData
 }
 
 
