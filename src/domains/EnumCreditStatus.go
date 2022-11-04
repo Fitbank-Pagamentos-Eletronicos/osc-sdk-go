@@ -4,8 +4,8 @@ type CreditStatus struct {
 	creditStatusId string
 }
 
-const (
-	PRE_PROCESSAMENTO = CreditStatus{"PRE_PROCESSAMENTO"}
+const  (
+	PRE_PROCESSAMENTO  = CreditStatus{"PRE_PROCESSAMENTO"}
 	PRE_APROVADO = CreditStatus{"PRE_APROVADO"}
 	PENDENTE  = CreditStatus{"PENDENTE"}
 	AGUARDANDO_DOCUMENTOS = CreditStatus{"AGUARDANDO_DOCUMENTOS"}

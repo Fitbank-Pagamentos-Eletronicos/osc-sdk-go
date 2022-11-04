@@ -5,8 +5,8 @@ type ProductType struct{
 }
 
 const (
-	LOAN = ProductType{"LOAN"}
-	CARD = ProductType{"CARD"}
-	REFINANCING_AUTO = ProductType{"REFINANCING_AUTO"}
-	REFINANCING_HOME = ProductType{"REFINANCING_HOME"}
+	LOAN ProductType = ProductType{"LOAN"}
+	CARD  ProductType = ProductType{"CARD"}
+	REFINANCING_AUTO ProductType = ProductType{"REFINANCING_AUTO"}
+	REFINANCING_HOME ProductType = ProductType{"REFINANCING_HOME"}
 )
