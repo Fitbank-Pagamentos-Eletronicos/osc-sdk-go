@@ -6,7 +6,7 @@ type Banks struct {
 }
 
 const (
-	BANCO_DO_BRASI 			= Banks{ "001", "BANCO DO BRASIL"}
+	BANCO_DO_BRASIL 		= Banks{ "001", "BANCO DO BRASIL"}
 	BCO_DA_AMAZONIA       	= Banks{"003", "BANCO DA AMAZONIA S.A."}
 	BCO_DO_NORDESTE         = Banks{"004", "BANCO DO NORDESTE DO BRASIL S.A."}
 	BNDES                   = Banks{"007", "BNDES"}
