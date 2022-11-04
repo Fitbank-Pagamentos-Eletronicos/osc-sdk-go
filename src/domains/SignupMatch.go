@@ -18,8 +18,3 @@ type SignupMatch struct {
 	products       Products
 	logData        LogData
 }
-
-
-
-
-

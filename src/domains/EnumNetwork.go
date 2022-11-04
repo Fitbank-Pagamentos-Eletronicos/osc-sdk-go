@@ -1,11 +1,11 @@
 package domains
 
-type NetWork struct{
+type NetWork struct {
 	network string
 }
 
-const (
-	VISA = NetWork{"VISA"}
-	MASTERCARD = NetWork{"MASTERCARD"}
-	ELO = NetWork{"ELO"}
+var (
+	VISA       NetWork = NetWork{"VISA"}
+	MASTERCARD NetWork = NetWork{"MASTERCARD"}
+	ELO        NetWork = NetWork{"ELO"}
 )

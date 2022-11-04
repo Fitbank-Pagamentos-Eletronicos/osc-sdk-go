@@ -1,7 +1,7 @@
 package domains
 
 type ErrorFields struct {
-	code string
+	code    string
 	message string
-	errors ErrorField 
+	errors  ErrorField
 }

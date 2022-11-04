@@ -1,14 +1,14 @@
 package domains
 
 type HomeType struct {
-	homeType  string
+	homeType string
 }
 
-const (
-	ALUGADA = HomeType{"ALUGADA"}
-	PARENTES = HomeType{"PARENTES"}
-	FUNCIONAL = HomeType{"FUNCIONAL"}
-	PROPRIA_QUITADA = HomeType{"PROPRIA QUITADA"}
-	PROPRIA_FINANCIADA = HomeType{"PROPRIA FINANCIADA"}
-	OUTROS = HomeType{"OUTROS"}
+var (
+	ALUGADA            HomeType = HomeType{"ALUGADA"}
+	PARENTES           HomeType = HomeType{"PARENTES"}
+	FUNCIONAL          HomeType = HomeType{"FUNCIONAL"}
+	PROPRIA_QUITADA    HomeType = HomeType{"PROPRIA QUITADA"}
+	PROPRIA_FINANCIADA HomeType = HomeType{"PROPRIA FINANCIADA"}
+	OUTROS             HomeType = HomeType{"OUTROS"}
 )

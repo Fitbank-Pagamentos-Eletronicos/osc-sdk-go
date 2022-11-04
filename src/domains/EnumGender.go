@@ -4,7 +4,7 @@ type Gender struct {
 	gender string
 }
 
-const (
-	MASCULINO = Gender{"MASCULINO"}
-	FEMININO = Gender{"FEMININO"}
+var (
+	MASCULINO Gender = Gender{"MASCULINO"}
+	FEMININO  Gender = Gender{"FEMININO"}
 )

@@ -1,6 +1,6 @@
 package domains
 
 type ErrorField struct {
-	field string
+	field   string
 	message string
 }

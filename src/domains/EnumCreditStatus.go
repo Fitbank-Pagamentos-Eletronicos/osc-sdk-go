@@ -4,17 +4,16 @@ type CreditStatus struct {
 	creditStatusId string
 }
 
-const  (
-	PRE_PROCESSAMENTO  = CreditStatus{"PRE_PROCESSAMENTO"}
-	PRE_APROVADO = CreditStatus{"PRE_APROVADO"}
-	PENDENTE  = CreditStatus{"PENDENTE"}
-	AGUARDANDO_DOCUMENTOS = CreditStatus{"AGUARDANDO_DOCUMENTOS"}
-	EM_ANALISE_MANUAL = CreditStatus{"EM_ANALISE_MANUAL"}
-	EM_ANALISE_OPERACIONAL = CreditStatus{"EM_ANALISE_OPERACIONAL"}
-	EM_ANALISE_DOCUMENTAL = CreditStatus{"EM_ANALISE_DOCUMENTAL"}
-	CONTRATADO = CreditStatus{"CONTRATADO"}
-	LIBERADO = CreditStatus{"LIBERADO"}
-	REPROVADO = CreditStatus{"REPROVADO"}
-	EXPIRADO = CreditStatus{"EXPIRADO"}
-
+var (
+	PRE_PROCESSAMENTO                  CreditStatus = CreditStatus{"PRE_PROCESSAMENTO"}
+	PRE_APROVADO                       CreditStatus = CreditStatus{"PRE_APROVADO"}
+	PENDENTE                           CreditStatus = CreditStatus{"PENDENTE"}
+	AGUARDANDO_DOCUMENTOS              CreditStatus = CreditStatus{"AGUARDANDO_DOCUMENTOS"}
+	EM_ANALISE_MANUAL                  CreditStatus = CreditStatus{"EM_ANALISE_MANUAL"}
+	EM_ANALISE_OPERACIONAL             CreditStatus = CreditStatus{"EM_ANALISE_OPERACIONAL"}
+	EM_ANALISE_DOCUMENTAL              CreditStatus = CreditStatus{"EM_ANALISE_DOCUMENTAL"}
+	CONTRATADO                         CreditStatus = CreditStatus{"CONTRATADO"}
+	LIBERADO                           CreditStatus = CreditStatus{"LIBERADO"}
+	REPROVADO                          CreditStatus = CreditStatus{"REPROVADO"}
+	EXPIRADO                           CreditStatus = CreditStatus{"EXPIRADO"}
 )

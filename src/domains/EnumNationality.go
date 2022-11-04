@@ -1,12 +1,10 @@
-
 package domains
 
 type Nationality struct {
 	nationality string
 }
 
-	
-const (
-	BRASILEIRA = Nationality{"BRASILEIRA"}
-	ESTRANGEIRA = Nationality{"ESTRANGEIRA"}
+var (
+	BRASILEIRA  Nationality = Nationality{"BRASILEIRA"}
+	ESTRANGEIRA Nationality = Nationality{"ESTRANGEIRA"}
 )
