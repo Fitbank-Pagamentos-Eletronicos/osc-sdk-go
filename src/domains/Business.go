@@ -2,7 +2,7 @@ package domains
 
 type Business struct {
 	occupation Occupation
-	profession string
+	profession Profession
 	companyName string
 	income string
 	employmentSince EmploymentSince
