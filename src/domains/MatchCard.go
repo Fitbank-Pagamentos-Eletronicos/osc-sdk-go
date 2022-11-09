@@ -1,9 +1,9 @@
 package domains
 
 type MatchCard struct {
-	productId int16
-	name      string
-	logo      string
-	annuity   float32
-	network   NetWork
+	ProductId int
+	Name      string
+	Logo      string
+	Annuity   float64
+	Network   NetWork
 }

@@ -1,6 +1,6 @@
 package domains
 
 type Contract struct {
-	aceptedCheckSum string
-	logData         LogData
+	AceptedCheckSum string
+	LogData_         LogData
 }

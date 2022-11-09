@@ -1,18 +1,18 @@
 package domains
 
 type Business struct {
-	occupation Occupation
-	profession Profession
-	companyName string
-	income string
-	employmentSince EmploymentSince
-	payday string
-	benefitNumber string
-	zipCode string
-	address string
-	number string
-	complement string
-	district string
-	state HomeTownState
-	city string
+	Occupation_ Occupation
+	Profession_ Profession
+	CompanyName string
+	Income string
+	EmploymentSince_ EmploymentSince
+	Payday string
+	BenefitNumber string
+	ZipCode string
+	Address string
+	Number string
+	Complement string
+	District string
+	State HomeTownState
+	City string
 }

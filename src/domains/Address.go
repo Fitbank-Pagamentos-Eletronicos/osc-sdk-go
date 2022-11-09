@@ -1,13 +1,13 @@
 package domains
 
 type Address struct {
-	zipCode string
-	address string
-	number string
-	complement string
-	district string
-	state HomeTownState
-	city string
-	homeType HomeType
-	homeSince HomeSince
+	ZipCode string
+	Address string
+	Number string
+	Complement string
+	District string
+	State HomeTownState
+	City string
+	HomeType_ HomeType
+	HomeSince_ HomeSince
 }

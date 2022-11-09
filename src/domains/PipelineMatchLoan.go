@@ -1,11 +1,11 @@
 package domains
 
 type PipelineMatchLoan struct {
-	id string
-	status string
-	cpf string
-	name string
-	dateCreated string
-	lastUpdated string
-	matches Match
+	Id string
+	Status string
+	Cpf string
+	Name string
+	DateCreated string
+	LastUpdated string
+	Matches Match
 }

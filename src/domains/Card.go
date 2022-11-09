@@ -1,20 +1,20 @@
 package domains
 
 type Card struct {
-	customerServiceNumber string
-	tipo ProductType
-	product string
-	productId int16
-	hasDocuments bool
-	hasContracts bool
-	logo string
-	lastStatus CreditStatus
-	pendentDocuments PendentDocuments
-	dateCreated string
-	lastUpdated string
-	international string
-	annuity string
-	network NetWork
-	prepaid bool
-	digitalAccount bool
+	CustomerServiceNumber string
+	Tipo ProductType
+	Product string
+	ProductId int
+	HasDocuments bool
+	HasContracts bool
+	Logo string
+	LastStatus CreditStatus
+	PendentDocuments PendentDocuments
+	DateCreated string
+	LastUpdated string
+	International string
+	Annuity string
+	Network NetWork
+	Prepaid bool
+	DigitalAccount bool
 }

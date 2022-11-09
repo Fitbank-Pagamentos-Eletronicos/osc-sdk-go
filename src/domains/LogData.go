@@ -1,10 +1,10 @@
 package domains
 
 type LogData struct {
-	latitude      float64
-	longitude     float64
-	occurenceData string
-	userAgent     string
-	ip            string
-	mac           string
+	Latitude      float64
+	Longitude     float64
+	OccurenceData string
+	UserAgent     string
+	Ip            string
+	Mac           string
 }

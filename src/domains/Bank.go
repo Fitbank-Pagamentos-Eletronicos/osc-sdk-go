@@ -1,8 +1,8 @@
 package domains
 
 type Bank struct{
-	bank Banks
-	tipo AccountType
-	agency string
-	account string
+	Bank_ Banks
+	Tipo AccountType
+	Agency string
+	Account string
 }

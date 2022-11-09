@@ -1,8 +1,8 @@
 package domains
 
 type Document struct {
-	tipo DocumentType
-	mimeType MimeType
-	name string
-	base64 string
+	Tipo DocumentType
+	MimeType_ MimeType
+	Name string
+	Base64 string
 }

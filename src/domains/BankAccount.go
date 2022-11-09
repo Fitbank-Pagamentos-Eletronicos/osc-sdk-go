@@ -1,12 +1,12 @@
 package domains
 
 type BankAccount struct {
-	customerServiceNumber string
-	product string
-	productId int16
-	hasDocuments bool
-	hasContracts bool
-	lastStatus CreditStatus
-	dateCreated string
-	lastUpdated string
+	CustomerServiceNumber string
+	Product string
+	ProductId int
+	HasDocuments bool
+	HasContracts bool
+	LastStatus CreditStatus
+	DateCreated string
+	LastUpdated string
 }

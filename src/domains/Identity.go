@@ -1,9 +1,9 @@
 package domains
 
 type Identity struct {
-	tipo        IdentityType
-	number      string
-	issuer      IdentityTypeIssuer
-	state       HomeTownState
-	issuingDate string
+	Tipo        IdentityType
+	Number      string
+	Issuer      IdentityTypeIssuer
+	State       HomeTownState
+	IssuingDate string
 }

@@ -2,8 +2,8 @@ package domains
 
 
 type AuthSucess struct {
-	acess_token string
-	expire_at   string
+	Acess_token string
+	Expire_at   string
 }
 
 

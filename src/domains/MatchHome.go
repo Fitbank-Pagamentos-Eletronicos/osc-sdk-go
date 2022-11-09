@@ -1,12 +1,12 @@
 package domains
 
 type MatchHome struct {
-	productId      int16
-	name           string
-	logo           string
-	minValue       int8
-	maxValue       int16
-	minInstallment int16
-	maxInstallment int16
-	monthlyTax     float32
+	ProductId      int
+	Name           string
+	Logo           string
+	MinValue       int
+	MaxValue       int
+	MinInstallment int
+	MaxInstallment int
+	MonthlyTax     float64
 }

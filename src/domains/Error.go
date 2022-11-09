@@ -1,6 +1,6 @@
 package domains
 
 type Error struct {
-	code string
-	message string
+	Code string
+	Message string
 }

@@ -1,6 +1,6 @@
 package domains
 
 type BorrowerInfo struct {
-	isRegistered bool
-	isBlocked bool
+	IsRegistered bool
+	IsBlocked bool
 }
