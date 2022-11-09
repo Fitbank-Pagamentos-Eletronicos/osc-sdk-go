@@ -1,0 +1,28 @@
+package test
+
+
+
+import (
+	"testing"
+	"modulo/src/domains"
+	"github.com/stretchr/testify/assert"
+
+)
+
+
+func TestPipelineExpire(t *testing.T){
+	pipelineExpire := domains.PipelineExpire{
+		Id:          "1",
+		Status:      "Aprovado",
+		Cpf:         "123456789",
+		Name:        "Alexandre",
+		DateCreated: "2020-01-01",
+		LastUpdated: "2020-01-01",
+	}
+
+	assert.Equal(t, pipelineExpire.Id, "1")
+	assert.Equal(t, pipelineExpire.Status, "Aprovado")
+	assert.Equal(t, pipelineExpire.Cpf, "123456789")
+	assert.Equal(t, pipelineExpire.Name, "Alexandre")
+	assert.Equal(t, pipelineExpire.DateCreated, "2020-01-01")
+}
