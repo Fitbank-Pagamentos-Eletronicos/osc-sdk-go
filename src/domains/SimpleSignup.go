@@ -1,17 +1,16 @@
 package domains
 
 type SimpleSignup struct {
-	cpf            string
-	name		   string
-	birthday	   string
-	email		   string
-	phone		   string
-	zipCode		   string
-	hasCreditCart  bool
-	hasRestriction bool
-	hasOwnHouse    bool
-	hasVehicle     bool
-	hasAndroid     bool
-	logaData 	 LogData
-
+	Cpf            string
+	Name           string
+	Birthday       string
+	Email          string
+	Phone          string
+	ZipCode        string
+	HasCreditCart  bool
+	HasRestriction bool
+	HasOwnHouse    bool
+	HasVehicle     bool
+	HasAndroid     bool
+	LogaData       LogData
 }

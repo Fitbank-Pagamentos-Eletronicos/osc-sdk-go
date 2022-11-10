@@ -1,7 +1,7 @@
 package domains
 
 type ProductCard struct {
-	tipo ProductType
-	network  NetWork
-	payday string
+	Tipo    ProductType
+	Network NetWork
+	Payday  string
 }

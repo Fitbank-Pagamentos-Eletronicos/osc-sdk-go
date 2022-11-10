@@ -1,26 +1,19 @@
 package domains
 
 type Proposal struct {
-	mother 		string
-	gender 		Gender
-	natianality Nationality
-	homeTownState HomeTownState
-	homeTownCity string
-	education EducationLevel
-	relationshipStatus RelationshipStatus
-	identity IdentityType
-	adrress Address
-	vehicle 	Vehicle
-	consumerUnit ConsumerUnit
-	bussiness Business
-	bank Bank
-	reference Reference
-	products Products
-
+	Mother             string
+	Gender             Gender
+	Natianality        Nationality
+	HomeTownState      HomeTownState
+	HomeTownCity       string
+	Education          EducationLevel
+	RelationshipStatus RelationshipStatus
+	Identity           IdentityType
+	Adrress            Address
+	Vehicle            Vehicle
+	ConsumerUnit       ConsumerUnit
+	Bussiness          Business
+	Bank               Bank
+	Reference          Reference
+	Products           Products
 }
-
-
-
-
-
-

@@ -2,9 +2,9 @@ package domains
 
 type Products struct {
 
-	productLoan ProductLoan
-	productCard ProductCard
-	productAuto ProductAuto
-	productHome ProductHome
+	ProductLoan ProductLoan
+	ProductCard ProductCard
+	ProductAuto ProductAuto
+	ProductHome ProductHome
 	
 }

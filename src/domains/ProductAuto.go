@@ -1,11 +1,11 @@
 package domains
 
 type ProductAuto struct {
-	tipo ProductType
-	value float32
-	vehicleBrand string
-	vehicleModel string
-	installments int16
-	codeFipe string
-	vehicleFipeValue float32
+	Tipo             ProductType
+	Value            float64
+	VehicleBrand     string
+	VehicleModel     string
+	Installments     int
+	CodeFipe         string
+	VehicleFipeValue float64
 }

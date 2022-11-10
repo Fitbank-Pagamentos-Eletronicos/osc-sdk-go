@@ -1,20 +1,20 @@
 package domains
 
 type SignupMatch struct {
-	cpf            string
-	name           string
-	birthday       string
-	phone          string
-	zipCode        string
-	educationLevel EducationLevel
-	banks          Banks
-	occupation     Occupation
-	income         int
-	hasCreditCart  bool
-	hasRestriction bool
-	hasOwnHouse    bool
-	hasVehicle     bool
-	hasAndroid     bool
-	products       Products
-	logData        LogData
+	Cpf            string
+	Name           string
+	Birthday       string
+	Phone          string
+	ZipCode        string
+	EducationLevel EducationLevel
+	Banks          Banks
+	Occupation     Occupation
+	Income         int
+	HasCreditCart  bool
+	HasRestriction bool
+	HasOwnHouse    bool
+	HasVehicle     bool
+	HasAndroid     bool
+	Products       Products
+	LogData        LogData
 }

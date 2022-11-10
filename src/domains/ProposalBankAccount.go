@@ -1,14 +1,13 @@
 package domains
 
-
 type ProposalBankAccount struct {
-	mother 		string
-	gender 		Gender
-	natianality Nationality
-	homeTownState HomeTownState
-	relationshipStatus RelationshipStatus
-	identity IdentityType
-	adrres Address
-	business Business
-	products ProductBankAccount
+	Mother             string
+	Gender             Gender
+	Natianality        Nationality
+	HomeTownState      HomeTownState
+	RelationshipStatus RelationshipStatus
+	Identity           IdentityType
+	Adrres             Address
+	Business           Business
+	Products           ProductBankAccount
 }

@@ -1,5 +1,5 @@
 package domains
 
 type Vehicle struct {
-	licensePlate string
+	LicensePlate string
 }

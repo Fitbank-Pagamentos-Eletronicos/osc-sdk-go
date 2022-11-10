@@ -1,6 +1,6 @@
 package domains
 
 type Reference struct {
-	name string
-	phone string
+	Name  string
+	Phone string
 }

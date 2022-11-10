@@ -1,11 +1,10 @@
 package domains
 
-
 type ProductHome struct {
-	tipo ProductType
-	valeu float32
-	installments int16
-	realEstateType RealEstateType
-	realEstateValue float32
-	outstandingBalance float32
+	Tipo               ProductType
+	Value              float64
+	Installments       int
+	RealEstateType_    RealEstateType
+	RealEstateValue    float64
+	OutstandingBalance float64
 }

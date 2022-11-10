@@ -1,11 +1,11 @@
 package domains
 
 type PipelineWithProposal struct {
-	id string
-	status string
-	cpf string
-	name string
-	dateCreated string
-	lastUpdated string
-	proposals Proposals
+	Id          string
+	Status      string
+	Cpf         string
+	Name        string
+	DateCreated string
+	LastUpdated string
+	Proposals_  Proposals
 }
