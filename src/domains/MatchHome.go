@@ -1,5 +1,7 @@
 package domains
 
+import "encoding/json"
+
 type MatchHome struct {
 	ProductId      int
 	Name           string
@@ -9,4 +11,9 @@ type MatchHome struct {
 	MinInstallment int
 	MaxInstallment int
 	MonthlyTax     float64
+}
+
+func (a *MatchHome) ToJson() string {
+	json, _ := json.Marshal(a)
+	return string(json)
 }

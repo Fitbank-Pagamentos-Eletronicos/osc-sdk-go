@@ -42,5 +42,5 @@ func TestCard(t *testing.T) {
 	assert.Equal(t, domains.VISA, card.Network)
 	assert.Equal(t, true, card.Prepaid)
 	assert.Equal(t, true, card.DigitalAccount)
-
 }
+

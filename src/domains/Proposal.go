@@ -1,5 +1,7 @@
 package domains
 
+import "encoding/json"
+
 type Proposal struct {
 	Mother             string
 	Gender             Gender
@@ -16,4 +18,9 @@ type Proposal struct {
 	Bank               Bank
 	Reference          Reference
 	Products           Products
+}
+
+func (a *Proposal) ToJson() string {
+	json, _ := json.Marshal(a)
+	return string(json)
 }

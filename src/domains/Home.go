@@ -1,5 +1,7 @@
 package domains
 
+import "encoding/json"
+
 type Home struct {
 	CustomerServiceNumber string
 	Tipo                  ProductType
@@ -21,4 +23,9 @@ type Home struct {
 	FirstPaymentDate      string
 	Cet                   float64
 	ReleaseDate           string
+}
+
+func (a *Home) ToJson() string {
+	json, _ := json.Marshal(a)
+	return string(json)
 }

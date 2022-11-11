@@ -1,5 +1,7 @@
 package domains
 
+import "encoding/json"
+
 type MatchAuto struct {
 	ProductId      int
 	Name           string
@@ -9,4 +11,9 @@ type MatchAuto struct {
 	MinInstallment int
 	MaxInstallment int
 	MonthlyTax     float64
+}
+
+func (a *MatchAuto) ToJson() string {
+	json, _ := json.Marshal(a)
+	return string(json)
 }

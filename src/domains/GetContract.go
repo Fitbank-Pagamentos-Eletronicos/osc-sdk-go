@@ -1,6 +1,13 @@
 package domains
 
+import "encoding/json"
+
 type GetContract struct {
-	customerServiceNumber string
-	contracts             []string
+	CustomerServiceNumber string
+	Contracts             []string
+}
+
+func (a *GetContract) ToJson() string {
+	json, _ := json.Marshal(a)
+	return string(json)
 }

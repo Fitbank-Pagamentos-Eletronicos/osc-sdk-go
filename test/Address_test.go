@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -19,6 +20,8 @@ func TestAddress(t *testing.T) {
 		HomeType_:  domains.ALUGADA,
 		HomeSince_: domains.MENOR_6_MESES,
 	}
+
+	fmt.Println(address.ToJson())
 
 	assert.Equal(t, "00000000", address.ZipCode)
 	assert.Equal(t, "Rua Teste", address.Address)

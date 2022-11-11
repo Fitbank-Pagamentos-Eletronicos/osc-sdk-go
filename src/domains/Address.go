@@ -1,5 +1,9 @@
 package domains
 
+
+import (
+	"encoding/json"
+)
 type Address struct {
 	ZipCode string
 	Address string
@@ -11,3 +15,9 @@ type Address struct {
 	HomeType_ HomeType
 	HomeSince_ HomeSince
 }
+
+func (a *Address) ToJson() string{
+	json, _ := json.Marshal(a)
+	return string(json)
+}
+

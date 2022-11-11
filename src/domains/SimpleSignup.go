@@ -1,5 +1,7 @@
 package domains
 
+import "encoding/json"
+
 type SimpleSignup struct {
 	Cpf            string
 	Name           string
@@ -13,4 +15,9 @@ type SimpleSignup struct {
 	HasVehicle     bool
 	HasAndroid     bool
 	LogaData       LogData
+}
+
+func (a *SimpleSignup) ToJson() string {
+	json, _ := json.Marshal(a)
+	return string(json)
 }

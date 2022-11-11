@@ -1,5 +1,7 @@
 package domains
 
+import "encoding/json"
+
 type Business struct {
 	Occupation_      Occupation
 	Profession_      Profession
@@ -15,4 +17,9 @@ type Business struct {
 	District         string
 	State            HomeTownState
 	City             string
+}
+
+func (a *Business) ToJson() string {
+	json, _ := json.Marshal(a)
+	return string(json)
 }

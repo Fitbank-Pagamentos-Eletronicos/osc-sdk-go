@@ -22,3 +22,4 @@ type Auto struct {
 	Cet float64
 	ReleaseDate string
 }
+

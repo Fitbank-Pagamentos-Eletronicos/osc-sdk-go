@@ -1,5 +1,7 @@
 package domains
 
+import "encoding/json"
+
 type SignupMatch struct {
 	Cpf            string
 	Name           string
@@ -17,4 +19,9 @@ type SignupMatch struct {
 	HasAndroid     bool
 	Products       Products
 	LogData        LogData
+}
+
+func (a *SignupMatch) ToJson() string {
+	json, _ := json.Marshal(a)
+	return string(json)
 }

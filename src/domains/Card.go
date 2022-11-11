@@ -1,5 +1,7 @@
 package domains
 
+import "encoding/json"
+
 type Card struct {
 	CustomerServiceNumber string
 	Tipo                  ProductType
@@ -17,4 +19,9 @@ type Card struct {
 	Network               NetWork
 	Prepaid               bool
 	DigitalAccount        bool
+}
+
+func (a *Card) ToJson() string {
+	json, _ := json.Marshal(a)
+	return string(json)
 }
