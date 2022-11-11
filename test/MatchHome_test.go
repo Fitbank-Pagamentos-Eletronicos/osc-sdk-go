@@ -1,16 +1,15 @@
 package test
 
-
-
 import (
-	"testing"
+	"fmt"
 	"modulo/src/domains"
-	"github.com/stretchr/testify/assert"
+	"testing"
 
+	"github.com/stretchr/testify/assert"
 )
 
 func TestMatchHome(t *testing.T) {
-	matchHome:= domains.MatchHome{
+	matchHome := domains.MatchHome{
 		ProductId:      1,
 		Name:           "Casa",
 		Logo:           "logo",
@@ -19,8 +18,10 @@ func TestMatchHome(t *testing.T) {
 		MinInstallment: 1,
 		MaxInstallment: 12,
 		MonthlyTax:     0.01,
-
 	}
+
+	fmt.Println(matchHome.ToJson())
+
 	assert.Equal(t, matchHome.ProductId, 1)
 	assert.Equal(t, matchHome.Name, "Casa")
 	assert.Equal(t, matchHome.Logo, "logo")

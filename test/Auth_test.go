@@ -20,6 +20,3 @@ func TestAuth(t *testing.T) {
 	assert.Equal(t, "teste", auth.Client_secret)
 	assert.Equal(t, []string{"teste"}, auth.Scopes)
 }
-
-5438-0
-25294-8

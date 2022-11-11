@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -14,6 +15,8 @@ func TestDocumentResponse(t *testing.T) {
 		Name:     "Teste",
 		Url:      "Teste",
 	}
+
+	fmt.Println(documentResponse.ToJson())
 
 	assert.Equal(t, domains.IDENTITY_BACK, documentResponse.Tipo)
 	assert.Equal(t, domains.IMAGE_JPEG, documentResponse.MimeType)

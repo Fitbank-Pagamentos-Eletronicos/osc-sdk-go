@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -17,6 +18,8 @@ func TestProductHome(t *testing.T) {
 		RealEstateValue:    10000.00,
 		OutstandingBalance: 1000.00,
 	}
+
+	fmt.Println(productHome.ToJson())
 
 	assert.Equal(t, productHome.Tipo, domains.LOAN)
 	assert.Equal(t, productHome.Value, 1000.00)

@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -17,11 +18,14 @@ func TestContract(t *testing.T) {
 		Mac:           "00:00:00:00:00:00",
 	}
 
+	fmt.Println(logData.ToJson())
+
 	contract := domains.Contract{
 		AceptedCheckSum: "aceptedCheckSum",
-		LogData_:         logData,
-
+		LogData_:        logData,
 	}
+
+	fmt.Println(contract.ToJson())
 
 	assert.Equal(t, "aceptedCheckSum", contract.AceptedCheckSum)
 	assert.Equal(t, logData, contract.LogData_)

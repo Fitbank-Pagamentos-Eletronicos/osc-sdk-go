@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -17,7 +18,7 @@ func TestPipelineWithProposal(t *testing.T) {
 		HasContracts:          true,
 		Logo:                  "logo",
 		LastStatus:            domains.PRE_PROCESSAMENTO,
-		PendentDocuments:	  domains.IDENTITY_BACK_,
+		PendentDocuments:      domains.IDENTITY_BACK_,
 		DateCreated:           "2020-01-01",
 		LastUpdated:           "2020-01-01",
 		Value:                 1000,
@@ -31,16 +32,18 @@ func TestPipelineWithProposal(t *testing.T) {
 		ReleaseDate:           "2020-01-01",
 	}
 
+	fmt.Println(loan.ToJson())
+
 	card := domains.Card{
 		CustomerServiceNumber: "123456789",
 		Tipo:                  domains.CARD,
-		Product: 			 "Cartão de Crédito",
+		Product:               "Cartão de Crédito",
 		ProductId:             2,
 		HasDocuments:          true,
 		HasContracts:          true,
 		Logo:                  "logo",
 		LastStatus:            domains.PRE_PROCESSAMENTO,
-		PendentDocuments:	  domains.IDENTITY_BACK_,
+		PendentDocuments:      domains.IDENTITY_BACK_,
 		DateCreated:           "2020-01-01",
 		LastUpdated:           "2020-01-01",
 		International:         "Sim",
@@ -49,6 +52,9 @@ func TestPipelineWithProposal(t *testing.T) {
 		Prepaid:               true,
 		DigitalAccount:        true,
 	}
+
+	fmt.Println(card.ToJson())
+
 	auto := domains.Auto{
 		CustomerServiceNumber: "123456789",
 		Tipo:                  domains.CARD,
@@ -58,7 +64,7 @@ func TestPipelineWithProposal(t *testing.T) {
 		HasContracts:          true,
 		Logo:                  "logo",
 		LastStatus:            domains.PRE_PROCESSAMENTO,
-		PendentDocuments:	  domains.IDENTITY_BACK_,
+		PendentDocuments:      domains.IDENTITY_BACK_,
 		DateCreated:           "2020-01-01",
 		LastUpdated:           "2020-01-01",
 		Value:                 1000,
@@ -71,6 +77,7 @@ func TestPipelineWithProposal(t *testing.T) {
 		Cet:                   10,
 		ReleaseDate:           "2020-01-01",
 	}
+	fmt.Println(auto.ToJson())
 
 	home := domains.Home{
 		CustomerServiceNumber: "123456789",
@@ -81,7 +88,7 @@ func TestPipelineWithProposal(t *testing.T) {
 		HasContracts:          true,
 		Logo:                  "logo",
 		LastStatus:            domains.PRE_PROCESSAMENTO,
-		PendentDocuments:	  domains.IDENTITY_BACK_,
+		PendentDocuments:      domains.IDENTITY_BACK_,
 		DateCreated:           "2020-01-01",
 		LastUpdated:           "2020-01-01",
 		Value:                 1000,
@@ -94,6 +101,7 @@ func TestPipelineWithProposal(t *testing.T) {
 		Cet:                   10,
 		ReleaseDate:           "2020-01-01",
 	}
+	fmt.Println(home.ToJson())
 
 	proposals := domains.Proposals{
 		Loan: loan,
@@ -111,6 +119,8 @@ func TestPipelineWithProposal(t *testing.T) {
 		LastUpdated: "2020-01-01",
 		Proposals_:  proposals,
 	}
+
+	fmt.Println(pipelineWithProposal.ToJson())
 
 	assert.Equal(t, "1", pipelineWithProposal.Id)
 	assert.Equal(t, "Aprovado", pipelineWithProposal.Status)

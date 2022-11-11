@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -14,6 +15,8 @@ func TestBank(t *testing.T) {
 		Agency:  "0001",
 		Account: "123456",
 	}
+
+	fmt.Println(bank.ToJson())
 
 	assert.Equal(t, domains.BANCO_DO_BRASIL, bank.Bank_)
 	assert.Equal(t, domains.CONTA_CORRENTE_INDIVIDUAL, bank.Tipo)

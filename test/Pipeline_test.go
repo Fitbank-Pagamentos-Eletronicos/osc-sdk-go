@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -16,6 +17,7 @@ func TestPipeline(t *testing.T) {
 		DateCreated: "2020-01-01",
 		LastUpdated: "2020-01-01",
 	}
+	fmt.Println(pipeline.ToJson())
 
 	assert.Equal(t, pipeline.Id, "1")
 	assert.Equal(t, pipeline.Status, "Aprovado")

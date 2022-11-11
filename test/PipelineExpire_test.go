@@ -1,12 +1,11 @@
 package test
 
-
-
 import (
-	"testing"
+	"fmt"
 	"modulo/src/domains"
-	"github.com/stretchr/testify/assert"
+	"testing"
 
+	"github.com/stretchr/testify/assert"
 )
 
 
@@ -19,6 +18,8 @@ func TestPipelineExpire(t *testing.T){
 		DateCreated: "2020-01-01",
 		LastUpdated: "2020-01-01",
 	}
+
+	fmt.Println(pipelineExpire.ToJson())
 
 	assert.Equal(t, pipelineExpire.Id, "1")
 	assert.Equal(t, pipelineExpire.Status, "Aprovado")

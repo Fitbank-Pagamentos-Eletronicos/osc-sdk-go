@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -30,6 +31,8 @@ func TestAuto(t *testing.T) {
 		Cet:                   100.00,
 		ReleaseDate:           "2019-08-21T14:31:17.459Z",
 	}
+	
+	fmt.Println(auto.ToJson())
 
 	assert.Equal(t, "123", auto.CustomerServiceNumber)
 	assert.Equal(t, domains.LOAN, auto.Tipo)

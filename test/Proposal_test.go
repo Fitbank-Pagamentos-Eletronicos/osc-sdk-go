@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -17,13 +18,18 @@ func TestProposal(t *testing.T) {
 		State:      domains.SANTA_CANTARINA,
 		City:       "Florianópolis",
 	}
+	fmt.Println(address.ToJson())
+
 	vehicle := domains.Vehicle{
 		LicensePlate: "ABC1234",
 	}
 
+	fmt.Println(vehicle.ToJson())
+
 	consumerUnit := domains.ConsumerUnit{
 		Number: "123456789",
 	}
+	fmt.Println(consumerUnit.ToJson())
 	business := domains.Business{
 		Occupation_:      domains.ASSALARIOADO,
 		Profession_:      domains.ACUMPURISTA,
@@ -40,6 +46,7 @@ func TestProposal(t *testing.T) {
 		State:            domains.SANTA_CANTARINA,
 		City:             "Florianópolis",
 	}
+	fmt.Println(business.ToJson())
 
 	bank := domains.Bank{
 		Bank_:   domains.NU_PAGAMENTOS_S,
@@ -47,20 +54,27 @@ func TestProposal(t *testing.T) {
 		Agency:  "1234",
 		Account: "123456",
 	}
+	fmt.Println(bank.ToJson())
 	reference := domains.Reference{
 		Name:  "Referência",
 		Phone: "123456789",
 	}
+
+	fmt.Println(reference.ToJson())
+
 	productLoan := domains.ProductLoan{
 		Tipo:         domains.LOAN,
 		Value:        1000,
 		Installments: 12,
 	}
+	fmt.Println(productLoan.ToJson())
+
 	productCard := domains.ProductCard{
 		Tipo:    domains.CARD,
 		Network: domains.VISA,
 		Payday:  "10",
 	}
+	fmt.Println(productCard.ToJson())
 
 	productAuto := domains.ProductAuto{
 		Tipo:             domains.LOAN,
@@ -71,6 +85,7 @@ func TestProposal(t *testing.T) {
 		CodeFipe:         "123456",
 		VehicleFipeValue: 1000.00,
 	}
+	fmt.Println(productAuto.ToJson())
 
 	productHome := domains.ProductHome{
 		Tipo:               domains.LOAN,
@@ -80,6 +95,7 @@ func TestProposal(t *testing.T) {
 		RealEstateValue:    1000.00,
 		OutstandingBalance: 1000.00,
 	}
+	fmt.Println(productHome.ToJson())
 
 	products := domains.Products{
 		ProductLoan: productLoan,
@@ -87,6 +103,7 @@ func TestProposal(t *testing.T) {
 		ProductAuto: productAuto,
 		ProductHome: productHome,
 	}
+	fmt.Println(products.ToJson())
 	proposal := domains.Proposal{
 		Mother:             "Maria",
 		Gender:             domains.FEMININO,
@@ -104,6 +121,8 @@ func TestProposal(t *testing.T) {
 		Reference:          reference,
 		Products:           products,
 	}
+
+	fmt.Println(proposal.ToJson())
 
 	assert.Equal(t, proposal.Mother, "Maria")
 	assert.Equal(t, proposal.Gender, domains.FEMININO)

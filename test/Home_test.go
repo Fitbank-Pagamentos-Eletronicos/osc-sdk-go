@@ -1,36 +1,38 @@
 package test
 
-
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
+
 	"github.com/stretchr/testify/assert"
 )
 
-
-func TestHome(t *testing.T){
+func TestHome(t *testing.T) {
 	home := domains.Home{
 		CustomerServiceNumber: "123456789",
 		Tipo:                  domains.LOAN,
-		Product: 			 "Empréstimo",
-		ProductId: 			 1,
-		HasDocuments: 		 true,
-		HasContracts: 		 true,
-		Logo: 				 "logo",
-		LastStatus: 		 domains.PRE_PROCESSAMENTO ,
-		PendentDocuments: 	 domains.ADDRESS_PROOF_,
-		DateCreated: 		 "2019-08-21T14:31:17.459Z",
-		LastUpdated: 		 "2019-08-21T14:31:17.459Z",
-		Value: 				 1000.00,
-		Installments: 		 12,
-		MonthlyTax: 		 0.00,
-		InstallmentsValue: 	 1000.00,
-		IofValeu: 			 0.00,
-		GrossValeu: 		 1000.00,
-		FirstPaymentDate: 	 "2019-08-21T14:31:17.459Z",
-		Cet: 				 0.00,
-		ReleaseDate: 		 "2019-08-21T14:31:17.459Z",
+		Product:               "Empréstimo",
+		ProductId:             1,
+		HasDocuments:          true,
+		HasContracts:          true,
+		Logo:                  "logo",
+		LastStatus:            domains.PRE_PROCESSAMENTO,
+		PendentDocuments:      domains.ADDRESS_PROOF_,
+		DateCreated:           "2019-08-21T14:31:17.459Z",
+		LastUpdated:           "2019-08-21T14:31:17.459Z",
+		Value:                 1000.00,
+		Installments:          12,
+		MonthlyTax:            0.00,
+		InstallmentsValue:     1000.00,
+		IofValeu:              0.00,
+		GrossValeu:            1000.00,
+		FirstPaymentDate:      "2019-08-21T14:31:17.459Z",
+		Cet:                   0.00,
+		ReleaseDate:           "2019-08-21T14:31:17.459Z",
 	}
+
+	fmt.Println(home.ToJson())
 
 	assert.Equal(t, "123456789", home.CustomerServiceNumber)
 	assert.Equal(t, domains.LOAN, home.Tipo)
@@ -52,5 +54,5 @@ func TestHome(t *testing.T){
 	assert.Equal(t, "2019-08-21T14:31:17.459Z", home.FirstPaymentDate)
 	assert.Equal(t, 0.00, home.Cet)
 	assert.Equal(t, "2019-08-21T14:31:17.459Z", home.ReleaseDate)
-	
+
 }

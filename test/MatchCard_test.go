@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -16,6 +17,8 @@ func TestMatchCard(t *testing.T) {
 		Annuity:   1.00,
 		Network:   domains.VISA,
 	}
+
+	fmt.Println(matchCard.ToJson())
 
 	assert.Equal(t, 2, matchCard.ProductId)
 	assert.Equal(t, "Cartão de Crédito", matchCard.Name)

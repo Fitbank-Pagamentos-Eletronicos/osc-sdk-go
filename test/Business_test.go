@@ -1,29 +1,32 @@
 package test
 
 import (
-	"testing"
+	"fmt"
 	"modulo/src/domains"
-	"github.com/stretchr/testify/assert"
+	"testing"
 
+	"github.com/stretchr/testify/assert"
 )
 
 func TestBusiness(t *testing.T) {
 	business := domains.Business{
-		Occupation_: domains.AUTONOMO,
-		Profession_: domains.ACOUGUEIRO,
-		CompanyName: "Empresa de Teste",
-		Income: "1000",
+		Occupation_:      domains.AUTONOMO,
+		Profession_:      domains.ACOUGUEIRO,
+		CompanyName:      "Empresa de Teste",
+		Income:           "1000",
 		EmploymentSince_: domains.LESS_THAN_SIX_MONTHS,
-		Payday: "10",
-		BenefitNumber: "123456789",
-		ZipCode: "12345678",
-		Address: "Rua de Teste",
-		Number: "123",
-		Complement: "Casa",
-		District: "Bairro de Teste",
-		State: domains.ALAGOAS,
-		City: "Maceió",
+		Payday:           "10",
+		BenefitNumber:    "123456789",
+		ZipCode:          "12345678",
+		Address:          "Rua de Teste",
+		Number:           "123",
+		Complement:       "Casa",
+		District:         "Bairro de Teste",
+		State:            domains.ALAGOAS,
+		City:             "Maceió",
 	}
+
+	fmt.Println(business.ToJson())
 
 	assert.Equal(t, domains.AUTONOMO, business.Occupation_)
 	assert.Equal(t, domains.ACOUGUEIRO, business.Profession_)

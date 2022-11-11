@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -17,6 +18,8 @@ func TestSimpleSignup(t *testing.T) {
 		Mac:           "00:00:00:00:00:00",
 	}
 
+	fmt.Println(logData.ToJson())
+
 	simpleSignup := domains.SimpleSignup{
 		Cpf:            "123456789",
 		Name:           "Van",
@@ -31,6 +34,8 @@ func TestSimpleSignup(t *testing.T) {
 		HasAndroid:     true,
 		LogaData:       logData,
 	}
+
+	fmt.Println(simpleSignup.ToJson())
 
 	assert.Equal(t, "123456789", simpleSignup.Cpf)
 	assert.Equal(t, "Van", simpleSignup.Name)

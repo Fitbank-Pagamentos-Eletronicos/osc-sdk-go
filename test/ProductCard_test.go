@@ -1,12 +1,12 @@
 package test
 
-
 import (
-	"testing"
+	"fmt"
 	"modulo/src/domains"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 )
-
 
 func TestProductCard(t *testing.T) {
 	productCard := domains.ProductCard{
@@ -14,6 +14,7 @@ func TestProductCard(t *testing.T) {
 		Network: domains.VISA,
 		Payday:  "20",
 	}
+	fmt.Println(productCard.ToJson())
 
 	assert.Equal(t, productCard.Tipo, domains.CARD)
 	assert.Equal(t, productCard.Network, domains.VISA)

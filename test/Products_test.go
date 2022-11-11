@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -13,11 +14,16 @@ func TestProducts(t *testing.T) {
 		Value:        1000,
 		Installments: 12,
 	}
+
+	fmt.Println(loan.ToJson())
+
 	card := domains.ProductCard{
 		Tipo:    domains.CARD,
 		Network: domains.VISA,
 		Payday:  "20",
 	}
+	fmt.Println(card.ToJson())
+
 	auto := domains.ProductAuto{
 		Tipo:             domains.LOAN,
 		Value:            1000.00,
@@ -27,6 +33,7 @@ func TestProducts(t *testing.T) {
 		CodeFipe:         "123",
 		VehicleFipeValue: 10000.00,
 	}
+	fmt.Println(auto.ToJson())
 
 	home := domains.ProductHome{
 		Tipo:               domains.LOAN,
@@ -36,12 +43,16 @@ func TestProducts(t *testing.T) {
 		RealEstateValue:    10000.00,
 		OutstandingBalance: 1000.00,
 	}
+
+	fmt.Println(home.ToJson())
+
 	products := domains.Products{
 		ProductLoan: loan,
 		ProductCard: card,
 		ProductAuto: auto,
 		ProductHome: home,
 	}
+	fmt.Println(products.ToJson())
 
 	assert.Equal(t, loan, products.ProductLoan)
 	assert.Equal(t, card, products.ProductCard)

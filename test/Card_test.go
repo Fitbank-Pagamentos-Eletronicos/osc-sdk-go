@@ -1,8 +1,10 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
+
 	"github.com/stretchr/testify/assert"
 )
 
@@ -26,6 +28,8 @@ func TestCard(t *testing.T) {
 		DigitalAccount:        true,
 	}
 
+	fmt.Println(card.ToJson())
+
 	assert.Equal(t, "123456789", card.CustomerServiceNumber)
 	assert.Equal(t, domains.CARD, card.Tipo)
 	assert.Equal(t, "Cartão de Crédito", card.Product)
@@ -43,4 +47,3 @@ func TestCard(t *testing.T) {
 	assert.Equal(t, true, card.Prepaid)
 	assert.Equal(t, true, card.DigitalAccount)
 }
-

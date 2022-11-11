@@ -2,6 +2,7 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -17,6 +18,8 @@ func TestLogData(t *testing.T) {
 		Ip:            "0.0.0.0",
 		Mac:           "00:00:00:00:00:00",
 	}
+
+	fmt.Println(logData.ToJson())
 
 	assert.Equal(t, -16.6982283, logData.Latitude)
 	assert.Equal(t, -49.2581201, logData.Longitude)

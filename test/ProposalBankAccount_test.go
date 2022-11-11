@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -17,6 +18,7 @@ func TestProposalBankAccount(t *testing.T) {
 		State:      domains.SANTA_CANTARINA,
 		City:       "Florianópolis",
 	}
+	fmt.Println(address.ToJson())
 
 	business := domains.Business{
 		Occupation_:      domains.ASSALARIOADO,
@@ -34,10 +36,12 @@ func TestProposalBankAccount(t *testing.T) {
 		State:            domains.SANTA_CANTARINA,
 		City:             "Florianópolis",
 	}
+	fmt.Println(business.ToJson())
 
 	productBankAccount := domains.ProductBankAccount{
 		Tipo: "CONTA_CORRENTE",
 	}
+	fmt.Println(productBankAccount.ToJson())
 
 	proposalBankAccount := domains.ProposalBankAccount{
 		Mother:             "Julia",
@@ -50,6 +54,7 @@ func TestProposalBankAccount(t *testing.T) {
 		Business:           business,
 		Products:           productBankAccount,
 	}
+	fmt.Println(proposalBankAccount.ToJson())
 
 	assert.Equal(t, "Julia", proposalBankAccount.Mother)
 	assert.Equal(t, domains.FEMININO, proposalBankAccount.Gender)

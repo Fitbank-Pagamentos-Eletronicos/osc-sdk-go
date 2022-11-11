@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -20,6 +21,8 @@ func TestPipelineMatchLoan(t *testing.T) {
 		MonthlyTax:     1.0,
 	}
 
+	fmt.Println(matchLoan.ToJson())
+
 	matchCard := domains.MatchCard{
 		ProductId: 2,
 		Name:      "Teste",
@@ -27,6 +30,8 @@ func TestPipelineMatchLoan(t *testing.T) {
 		Annuity:   1.0,
 		Network:   domains.VISA,
 	}
+	fmt.Println(matchCard.ToJson())
+
 	matchAuto := domains.MatchAuto{
 		ProductId:      3,
 		Name:           "Teste",
@@ -37,6 +42,7 @@ func TestPipelineMatchLoan(t *testing.T) {
 		MaxInstallment: 12,
 		MonthlyTax:     2.0,
 	}
+	fmt.Println(matchAuto.ToJson())
 
 	matchHome := domains.MatchHome{
 		ProductId:      5,
@@ -48,6 +54,8 @@ func TestPipelineMatchLoan(t *testing.T) {
 		MaxInstallment: 16,
 		MonthlyTax:     1.0,
 	}
+	fmt.Println(matchHome.ToJson())
+
 	matchs := domains.Match{
 		MatchLoan: matchLoan,
 		MatchCard: matchCard,
@@ -64,6 +72,8 @@ func TestPipelineMatchLoan(t *testing.T) {
 		LastUpdated: "2020-01-01",
 		Matches:     matchs,
 	}
+	fmt.Println(pipelineMatchLoan.ToJson())
+
 	assert.Equal(t, "1", pipelineMatchLoan.Id)
 	assert.Equal(t, "Aprovado", pipelineMatchLoan.Status)
 	assert.Equal(t, "12345678901", pipelineMatchLoan.Cpf)

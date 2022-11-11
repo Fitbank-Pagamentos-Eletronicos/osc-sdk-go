@@ -1,16 +1,14 @@
 package test
 
-
-
 import (
-	"testing"
+	"fmt"
 	"modulo/src/domains"
-	"github.com/stretchr/testify/assert"
+	"testing"
 
+	"github.com/stretchr/testify/assert"
 )
 
-
-func TestMatchLoan(t *testing.T){
+func TestMatchLoan(t *testing.T) {
 	matchLoan := domains.MatchLoan{
 		ProductId:      1,
 		Name:           "Casa",
@@ -20,8 +18,9 @@ func TestMatchLoan(t *testing.T){
 		MinInstallment: 1,
 		MaxInstallment: 12,
 		MonthlyTax:     0.01,
-
 	}
+
+	fmt.Println(matchLoan.ToJson())
 
 	assert.Equal(t, matchLoan.ProductId, 1)
 	assert.Equal(t, matchLoan.Name, "Casa")

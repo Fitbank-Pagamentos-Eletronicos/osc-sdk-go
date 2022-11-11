@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -12,6 +13,8 @@ func TestBorrowerInfo(t *testing.T) {
 		IsRegistered: true,
 		IsBlocked:    true,
 	}
+
+	fmt.Println(borrowerInfo.ToJson())
 
 	assert.Equal(t, true, borrowerInfo.IsRegistered)
 	assert.Equal(t, true, borrowerInfo.IsBlocked)

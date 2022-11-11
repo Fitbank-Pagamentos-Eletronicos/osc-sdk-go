@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -17,6 +18,7 @@ func TestPipelineWithBankAccountProposal(t *testing.T) {
 		HasContracts:          true,
 		LastStatus:            domains.PRE_PROCESSAMENTO,
 	}
+	fmt.Println(bankAccount.ToJson())
 
 	pipelineWithBankAccountProposal := domains.PipelineWithBankAccountProposal{
 		Id:          "1",
