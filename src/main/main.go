@@ -1,8 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"modulo/src/requests"
+	"net/http"
+
+)
 
 func main() {
 
-	fmt.Println("Olá GO")
+	http.HandleFunc("/client/auth", requests.Auth)
+
+	http.ListenAndServe(":9000", nil)
 }
