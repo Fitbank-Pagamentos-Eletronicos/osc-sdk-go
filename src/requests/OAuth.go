@@ -18,9 +18,8 @@ type AuthResponse struct {
 }
 
 type AuthorizationRequest struct {
-	Client_id string `json:"client_id"`
-	Username  string `json:"username"`
-	Password  string `json:"password"`
+	Username string `json:"username"`
+	Password string `json:"password"`
 }
 
 type AuthBodyRequest struct {
@@ -28,8 +27,8 @@ type AuthBodyRequest struct {
 }
 
 var userDataBase = domains.Auth{
-	Client_id:     "104",
-	Client_secret: "4dbe3aa7-8ce9-43a4-9298-73b700e712bb:1b364af124250aa09461f33161c3d96e551d822080fe1bd977aa66d7ec9378c8",
+	Client_id:     "",
+	Client_secret: "1b364af124250aa09461f33161c3d96e551d822080fe1bd977aa66d7ec9378c8",
 	Scopes:        []string{"api-external"},
 }
 
@@ -39,7 +38,7 @@ type ErrorResponse struct {
 
 func Auth(writer http.ResponseWriter, request *http.Request) {
 
-	 writer.Header().Set("Content-Type", "application/json")
+	writer.Header().Set("Content-Type", "application/json")
 
 	var user, err = getUserByCredentiais(request.Header)
 
@@ -53,7 +52,7 @@ func Auth(writer http.ResponseWriter, request *http.Request) {
 	var post AuthBodyRequest
 	jsonUtil.Decode(reqBody, &post)
 
-	var token = jwt.GenerateToken(user.Client_id, user.Username, post.Scopes)
+	var token = jwt.GenerateToken(user.Username, post.Scopes)
 
 	var authResponse = AuthResponse{
 		Access_token: token.Access_token,
@@ -76,17 +75,23 @@ func getUserByCredentiais(header http.Header) (AuthorizationRequest, error) {
 
 	sUserB64, _ := base64.StdEncoding.DecodeString(removeBasic(response))
 
-	if string(sUserB64) != userDataBase.Client_secret {
+	var TestCodificado = userFromBase64(string(sUserB64))
 
+	var Codificado = strings.Split(string(sUserB64), ":")
+
+	if Codificado[0] != userDataBase.Client_id  {
+		fmt.Println("{ message: 'User not found' }")
 		return AuthorizationRequest{}, errors.New("User not found")
+	}else if (Codificado[1] != userDataBase.Client_secret){
+		fmt.Println("{ error: 'Wrong credentials' }")
+		return AuthorizationRequest{}, errors.New("Wrong credentials")
+
 	}
 
-	return userFromBase64(string(sUserB64)), nil
+		// return AuthorizationRequest{}, errors.New("Wrong credentials")
+	
+	return TestCodificado, nil
 
-}
-
-func removeBasic(response string) string {
-	return strings.Replace(response, "Basic ", "", 1)
 }
 
 func userFromBase64(userB64 string) AuthorizationRequest {
@@ -94,8 +99,13 @@ func userFromBase64(userB64 string) AuthorizationRequest {
 	var decodedUser = strings.Split(userB64, ":")
 
 	return AuthorizationRequest{
-		Client_id: userDataBase.Client_id,
-		Username:  decodedUser[0],
-		Password:  decodedUser[1],
+		// Client_id: userDataBase.Client_id,
+		Username: decodedUser[0],
+		Password: decodedUser[1],
 	}
+
+}
+
+func removeBasic(response string) string {
+	return strings.Replace(response, "Basic ", "", 1)
 }
