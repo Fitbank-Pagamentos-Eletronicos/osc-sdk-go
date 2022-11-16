@@ -2,14 +2,14 @@ package requests
 
 import (
 	"encoding/base64"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"modulo/src/domains"
-	jsonUtil "modulo/src/utils/json"
+	jsonUtil "modulo/src/utils/json_"
 	"modulo/src/utils/jwt"
 	"net/http"
 	"strings"
-	"errors"
 )
 
 type AuthResponse struct {
@@ -39,14 +39,13 @@ type ErrorResponse struct {
 
 func Auth(writer http.ResponseWriter, request *http.Request) {
 
-	writer.Header().Set("Content-Type", "application/json")
+	 writer.Header().Set("Content-Type", "application/json")
 
 	var user, err = getUserByCredentiais(request.Header)
 
-	
-	if err != nil{
+	if err != nil {
 		fmt.Fprintln(writer, jsonUtil.Encode(ErrorResponse{Message: err.Error()}))
-		
+
 		return
 	}
 
@@ -60,10 +59,9 @@ func Auth(writer http.ResponseWriter, request *http.Request) {
 		Access_token: token.Access_token,
 		Expire_at:    token.Expire_at,
 	}
-	
 
 	fmt.Println("authResponse", authResponse)
-	
+
 	fmt.Fprintln(writer, jsonUtil.Encode(authResponse))
 
 }
@@ -75,12 +73,11 @@ func getUserByCredentiais(header http.Header) (AuthorizationRequest, error) {
 	if response == "" {
 		return AuthorizationRequest{}, errors.New("Internal Server Error")
 	}
-	
 
 	sUserB64, _ := base64.StdEncoding.DecodeString(removeBasic(response))
 
 	if string(sUserB64) != userDataBase.Client_secret {
-		
+
 		return AuthorizationRequest{}, errors.New("User not found")
 	}
 
@@ -88,10 +85,9 @@ func getUserByCredentiais(header http.Header) (AuthorizationRequest, error) {
 
 }
 
-func removeBasic (response string) string {
+func removeBasic(response string) string {
 	return strings.Replace(response, "Basic ", "", 1)
 }
-
 
 func userFromBase64(userB64 string) AuthorizationRequest {
 
