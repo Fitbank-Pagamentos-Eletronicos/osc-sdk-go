@@ -22,13 +22,13 @@ type Token struct {
 
 func GenerateToken(client_id string, tag_name string, scopes []string) Token {
 
-	expiresAt := time.Now().Add(24 * time.Hour).Unix()
+	expiresAt := time.Now().Add(24 * time.Hour)
 	claims := claims{
 		client_id,
 		tag_name,
 		scopes,
 		jwt.StandardClaims{
-			ExpiresAt: expiresAt,
+			ExpiresAt: expiresAt.Unix(),
 			IssuedAt:  time.Now().Unix(),
 		},
 	}
