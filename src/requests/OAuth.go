@@ -27,7 +27,7 @@ type AuthBodyRequest struct {
 }
 
 var userDataBase = domains.Auth{
-	Client_id:     "",
+	Client_id:     "4dbe3aa7-8ce9-43a4-9298-73b700e712bb",
 	Client_secret: "1b364af124250aa09461f33161c3d96e551d822080fe1bd977aa66d7ec9378c8",
 	Scopes:        []string{"api-external"},
 }
@@ -87,8 +87,6 @@ func getUserByCredentiais(header http.Header) (AuthorizationRequest, error) {
 		return AuthorizationRequest{}, errors.New("Wrong credentials")
 
 	}
-
-		// return AuthorizationRequest{}, errors.New("Wrong credentials")
 	
 	return TestCodificado, nil
 
@@ -99,7 +97,6 @@ func userFromBase64(userB64 string) AuthorizationRequest {
 	var decodedUser = strings.Split(userB64, ":")
 
 	return AuthorizationRequest{
-		// Client_id: userDataBase.Client_id,
 		Username: decodedUser[0],
 		Password: decodedUser[1],
 	}
