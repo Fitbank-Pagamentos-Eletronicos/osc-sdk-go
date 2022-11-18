@@ -69,15 +69,19 @@ func getUserByCredentiais(header http.Header) (AuthorizationRequest, error) {
 
 	var response = header.Get("Authorization")
 
+	
+	
 	if response == "" {
 		return AuthorizationRequest{}, errors.New("Internal Server Error")
 	}
 
 	sUserB64, _ := base64.StdEncoding.DecodeString(removeBasic(response))
 
-	var TestCodificado = userFromBase64(string(sUserB64))
+
 
 	var Codificado = strings.Split(string(sUserB64), ":")
+
+	
 
 	if Codificado[0] != userDataBase.Client_id  {
 		fmt.Println("{ message: 'User not found' }")
@@ -88,7 +92,7 @@ func getUserByCredentiais(header http.Header) (AuthorizationRequest, error) {
 
 	}
 	
-	return TestCodificado, nil
+	return AuthorizationRequest{}, nil
 
 }
 
