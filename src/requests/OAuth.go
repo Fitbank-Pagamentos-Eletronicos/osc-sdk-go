@@ -7,7 +7,7 @@ import (
   "modulo/src/domains"
   "encoding/base64"
   "encoding/json"
-  "log"
+  
 )
 
 var DataBase = domains.Auth{
@@ -17,52 +17,58 @@ var DataBase = domains.Auth{
 }
 
 
-type AuthResponde struct {
+type AuthResponse struct {
   AccessToken string `json:"access_token"`
-  ExpiresIn   string  `json:"expires_in"`
+  Expire_at   string  `json:"expire_at"`
 }
-
 
 func convertTobase64(auth domains.Auth) string {
   return base64.StdEncoding.EncodeToString([]byte(auth.Client_id + ":" + auth.Client_secret))
 }
 
-
-func OAuth() {
-  url := "https://auth.easycredito.com.br/client/auth"
-  method := "POST"
-  payload := strings.NewReader(`{
-    "scopes": ["api-external"]
-}`)
-  client := &http.Client {
-  }
-  req, err := http.NewRequest(method, url, payload)
-  if err != nil {
-    fmt.Println(err)
-    return
-  }
-  req.Header.Add("Authorization", "Basic " + convertTobase64(DataBase))
+func OAuth() AuthResponse {
+    url := "https://auth.easycredito.com.br/client/auth"
+    method := "POST"
+    payload := strings.NewReader(`{
+      "scopes": ["api-external"]
+  }`)
+    client := &http.Client {
+    }
+    req, err := http.NewRequest(method, url, payload)
+    if err != nil {
+      fmt.Println(err)
+      return AuthResponse{}
+    }
+    req.Header.Add("Authorization", "Basic " + convertTobase64(DataBase))
+    
+    req.Header.Add("Content-Type", "application/json")
+    res, err := client.Do(req)
+    if err != nil {
+      fmt.Println(err)
+      return AuthResponse{}
+    }
+    defer res.Body.Close()
+    body, err := ioutil.ReadAll(res.Body)
+    if err != nil {
+      fmt.Println(err)
+      return AuthResponse{}
+    }
+    fmt.Println(string(body))
   
-  req.Header.Add("Content-Type", "application/json")
-  res, err := client.Do(req)
-  if err != nil {
-    fmt.Println(err)
-    return
-  }
-  defer res.Body.Close()
-  body, err := ioutil.ReadAll(res.Body)
-  if err != nil {
-    fmt.Println(err)
-    return
-  }
-  fmt.Println(string(body))
-
-  var authResponse AuthResponde
-
-  json.Unmarshal(body, &authResponse)
+    var authResponse AuthResponse
   
-  log.Println(authResponse.AccessToken)
+    json.Unmarshal(body, &authResponse)
+    
+  
+    fmt.Println(res.StatusCode)
+    return authResponse
+  
+  }
 
 
-}
+
+
+
+
+
 
