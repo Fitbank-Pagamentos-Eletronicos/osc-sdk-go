@@ -16,15 +16,15 @@ var DataBase = domains.Auth{
 	Scopes:        []string{"api-external"},
 }
 
+func convertTobase64(auth domains.Auth) string {
+  return base64.StdEncoding.EncodeToString([]byte(auth.Client_id + ":" + auth.Client_secret))
+}
 
 type AuthResponse struct {
   AccessToken string `json:"access_token"`
   Expire_at   string  `json:"expire_at"`
 }
 
-func convertTobase64(auth domains.Auth) string {
-  return base64.StdEncoding.EncodeToString([]byte(auth.Client_id + ":" + auth.Client_secret))
-}
 
 func OAuth() AuthResponse {
     url := "https://auth.easycredito.com.br/client/auth"
