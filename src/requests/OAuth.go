@@ -1,112 +1,68 @@
 package requests
-
 import (
-	"encoding/base64"
-	"errors"
-	"fmt"
-	"io/ioutil"
-	"modulo/src/domains"
-	jsonUtil "modulo/src/utils/json_"
-	"modulo/src/utils/jwt"
-	"net/http"
-	"strings"
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+  "modulo/src/domains"
+  "encoding/base64"
+  "encoding/json"
+  "log"
 )
 
-type AuthResponse struct {
-	Access_token string `json:"access_token"`
-	Expire_at    string `json:"expire_at"`
-}
-
-type AuthorizationRequest struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-}
-
-type AuthBodyRequest struct {
-	Scopes []string `json:"scopes"`
-}
-
-var userDataBase = domains.Auth{
+var DataBase = domains.Auth{
 	Client_id:     "4dbe3aa7-8ce9-43a4-9298-73b700e712bb",
 	Client_secret: "1b364af124250aa09461f33161c3d96e551d822080fe1bd977aa66d7ec9378c8",
 	Scopes:        []string{"api-external"},
 }
 
-type ErrorResponse struct {
-	Message string `json:"message"`
+
+type AuthResponde struct {
+  AccessToken string `json:"access_token"`
+  ExpiresIn   string  `json:"expires_in"`
 }
 
-func Auth(writer http.ResponseWriter, request *http.Request) {
 
-	writer.Header().Set("Content-Type", "application/json")
-
-	var user, err = getUserByCredentiais(request.Header)
-
-	if err != nil {
-		fmt.Fprintln(writer, jsonUtil.Encode(ErrorResponse{Message: err.Error()}))
-
-		return
-	}
-
-	reqBody, _ := ioutil.ReadAll(request.Body)
-	var post AuthBodyRequest
-	jsonUtil.Decode(reqBody, &post)
-
-	var token = jwt.GenerateToken(user.Username, post.Scopes)
-
-	var authResponse = AuthResponse{
-		Access_token: token.Access_token,
-		Expire_at:    token.Expire_at,
-	}
-
-	fmt.Println("authResponse", authResponse)
-
-	fmt.Fprintln(writer, jsonUtil.Encode(authResponse))
-
+func convertTobase64(auth domains.Auth) string {
+  return base64.StdEncoding.EncodeToString([]byte(auth.Client_id + ":" + auth.Client_secret))
 }
 
-func getUserByCredentiais(header http.Header) (AuthorizationRequest, error) {
 
-	var response = header.Get("Authorization")
+func OAuth() {
+  url := "https://auth.easycredito.com.br/client/auth"
+  method := "POST"
+  payload := strings.NewReader(`{
+    "scopes": ["api-external"]
+}`)
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "Basic " + convertTobase64(DataBase))
+  
+  req.Header.Add("Content-Type", "application/json")
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 
-	
-	
-	if response == "" {
-		return AuthorizationRequest{}, errors.New("Internal Server Error")
-	}
+  var authResponse AuthResponde
 
-	sUserB64, _ := base64.StdEncoding.DecodeString(removeBasic(response))
+  json.Unmarshal(body, &authResponse)
+  
+  log.Println(authResponse.AccessToken)
 
-
-
-	var Codificado = strings.Split(string(sUserB64), ":")
-
-	
-
-	if Codificado[0] != userDataBase.Client_id  {
-		fmt.Println("{ message: 'User not found' }")
-		return AuthorizationRequest{}, errors.New("User not found")
-	}else if (Codificado[1] != userDataBase.Client_secret){
-		fmt.Println("{ error: 'Wrong credentials' }")
-		return AuthorizationRequest{}, errors.New("Wrong credentials")
-
-	}
-	
-	return AuthorizationRequest{}, nil
 
 }
 
-func userFromBase64(userB64 string) AuthorizationRequest {
-
-	var decodedUser = strings.Split(userB64, ":")
-
-	return AuthorizationRequest{
-		Username: decodedUser[0],
-		Password: decodedUser[1],
-	}
-
-}
-
-func removeBasic(response string) string {
-	return strings.Replace(response, "Basic ", "", 1)
-}
