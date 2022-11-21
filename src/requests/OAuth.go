@@ -8,6 +8,7 @@ import (
 	"modulo/src/domains"
 	"net/http"
 	"strings"
+	"regexp"
 )
 
 var DataBase = domains.Auth{
@@ -16,7 +17,7 @@ var DataBase = domains.Auth{
 	Scopes:        []string{"api-external"},
 }
 
-func convertTobase64(auth domains.Auth) string {
+func convertbase64(auth domains.Auth) string {
 	return base64.StdEncoding.EncodeToString([]byte(auth.Client_id + ":" + auth.Client_secret))
 }
 
@@ -25,15 +26,14 @@ type AuthResponse struct {
 	Expire_at   string `json:"expire_at"`
 }
 
-func (a *AuthResponse) GetToken() string {
-	// Em construção
-}
+//Função responsavel por remover todos os caracteres especiais de uma string
 
 func (a *AuthResponse) Normalize() string {
-	// Em construção
+    var re = regexp.MustCompile("[^a-zA-Z0-9]+")
+    return re.ReplaceAllString(a.AccessToken, "")
 }
 
-func (a *AuthResponse) Auth() AuthResponse {
+func (a *AuthResponse) OAuth() AuthResponse {
 	url := "https://auth.easycredito.com.br/client/auth"
 	method := "POST"
 	payload := strings.NewReader(`{
@@ -45,7 +45,7 @@ func (a *AuthResponse) Auth() AuthResponse {
 		fmt.Println(err)
 		return AuthResponse{}
 	}
-	req.Header.Add("Authorization", "Basic "+convertTobase64(DataBase))
+	req.Header.Add("Authorization", "Basic "+ convertbase64(DataBase))
 
 	req.Header.Add("Content-Type", "application/json")
 	res, err := client.Do(req)
