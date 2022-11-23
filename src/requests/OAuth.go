@@ -8,7 +8,6 @@ import (
 	"modulo/src/domains"
 	"net/http"
 	"strings"
-	"regexp"
 )
 
 var DataBase = domains.Auth{
@@ -21,19 +20,7 @@ func convertbase64(auth domains.Auth) string {
 	return base64.StdEncoding.EncodeToString([]byte(auth.Client_id + ":" + auth.Client_secret))
 }
 
-type AuthResponse struct {
-	AccessToken string `json:"access_token"`
-	Expire_at   string `json:"expire_at"`
-}
-
-//Função responsavel por remover todos os caracteres especiais de uma string
-
-func (a *AuthResponse) Normalize() string {
-    var re = regexp.MustCompile("[^a-zA-Z0-9]+")
-    return re.ReplaceAllString(a.AccessToken, "")
-}
-
-func (a *AuthResponse) OAuth() AuthResponse {
+func OAuth() domains.AuthSucess {
 	url := "https://auth.easycredito.com.br/client/auth"
 	method := "POST"
 	payload := strings.NewReader(`{
@@ -43,7 +30,7 @@ func (a *AuthResponse) OAuth() AuthResponse {
 	req, err := http.NewRequest(method, url, payload)
 	if err != nil {
 		fmt.Println(err)
-		return AuthResponse{}
+		return domains.AuthSucess{}
 	}
 	req.Header.Add("Authorization", "Basic "+ convertbase64(DataBase))
 
@@ -51,19 +38,17 @@ func (a *AuthResponse) OAuth() AuthResponse {
 	res, err := client.Do(req)
 	if err != nil {
 		fmt.Println(err)
-		return AuthResponse{}
+		return domains.AuthSucess{}
 	}
 	defer res.Body.Close()
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		fmt.Println(err)
-		return AuthResponse{}
+		return domains.AuthSucess{}
 	}
 	fmt.Println(string(body))
+    var authSucess domains.AuthSucess
+    json.Unmarshal(body, &authSucess)
 
-	var authResponse AuthResponse
-
-	json.Unmarshal(body, &authResponse)
-
-	return authResponse
+	return authSucess
 }
