@@ -4,8 +4,7 @@ import (
 	"fmt"
 	"modulo/src/domains"
 	"testing"
-
-	"github.com/stretchr/testify/assert"
+    "github.com/stretchr/testify/assert"
 )
 
 func TestAddress(t *testing.T) {
