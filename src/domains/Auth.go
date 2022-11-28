@@ -6,9 +6,9 @@ import (
 
 // Struct to store the OAuth token
 type Auth struct {
-	Client_id     string
-	Client_secret string
-	Scopes        []string
+	Client_id     string `json:"client_id"`
+	Client_secret string `json:"client_secret"`
+	Scopes        []string `json:"scopes"`
 }
 
 func (a *Auth) ToJson() string {

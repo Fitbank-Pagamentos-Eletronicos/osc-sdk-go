@@ -1,16 +1,15 @@
 package main
 
 import (
-    "regexp"
-    "fmt"
+	"fmt"
+	"modulo/src/requests"
 )
 
-func Normalize(src string) string {
-    var re = regexp.MustCompile("[^a-zA-Z0-9]+")
-    return re.ReplaceAllString(src, "")
-}
-
 func main() {
-   var res = Normalize("abc&%$#@123")
-    fmt.Println(res)
+    requests.GetToken()
+    normalized := requests.Normalize
+    fmt.Println("========STRING NORMALIZADA=========")
+    fmt.Println(normalized(" @Pé de moleque "))
+
+
 }

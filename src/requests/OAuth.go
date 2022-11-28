@@ -8,7 +8,6 @@ import (
 	"modulo/src/domains"
 	"net/http"
 	"strings"
-
 )
 
 var DataBase = domains.Auth{
@@ -48,10 +47,15 @@ func OAuth() domains.AuthSucess {
 		return domains.AuthSucess{}
 	}
 	fmt.Println(string(body))
+    var authSucess domains.AuthSucess
+    json.Unmarshal(body, &authSucess)
+
+
 
 	var authSucess domains.AuthSucess
 
 	json.Unmarshal(body, &authSucess)
+
 
 	return authSucess
 }
