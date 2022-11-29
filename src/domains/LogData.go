@@ -5,7 +5,7 @@ import "encoding/json"
 type LogData struct {
 	Latitude      float64
 	Longitude     float64
-	OccurenceData string
+	OccurrenceDate string
 	UserAgent     string
 	Ip            string
 	Mac           string

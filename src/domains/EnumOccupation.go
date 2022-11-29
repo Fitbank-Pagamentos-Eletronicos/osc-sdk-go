@@ -10,7 +10,7 @@ var (
 	AUTONOMO             Occupation = Occupation{"Autônomo"}
 	EMPRESARIO           Occupation = Occupation{"Empresário"}
 	PROFISSIONAL_LIBERAL Occupation = Occupation{"Profissional Liberal"}
-	ASSALARIOADO         Occupation = Occupation{"Assalariado"}
+	ASSALARIADO         Occupation = Occupation{"Assalariado"}
 	FUNCIONARIO_PUBLICO  Occupation = Occupation{"Funcionário Público"}
 	DESEMPREGADO         Occupation = Occupation{"Desempregado"}
 )

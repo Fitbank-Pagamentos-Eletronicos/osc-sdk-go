@@ -6,6 +6,7 @@ type SignupMatch struct {
 	Cpf            string
 	Name           string
 	Birthday       string
+	Email          string
 	Phone          string
 	ZipCode        string
 	EducationLevel EducationLevel

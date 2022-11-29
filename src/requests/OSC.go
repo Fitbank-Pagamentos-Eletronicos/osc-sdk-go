@@ -17,7 +17,7 @@ var auth domains.AuthSucess
 func GetToken () string {
     if auth.Access_token == "" || auth.Expire_at == "" {
         auth = Auth()
-       	return auth.Access_token
+        return auth.Access_token
 
     }
 
@@ -26,9 +26,10 @@ func GetToken () string {
     if time.Now().After(expireAt) {
         auth = Auth()
         return auth.Access_token
-
     }
+
     return auth.Access_token
+
 }
 
 func Normalize (name string) string {
@@ -46,7 +47,7 @@ func isMn (runner rune) bool {
     return unicode.Is(unicode.Mn, runner)
 }
 
-func Auth () domains.AuthSucess {
+func Auth() domains.AuthSucess {
     return OAuth()
 }
 
