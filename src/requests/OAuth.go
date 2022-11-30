@@ -3,8 +3,8 @@ package requests
 import (
 	"encoding/base64"
 	"encoding/json"
-	"fmt"
-	"io/ioutil"
+    "io/ioutil"
+    "fmt"
 	"modulo/src/domains"
 	"net/http"
 	"strings"
@@ -22,33 +22,32 @@ func convertbase64(auth domains.Auth) string {
 
 func OAuth() domains.AuthSucess {
 	url := "https://auth.easycredito.com.br/client/auth"
-	method := "POST"
-	payload := strings.NewReader(`{
-      "scopes": ["api-external"]
-  }`)
-	client := &http.Client{}
-	req, err := http.NewRequest(method, url, payload)
-	if err != nil {
-		fmt.Println(err)
-		return domains.AuthSucess{}
-	}
-	req.Header.Add("Authorization", "Basic "+ convertbase64(DataBase))
+       method := "POST"
+       payload := strings.NewReader("grant_type=client_credentials&client_id=" + DataBase.Client_id + "&client_secret=" + DataBase.Client_secret + "&scope=api-external")
 
-	req.Header.Add("Content-Type", "application/json")
-	res, err := client.Do(req)
-	if err != nil {
-		fmt.Println(err)
-		return domains.AuthSucess{}
-	}
-	defer res.Body.Close()
-	body, err := ioutil.ReadAll(res.Body)
-	if err != nil {
-		fmt.Println(err)
-		return domains.AuthSucess{}
-	}
-	fmt.Println(string(body))
-    var authSucess domains.AuthSucess
-    json.Unmarshal(body, &authSucess)
+       client := &http.Client{}
+       req, err := http.NewRequest(method, url, payload)
 
-	return authSucess
+       if err != nil {
+          fmt.Println(err)
+          return domains.AuthSucess{}
+       }
+       req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+
+       res, err := client.Do(req)
+       if err != nil {
+          fmt.Println(err)
+          return domains.AuthSucess{}
+       }
+       defer res.Body.Close()
+       body, err := ioutil.ReadAll(res.Body)
+       if err != nil {
+          fmt.Println(err)
+          return domains.AuthSucess{}
+       }
+       fmt.Println(string(body))
+       var authSucess domains.AuthSucess
+       json.Unmarshal(body, &authSucess)
+
+       return authSucess
 }
