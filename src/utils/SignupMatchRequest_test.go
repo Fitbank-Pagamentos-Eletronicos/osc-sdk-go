@@ -1,4 +1,4 @@
-package test
+package utils
 
 import (
     "testing"
@@ -14,13 +14,11 @@ func TestSignupMatchRequests(t *testing.T) {
     		Value:        1000,
     		Installments: 12,
     	}
-
     	productCard := domains.ProductCard{
     		Tipo:    domains.CARD,
     		Network: domains.VISA,
     		Payday:  "10",
     	}
-
 
     	productAuto := domains.ProductAuto{
     		Tipo:             domains.LOAN,
