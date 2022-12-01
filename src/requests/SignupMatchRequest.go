@@ -70,7 +70,6 @@ func SignupMatchRequest() domains.SignupMatch {
             "ip": "0.0.0.0",
             "mac": "00:00:00:00:00:00"
           }
-
     }`)
 
     client := &http.Client{}
