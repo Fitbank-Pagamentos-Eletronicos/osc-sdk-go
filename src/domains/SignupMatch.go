@@ -19,7 +19,7 @@ type SignupMatch struct {
 	HasVehicle     bool `json:"hasVehicle"`
 	HasAndroid     bool `json:"hasAndroid"`
 	Products       Products
-	LogData        LogData
+	LogData        LogData `json:"logData"`
 }
 
 func (a *SignupMatch) ToJson() string {

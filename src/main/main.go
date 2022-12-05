@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-  //  requests.SignupMatchRequest()
-    requests.SimpleSignupRequests()
+   requests.SignupMatchRequest()
+
 }
