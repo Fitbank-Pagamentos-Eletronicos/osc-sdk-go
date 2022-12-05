@@ -10,9 +10,9 @@ import (
 )
 var data = domains.SignupMatch {
         Cpf: "504.768.940-93",
-        Name: "Fulano d'tal",
+        Name: "Carlos Alexandre",
         Birthday: "1992-07-25",
-        Email: "fulano6243242@email.com",
+        Email: "Alexandre6243242@email.com",
         Phone: "62987832321",
         ZipCode : "74180040",
         Education: domains.POS_GRADUACAO,
@@ -62,12 +62,13 @@ var data = domains.SignupMatch {
         },
 
         LogData: domains.LogData{
-            Latitude: -16.6982283,
-            Longitude: -49.2581201,
+            Latitude: -16.678,
+            Longitude: -49.256,
             OccurrenceDate: "2019-08-21T14:31:17.459Z",
-            UserAgent: "Mozilla/5.0 (Windows NT 10.0)",
+            UserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36",
             Ip: "0.0.0.0",
             Mac: "00:00:00:00:00:00",
+
         },
 
 }
@@ -78,7 +79,7 @@ func SignupMatchRequest() domains.SignupMatch {
     method := "POST"
 
     simpleToJson, _ := json.Marshal(data)
-    //fmt.Println("Função Marshal", string(simpleToJson))
+
     payload := strings.NewReader(string(simpleToJson))
 
     client := &http.Client{}
@@ -91,7 +92,7 @@ func SignupMatchRequest() domains.SignupMatch {
 
     req.Header.Add("Content-Type", "application/json")
     req.Header.Add("Accept", "application/json")
-    req.Header.Add("Authorization", "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOjEwNCwidGFnX25hbWUiOiI0ZGJlM2FhNy04Y2U5LTQzYTQtOTI5OC03M2I3MDBlNzEyYmIiLCJzY29wZSI6ImFwaS1leHRlcm5hbCIsImlhdCI6MTY3MDI0MjAwMSwiZXhwIjoxNjcwMzI4NDAxfQ.qOor64qT_JrA9hiFpk8HC4PcFl_CXbNDF_bqSLaEnArzKFOvUv8jNG-AMacFGBKj9WqZXhTB5PeG7RHD-_sMevGW7O-_XZdxrNyaZ5Qtibx-oCm7y5ztceH7k8Ll74pY3PnmQ4LhygiIsiagOWqD7MNJSgeLi10fP0N8sP-bY9RSl2QachweD_SCcvaI60E5tTM-SpB4xDDXyVOZKyk_e5EvRorJgGxZaPsrSIegevbnp6SpZRhyc9_WLbw165XsKRXlKmC6L6wlmn2MzJVeNBdN-_BCNIC4Ad5PeO8YlwZFTxJ0Jqs1sUmRs0pZwL-FxBYiEDJ1Zbi5DPmesO2Zh4eys5AzBPZlQiiBHffvXoKnjfozkF0MFYP-2U4jbHoTFgGox4wGBhNCvFCMQ5MqVJxR5zJv1c2LpVEr8T3SFqiH2pU7qMpQ-BUuGOOVshAjR0byHkuBHaCCZtAeTbFeH1bhyk-PKZUX5lYtyT2vPlbnE40-cFgsDWyXapHROu2yeEmlBnQFGZN-OstcRGWh3g2tPARgtyRMomD-Syx9YpYsDlO6CqNMf3icDh94sBF3DxSqYNp-IIA2VtNoDqASBRrlEpcH6jHQEan6NbtYV84LCop_-WaBmnmoYpTslbOilUEFenF0bGIPi-np2vqAtu6aE95OnT3USFiMxP_638o" )
+    req.Header.Add("Authorization", "Bearer " + GetToken())
 
     res, err := client.Do(req)
     if err != nil {
