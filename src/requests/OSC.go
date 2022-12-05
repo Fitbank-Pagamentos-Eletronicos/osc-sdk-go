@@ -8,8 +8,6 @@ import (
     "time"
     "strings"
     "unicode"
-
-
 )
 
 var auth domains.AuthSucess

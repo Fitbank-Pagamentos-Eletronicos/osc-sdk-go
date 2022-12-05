@@ -1,13 +1,11 @@
 package domains
 
-type RealEstateType struct {
-	realEstateType string
-}
+type RealEstateType string
 
-var (
-	HOUSE      RealEstateType = RealEstateType{"HOUSE"}
-	APARTMENT  RealEstateType = RealEstateType{"APARTMENT"}
-	COMMERCIAL RealEstateType = RealEstateType{"COMMERCIAL"}
-	LAND       RealEstateType = RealEstateType{"LAND"}
-	OTHERS     RealEstateType = RealEstateType{"OTHERS"}
+const (
+	HOUSE      RealEstateType = "HOUSE"
+	APARTMENT  RealEstateType = "APARTMENT"
+	COMMERCIAL RealEstateType = "COMMERCIAL"
+	LAND       RealEstateType = "LAND"
+	OTHERS     RealEstateType = "OTHER"
 )

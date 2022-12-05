@@ -1,16 +1,15 @@
 package domains
 
-type Occupation struct {
-	occupation string
-}
+type Occupation string
 
-var (
-	APOSENTADO           Occupation = Occupation{"Aposentado"}
-	PENSIONISTA          Occupation = Occupation{"Pensionista"}
-	AUTONOMO             Occupation = Occupation{"Autônomo"}
-	EMPRESARIO           Occupation = Occupation{"Empresário"}
-	PROFISSIONAL_LIBERAL Occupation = Occupation{"Profissional Liberal"}
-	ASSALARIADO         Occupation = Occupation{"Assalariado"}
-	FUNCIONARIO_PUBLICO  Occupation = Occupation{"Funcionário Público"}
-	DESEMPREGADO         Occupation = Occupation{"Desempregado"}
+const (
+    APOSENTADO           Occupation = "APOSENTADO"
+    PENSIONISTA          Occupation = "PENSIONISTA"
+    AUTONOMO             Occupation = "AUTONOMO"
+    EMPRESARIO           Occupation = "EMPRESARIO"
+    PROFISSIONAL_LIBERAL Occupation = "PROFISSIONAL_LIBERAL"
+    ASSALARIADO          Occupation = "ASSALARIADO"
+    FUNCIONARIO_PUBLICO  Occupation = "FUNCIONARIO_PUBLICO"
+    DESEMPREGADO         Occupation = "DESEMPREGADO"
+
 )

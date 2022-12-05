@@ -4,11 +4,7 @@ import (
     "modulo/src/requests"
 )
 
-
 func main() {
-
-   // requests.OAuth()
-    requests.SignupMatchRequest()
-
-
+  //  requests.SignupMatchRequest()
+    requests.SimpleSignupRequests()
 }

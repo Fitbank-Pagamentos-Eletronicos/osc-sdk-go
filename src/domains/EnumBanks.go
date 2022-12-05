@@ -1,8 +1,8 @@
 package domains
 
-type Banks struct {
-	code string
-	name string
+type Banks struct{
+    code string
+    name string
 }
 
 var (
