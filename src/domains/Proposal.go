@@ -5,16 +5,17 @@ import "encoding/json"
 type Proposal struct {
 	Mother             string
 	Gender             Gender
-	Natianality        Nationality
+	Nationality        Nationality
 	HomeTownState      HomeTownState
 	HomeTownCity       string
 	Education          EducationLevel
 	RelationshipStatus RelationshipStatus
-	Identity           IdentityType
-	Adrress            Address
+	PhoneLandLine      string `json:"phoneLandline"`
+	Identity           Identity
+	Address            Address
 	Vehicle            Vehicle
 	ConsumerUnit       ConsumerUnit
-	Bussiness          Business
+	Business          Business
 	Bank               Bank
 	Reference          Reference
 	Products           Products

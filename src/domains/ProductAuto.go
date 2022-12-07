@@ -4,13 +4,13 @@ import "encoding/json"
 
 type ProductAuto struct {
 	Tipo             ProductType
-	Value            float64
-	VehicleBrand     string
-	VehicleModel     string
-    Installments     int
-	VehicleModelYear string
-	CodeFipe         string
-	VehicleFipeValue float64
+	Value            float64 `json:"value"`
+	VehicleBrand     string     `json:"vehicleBrand"`
+	VehicleModel     string    `json:"vehicleModel"`
+    Installments     int      `json:"installments"`
+	VehicleModelYear string   `json:"vehicleModelYear"`
+	CodeFipe         string  `json:"codeFipe"`
+	VehicleFipeValue float64 `json:"vehicleFipeValue"`
 }
 
 func (a *ProductAuto) ToJson() string {

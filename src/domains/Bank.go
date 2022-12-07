@@ -3,7 +3,7 @@ package domains
 import "encoding/json"
 
 type Bank struct {
-	Bank_   Banks
+	Bank   Banks
 	Tipo    AccountType
 	Agency  string
 	Account string
