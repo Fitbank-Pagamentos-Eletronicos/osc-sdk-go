@@ -9,11 +9,11 @@ import (
     "modulo/src/domains"
 )
 var data = domains.SignupMatch {
-        Cpf: "504.768.940-93",
-        Name: "Carlos Alexandre",
+        Cpf: "720.825.560-18",
+        Name: "Fulano d'Tal",
         Birthday: "1992-07-25",
-        Email: "Alexandre6243242@email.com",
-        Phone: "62987832321",
+        Email: "fulano624323242@email.com",
+        Phone: "63987832321",
         ZipCode : "74180040",
         Education: domains.POS_GRADUACAO,
         Banks: domains.BANCO_DO_BRASIL,
