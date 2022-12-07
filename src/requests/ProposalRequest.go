@@ -115,13 +115,13 @@ var dataProposal = domains.Proposal {
 }
 
 
+
 func ProposalRequest() domains.Proposal{
-   url := "https://demo-api.easycredito.com.br/api/external//v2.1/process/proposal/1k8l2rrj5vbbjj1kn3i29b4a0e7de864e32bf2f9dea62db7be0"
+   url := "https://demo-api.easycredito.com.br/api/external//v2.1/process/proposal/"
    method := "POST"
 
-   simpleProposalToJson, _ := json.Marshal(dataProposal)
-
-   payload := strings.NewReader(string(simpleProposalToJson))
+    simpleProposalToJson, _ := json.Marshal(dataProposal)
+    payload := strings.NewReader(string(simpleProposalToJson))
 
 
      client := &http.Client {}
