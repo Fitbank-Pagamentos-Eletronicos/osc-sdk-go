@@ -108,7 +108,15 @@ func SignupMatchRequest() domains.SignupMatch {
         return domains.SignupMatch{}
     }
 
+
     fmt.Println(string(body))
+
+    var response map[string]interface{}
+    json.Unmarshal([]byte(body), &response)
+    fmt.Println("===================================")
+    fmt.Println(response["id"])
+
+
 
     var signupMatch domains.SignupMatch
     json.Unmarshal(body, &signupMatch)
