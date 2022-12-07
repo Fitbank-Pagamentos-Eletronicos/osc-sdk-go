@@ -1,7 +1,5 @@
 package domains
 
-
-
 type ProductType string
 
 const (

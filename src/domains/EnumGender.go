@@ -1,10 +1,8 @@
 package domains
 
-type Gender struct {
-	gender string
-}
+type Gender string
 
-var (
-	MASCULINO Gender = Gender{"MASCULINO"}
-	FEMININO  Gender = Gender{"FEMININO"}
+const (
+	MASCULINO Gender = "MASCULINO"
+	FEMININO  Gender = "FEMININO"
 )
