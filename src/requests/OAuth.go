@@ -45,9 +45,16 @@ func OAuth() domains.AuthSucess {
           fmt.Println(err)
           return domains.AuthSucess{}
        }
+
        fmt.Println(string(body))
        var authSucess domains.AuthSucess
        json.Unmarshal(body, &authSucess)
+
+       var response map[string]interface{}
+       json.Unmarshal([]byte(body), &response)
+       fmt.Println("===================================")
+       fmt.Println(response["access_token"])
+
 
        return authSucess
 }
