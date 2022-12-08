@@ -8,12 +8,13 @@ import (
     "encoding/json"
     "modulo/src/domains"
 )
+
 var data = domains.SignupMatch {
         Cpf: "720.825.560-18",
-        Name: "Fulano d'Tal",
-        Birthday: "1992-07-25",
-        Email: "fulano624323242@email.com",
-        Phone: "63987832321",
+        Name: "Carlos Henrique",
+        Birthday: "2002-01-19",
+        Email: "CH624323242@email.com",
+        Phone: "63980030021",
         ZipCode : "74180040",
         Education: domains.POS_GRADUACAO,
         Banks: domains.BANCO_DO_BRASIL,
@@ -73,8 +74,7 @@ var data = domains.SignupMatch {
 
 }
 
-
-func SignupMatchRequest() domains.SignupMatch {
+func SignupMatchRequest() string {
     url:= "https://demo-api.easycredito.com.br/api/external//v2.1/process/signup"
     method := "POST"
 
@@ -87,7 +87,7 @@ func SignupMatchRequest() domains.SignupMatch {
 
     if err != nil {
         fmt.Println(err)
-        return domains.SignupMatch{}
+        return  ""
     }
 
     req.Header.Add("Content-Type", "application/json")
@@ -97,7 +97,7 @@ func SignupMatchRequest() domains.SignupMatch {
     res, err := client.Do(req)
     if err != nil {
         fmt.Println(err)
-        return domains.SignupMatch{}
+        return ""
     }
     defer res.Body.Close()
 
@@ -105,20 +105,8 @@ func SignupMatchRequest() domains.SignupMatch {
 
     if err != nil {
         fmt.Println(err)
-        return domains.SignupMatch{}
+        return ""
     }
 
-
-    fmt.Println(string(body))
-
-    var response map[string]interface{}
-    json.Unmarshal([]byte(body), &response)
-    fmt.Println("===================================")
-    fmt.Println(response["id"])
-
-
-
-    var signupMatch domains.SignupMatch
-    json.Unmarshal(body, &signupMatch)
-    return signupMatch
+    return string(body)
 }
