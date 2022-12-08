@@ -10,7 +10,7 @@ import (
 )
 
 var dataProposal = domains.Proposal {
-    Mother:     "Fulana Mãe",
+    Mother:     "Maria",
     Gender:    domains.FEMININO,
     Nationality: domains.BRASILEIRA,
     HomeTownState: domains.GOIAS,
@@ -114,11 +114,11 @@ var dataProposal = domains.Proposal {
 
 }
 
-
-
-func ProposalRequest() domains.Proposal{
-   url := "https://demo-api.easycredito.com.br/api/external//v2.1/process/proposal/"
+func ProposalRequest(ID string) (string,int){
+   url := "https://demo-api.easycredito.com.br/api/external//v2.1/process/proposal/" + ID
    method := "POST"
+
+    fmt.Println("URL:>", url)
 
     simpleProposalToJson, _ := json.Marshal(dataProposal)
     payload := strings.NewReader(string(simpleProposalToJson))
@@ -129,7 +129,7 @@ func ProposalRequest() domains.Proposal{
 
      if err != nil {
        fmt.Println(err)
-       return domains.Proposal{}
+       return "", 0
      }
      req.Header.Add("Content-Type", "application/json")
      req.Header.Add("Accept", "application/json")
@@ -138,20 +138,16 @@ func ProposalRequest() domains.Proposal{
      res, err := client.Do(req)
         if err != nil {
             fmt.Println(err)
-            return domains.Proposal{}
+            return "", 0
         }
-
         defer res.Body.Close()
 
         body, err := ioutil.ReadAll(res.Body)
         if err != nil {
             fmt.Println(err)
-            return domains.Proposal{}
+            return "", 0
         }
+
         fmt.Println(string(body))
-
-        var proposal domains.Proposal
-        json.Unmarshal(body, &proposal)
-        return proposal
-
+        return string(body), res.StatusCode
 }
