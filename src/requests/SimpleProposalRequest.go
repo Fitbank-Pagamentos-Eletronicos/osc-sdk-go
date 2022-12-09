@@ -30,8 +30,10 @@ var dataSimpleProposal = domains.ProposalBankAccount {
     Business: domains.Business{
         Income: "1000.00",
     },
-
-
+    Products: domains.ProductBankAccount{
+        Tipo: "BANK_ACCOUNT",
+        ProductId: 5823637,
+    },
 
 }
 
