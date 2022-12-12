@@ -5,11 +5,11 @@ import "encoding/json"
 type ProposalBankAccount struct {
 	Mother             string
 	Gender             Gender
-	Natianality        Nationality
+	Nationality        Nationality
 	HomeTownState      HomeTownState
 	RelationshipStatus RelationshipStatus
 	Identity           IdentityType
-	Adrres             Address
+	Address             Address
 	Business           Business
 	Products           ProductBankAccount
 }

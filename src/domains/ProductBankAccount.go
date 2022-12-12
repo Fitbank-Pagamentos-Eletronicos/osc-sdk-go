@@ -4,6 +4,7 @@ import "encoding/json"
 
 type ProductBankAccount struct {
 	Tipo string
+	ProductId int
 }
 
 func (a *ProductBankAccount) ToJson() string {

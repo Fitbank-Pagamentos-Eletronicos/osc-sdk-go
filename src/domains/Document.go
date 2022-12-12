@@ -3,10 +3,10 @@ package domains
 import "encoding/json"
 
 type Document struct {
-	Tipo      DocumentType
-	MimeType_ MimeType
-	Name      string
-	Base64    string
+	Tipo      DocumentType `json: "tipo"`
+	MimeType  MimeType `json: "mimeType"`
+	Name      string `json: "name"`
+	Base64    string `json: base64`
 }
 
 func (a *Document) ToJson() string {
