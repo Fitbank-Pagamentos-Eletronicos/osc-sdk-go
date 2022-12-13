@@ -11,8 +11,8 @@ import (
 )
 
 var DataBase = domains.Auth{
-	Client_id:     "4dbe3aa7-8ce9-43a4-9298-73b700e712bb",
-	Client_secret: "1b364af124250aa09461f33161c3d96e551d822080fe1bd977aa66d7ec9378c8",
+	Client_id:     "carlos.lima--------957a-f8c494b3328c",
+	Client_secret: "47a734df8b08a57cc16023be9c85d64076eb005450f30dea504baa2f2a22a09a",
 	Scopes:        []string{"api-external"},
 }
 
@@ -49,12 +49,6 @@ func OAuth() domains.AuthSucess {
        fmt.Println(string(body))
        var authSucess domains.AuthSucess
        json.Unmarshal(body, &authSucess)
-
-       var response map[string]interface{}
-       json.Unmarshal([]byte(body), &response)
-       fmt.Println("===================================")
-       fmt.Println(response["access_token"])
-
 
        return authSucess
 }
