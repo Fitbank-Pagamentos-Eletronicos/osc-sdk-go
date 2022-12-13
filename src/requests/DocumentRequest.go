@@ -17,19 +17,15 @@ var dataDocument = domains.Document {
     Base64: "9j/4AAQSkZJRgABAQAAAQABAAD/7QDWUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAA",
 }
 
-func DocumentRequest(ID string) string{
+func DocumentRequest(ID string) string {
     url := "https://demo-api.easycredito.com.br/api/external//v2/process/document/" + ID
     method := "PUT"
 
-    fmt.Println("URL:>", url)
-
-
-
+    fmt.Println("URL: ",url)
     simpleDocumentJson, _ := json.Marshal(dataDocument)
 
-    fmt.Println(string(simpleDocumentJson))
-    fmt.Println("========================")
     payload := strings.NewReader(string(simpleDocumentJson))
+
     client := &http.Client {}
     req, err := http.NewRequest(method, url, payload)
 
