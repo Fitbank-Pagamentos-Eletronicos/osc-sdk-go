@@ -18,8 +18,6 @@ func main() {
 
     time.Sleep(10 * time.Second)
 
-   // fmt.Println("==================Requisição de ProposalRequest==================")
-   // requests.ProposalRequest(SignupResponse.ID)
 
 
     fmt.Println("==================Requisição de SimpleProposalRequest==================")
