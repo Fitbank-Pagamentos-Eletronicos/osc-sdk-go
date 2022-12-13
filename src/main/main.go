@@ -9,7 +9,6 @@ import (
 )
 
 func main() {
-    requests.SignupMatchRequest()
 
     var SignupResponse domains.SignupMatchResponse
     response := requests.SignupMatchRequest()
