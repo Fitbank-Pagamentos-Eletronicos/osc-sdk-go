@@ -4,7 +4,7 @@ Branch: Features/ops---139781
 
 ## Descrição
 
-Branches desenvolvida para a tarefa 139781 - Implementar requisição /v2/process/document{id}
+Branches desenvolvida para a tarefa 139783 - Implementar requisição /v2.1/contract/{customerServiceNumber} Get Contract For Sing
 
 ## Ferramentas
 
