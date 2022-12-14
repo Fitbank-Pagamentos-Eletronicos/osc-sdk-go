@@ -4,7 +4,7 @@ Branch: Features/ops---139783
 
 ## Descrição
 
-Branches desenvolvida para a tarefa 139783 - Implementar requisição /v2.1/contract/{customerServiceNumber} Get Contract For Sing
+Branches desenvolvida para a tarefa 139783 - Implementar chamada GET ​/v2.1​/contract​/{customerServiceNumber}
 
 ## Ferramentas
 
