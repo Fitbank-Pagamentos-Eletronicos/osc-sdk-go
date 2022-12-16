@@ -1,11 +1,10 @@
 # osc-sdk-go
 
-Branch: Features/TR-6107
+Branch: Features/TR-6071
 
 ## Descrição
 
-Branches desenvolvida para a tarefa 6107 - Implementar chamada POST ​/v2.1​/contract​/{customerServiceNumber}
-
+Branches desenvolvida para a tarefa 6071 - Implementar chamada GET ​/v2.1​/pubsub
 ## Ferramentas
 
 - [Go](https://golang.org/)
