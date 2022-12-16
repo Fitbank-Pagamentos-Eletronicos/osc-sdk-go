@@ -1,6 +1,5 @@
 package requests
 
-
 import (
     "fmt"
     "strings"
@@ -10,20 +9,17 @@ import (
     "encoding/json"
 
 )
-var baseContract = domains.Contract{
-    AceptedCheckSum: [
-        "97cc0c24610e982d38e2d28e80e7ff5af14bebd72491d548c1c5c1d2a4b7da06",
-        "6cd99b452562c89d3cfccf2fd30c5e8633e59731795c89250be7d16cd3b034e1"
-    ]
 
+var baseContract = domains.Contract{
+    AceptedCheckSum: []string{"97cc0c24610e982d38e2d28e80e7ff5af14bebd72491d548c1c5c1d2a4b7da06", "6cd99b452562c89d3cfccf2fd30c5e8633e59731795c89250be7d16cd3b034e1"},
     LogData: domains.LogData{
-        Latitude:  -16.6982283,
+        Latitude: -16.6982283,
         Longitude: -49.2581201,
         OccurrenceDate: "2019-08-21T14:31:17.459Z",
-        UserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+        UserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36",
         Ip: "1.0.0.0",
-        Mac: "00.00.00.00.00.00"
-    }
+        Mac: "00:00:00:00:00:00",
+    },
 }
 
 func CustomerServiceNumberPOST() string {
@@ -31,8 +27,6 @@ func CustomerServiceNumberPOST() string {
     method := "POST"
 
     simpleContractJson, _ := json.Marshal(baseContract)
-
-    fmt.Println(string(simpleContractJson))
 
     payload := strings.NewReader(string(simpleContractJson))
 
