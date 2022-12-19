@@ -6,9 +6,8 @@ import (
     "io/ioutil"
 )
 
-
 func PubSubRequest() string {
-    url := "https://demo-api.easycredito.com.br/api/external//v2.1/pubsub"
+    url :=  "https://staging-api.easycredito.com.br/api/external/v2.1/pubsub"
     method := "GET"
 
     client := &http.Client {}
