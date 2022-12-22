@@ -5,10 +5,9 @@ import (
     "fmt"
 
 )
-
 func main() {
 
     fmt.Println("==================Requisição PubSub==================")
-    requests.PubSubRequest()
+    requests.PubSubSubscribe()
 
 }
