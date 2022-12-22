@@ -1,10 +1,10 @@
 # osc-sdk-go
 
-Branch: Features/TR-6071
+Branch: Features/TR-6101
 
 ## Descrição
 
-Branches desenvolvida para a tarefa 6071 - Implementar chamada GET ​/v2.1​/pubsub
+Branches desenvolvida para a tarefa 6110 - Implementar PubsubSubscribe
 ## Ferramentas
 
 - [Go](https://golang.org/)
