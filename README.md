@@ -35,8 +35,32 @@ _SigupMatch_ com todos os dados necessários para a requisição. A função ret
 como "id", "name", "cpf", "dataCriação", e " dataAtualização". Caso ocorra algum erro, a função retorna uma _string_ com a mensagem de erro.
 
 ## Exemplo de uso
+
 ### Signup
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nulla lorem, rhoncus id placerat at, dictum vitae lectus. Etiam tristique pellentesque lorem, eu consequat tellus pulvinar et. Vestibulum diam arcu, eleifend quis vestibulum at, auctor in ligula. Ut ut hendrerit nunc, a facilisis nisl. Nulla sollicitudin interdum venenatis. Etiam at.
+
+#### Fluxograma
+```mermaid
+sequenceDiagram
+    participant Client
+    participant SDK
+    participant Auth
+    participant API
+
+    Client->>+SDK: OSC.createInstance(client_id, client_secret)
+    SDK-->>-Client: instancia osc
+    
+    Client->>+SDK: osc.signup(signupObject)
+        opt Não autorizado 
+            SDK->>+Auth: auth(client_id, client_secret, scope)
+            Auth-->>-SDK: access_token
+        end
+        SDK->>+API: signup(signupJson, access_token)
+        API-->>-SDK: pipelineJson
+    SDK-->>-Client: pipeline instance
+```
+#### Codificação
     package requests
 
     import (
