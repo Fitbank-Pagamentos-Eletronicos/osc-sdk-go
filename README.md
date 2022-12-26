@@ -5,13 +5,11 @@ Branch: Features/TR-6278
 ## Descrição do Projeto
 
 SDK para integração com a API da OSC.
-
-## Como adquirir credencias do projeto
     
 
 ## Estrutura dos diretórios
 
-        ├── ...
+        
         ├── osc-sdk-go
         │   ├── Idea
         │   ├── bin
