@@ -70,7 +70,7 @@ type OSC struct {
   api  *API
   auth *Auth
 }
-```
+```Go
 
 ### Signup + respostas
 
