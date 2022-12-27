@@ -82,7 +82,7 @@ func (osc *OSC) CreateInstance(clientId string, clientSecret string) *OSC{
 }
 
 func (osc *OSC) Signup(signupObject SignupObject) (pipelineJson PipelineJson, err error) {
-	// check if the signup request is authorized
+	// verificar se o pedido de inscrição está autorizado
 	if !osc.IsAuthorized() {
 		// se não estiver autorizado, solicite um código de acesso ao serviço Auth
 		accessToken, err := osc.auth.Auth(osc.clientId, osc.clientSecret, "write:pipelines")
@@ -98,6 +98,12 @@ func (osc *OSC) Signup(signupObject SignupObject) (pipelineJson PipelineJson, er
 	// devolver a instância pipeline
 	return pipelineJson, nil
 }
+
+func (osc *OSC) IsAuthorized() bool {
+	// verificar se o objeto OSC é definido como verdadeiro
+	return osc.authorized
+}
+
 
 ```
 
