@@ -70,7 +70,18 @@ type OSC struct {
   api  *API
   auth *Auth
 }
-```Go
+
+
+func (osc *OSC) CreateInstance(clientId string, clientSecret string) *OSC{
+    // criar uma instância do objecto do OSC
+    
+    osc = &OSC{clientId: clientId, clientSecret: clientSecret}
+    
+    // retorna o valor do objeto instanciado
+    return osc
+}
+
+```
 
 ### Signup + respostas
 
