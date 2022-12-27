@@ -81,6 +81,24 @@ func (osc *OSC) CreateInstance(clientId string, clientSecret string) *OSC{
     return osc
 }
 
+func (osc *OSC) Signup(signupObject SignupObject) (pipelineJson PipelineJson, err error) {
+	// check if the signup request is authorized
+	if !osc.IsAuthorized() {
+		// se não estiver autorizado, solicite um código de acesso ao serviço Auth
+		accessToken, err := osc.auth.Auth(osc.clientId, osc.clientSecret, "write:pipelines")
+		if err != nil {
+			return pipelineJson, err
+		}
+	}
+	// enviar o pedido de inscrição para o serviço API
+	pipelineJson, err = osc.api.Signup(signupObject, accessToken)
+	if err != nil {
+		return pipelineJson, err
+	}
+	// devolver a instância pipeline
+	return pipelineJson, nil
+}
+
 ```
 
 ### Signup + respostas
