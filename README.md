@@ -59,7 +59,7 @@ sequenceDiagram
     SDK-->>-Client: pipeline instance
 ```
 #### Codificação
-```
+```Go
 package main
 import ("fmt", "strings")
 
