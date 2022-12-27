@@ -111,7 +111,7 @@ func (osc *OSC) IsAuthorized() bool {
 type Auth struct{}
 
 func (api *API) Signup(signupObject SignupObject, accessToken string) (PipelineJson, error) {
-	// enviar o pedido de inscrição ao API e devolver a instância de pipeline
+	// enviar o pedido de inscrição ao API e devolve a instância de pipeline
 	return PipelineJson{Pipeline: "pipeline instance"}, nil
 }
 
