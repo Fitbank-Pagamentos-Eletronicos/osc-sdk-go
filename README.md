@@ -38,8 +38,6 @@ como "id", "name", "cpf", "dataCriação", e " dataAtualização". Caso ocorra a
 
 ### Signup
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nulla lorem, rhoncus id placerat at, dictum vitae lectus. Etiam tristique pellentesque lorem, eu consequat tellus pulvinar et. Vestibulum diam arcu, eleifend quis vestibulum at, auctor in ligula. Ut ut hendrerit nunc, a facilisis nisl. Nulla sollicitudin interdum venenatis. Etiam at.
-
 #### Fluxograma
 ```mermaid
 sequenceDiagram
@@ -62,7 +60,7 @@ sequenceDiagram
 ```
 #### Codificação
 ```
-!
+
 ```
 
 ### Signup + respostas
