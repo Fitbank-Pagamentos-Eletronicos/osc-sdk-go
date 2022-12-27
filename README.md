@@ -61,7 +61,11 @@ sequenceDiagram
 #### Codificação
 ```Go
 package main
-import ("fmt", "strings")
+
+import (
+    "fmt", 
+    "strings"
+)
 
 type OSC struct {
   clientId  string
