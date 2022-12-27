@@ -60,7 +60,16 @@ sequenceDiagram
 ```
 #### Codificação
 ```
+package main
+import ("fmt", "strings")
 
+type OSC struct {
+  clientId  string
+  clientSecret string
+  authorized bool
+  api  *API
+  auth *Auth
+}
 ```
 
 ### Signup + respostas
