@@ -7,19 +7,19 @@ Branch: Features/TR-6298 - Escrita de exemplo Signup
 SDK para integração com a API da OSC.
     
 
-## Estrutura dos diretórios
+## :file_folder: Estrutura dos diretórios
 
         
-        ├── osc-sdk-go
-        │   ├── Idea
-        │   ├── bin
-        │   ├── pkg
-        │   ├── src
-        │   │   ├── domains
-        │   │   ├── main
-        │   │   ├── requests
-        │   │   ├── utils
-        ├── test
+        ├── :open_file_folder: osc-sdk-go
+        │   ├── :file_folder: Idea
+        │   ├── :file_folder: bin
+        │   ├── :file_folder: pkg
+        │   ├── :open_file_folder: src
+        │   │   ├── :file_folder: domains
+        │   │   ├── :file_folder: main
+        │   │   ├── :file_folder: requests
+        │   │   ├── :file_folder: utils
+        ├──:file_folder: test
         │   └── ...
        
 
