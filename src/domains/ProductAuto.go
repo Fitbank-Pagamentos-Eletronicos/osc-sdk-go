@@ -7,7 +7,8 @@ type ProductAuto struct {
 	Value            float64
 	VehicleBrand     string
 	VehicleModel     string
-	Installments     int
+    Installments     int
+	VehicleModelYear string
 	CodeFipe         string
 	VehicleFipeValue float64
 }

@@ -1,10 +1,10 @@
 # osc-sdk-go
 
-Branch: Features/ops---131188
+Branch: Features/ops---139711
 
 ## Descrição
 
-Branches desenvolvida para a tarefa 131188
+Branches desenvolvida para a tarefa 139711 - Implementar requisição /v2.1/process/simple_signup
 
 ## Ferramentas
 
