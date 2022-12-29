@@ -93,43 +93,14 @@ type OSC struct {
 }
 
 
-func (osc *OSC) CreateInstance(clientId string, clientSecret string) *OSC{
-    // criar uma instância do objecto do OSC
-    
-    osc = &OSC{clientId: clientId, clientSecret: clientSecret}
-    
-    // retorna o valor do objeto instanciado
-    return osc
-}
-
-func (osc *OSC) Signup(signupObject SignupObject) (pipelineJson PipelineJson, err error) {
-	// verificar se o pedido de inscrição está autorizado
-	if !osc.IsAuthorized() {
-		// se não estiver autorizado, solicite um código de acesso ao serviço Auth
-		accessToken, err := osc.auth.Auth(osc.clientId, osc.clientSecret, "write:pipelines")
-		if err != nil {
-			return pipelineJson, err
-		}
-	}
-	// enviar o pedido de inscrição para o serviço API
-	pipelineJson, err = osc.api.Signup(signupObject, accessToken)
-	if err != nil {
-		return pipelineJson, err
-	}
-	// devolver a instância pipeline
-	return pipelineJson, nil
-}
-
-func (osc *OSC) IsAuthorized() bool {
-	// verificar se o objeto OSC é definido como verdadeiro
-	return osc.authorized
-}
-
-type Auth struct{}
-
-func (api *API) Signup(signupObject SignupObject, accessToken string) (PipelineJson, error) {
-	// enviar o pedido de inscrição ao API e devolve a instância de pipeline
-	return PipelineJson{Pipeline: "pipeline instance"}, nil
+func (osc *OSC) createInstance(clientId string, clientSecret string) *OSC {
+  osc.clientId = clientId
+  osc.clientSecret = clientSecret
+  osc.authorized = false
+  osc.api = new(API)
+  osc.auth = new(Auth)
+  
+  return osc
 }
 
 ```
