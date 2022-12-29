@@ -27,16 +27,16 @@ Depois disso execute os seguintes comandos:
 
 ## :file_folder: Estrutura dos diretórios
 
-    ├── osc-sdk-go
-    │   ├── Idea
-    │   ├── bin
-    │   ├── pkg
-    │   ├── src
-    │   │    ├── domains
-    │   │    ├── main
-    │   │    ├── requests
-    │   │    ├── utils
-    ├── test
+    📦osc-sdk-go
+    ┣ 📂bin
+    ┣ 📂Idea
+    ┣ 📂pkg
+    ┣ 📂src
+    ┃ ┣ 📂domains
+    ┃ ┣ 📂main
+    ┃ ┣ 📂requests
+    ┃ ┗ 📂utils
+    ┗ 📂test
 
 
 ##  :hammer_and_wrench: Como executar os testes
