@@ -216,9 +216,3 @@ func (osc *OSC) setResponseListening(listeningFunction func(response string)) {
 
 
 
-```
-
-
-
-
-
