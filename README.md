@@ -40,10 +40,20 @@ Depois disso execute os seguintes comandos:
 
 
 ##  :hammer_and_wrench: Como executar os testes
-    
-    go test -v ./...  Executa todos os testes
-    go test -v Address_test.go  Executa o teste de endereço
 
+
+```bash
+    # Entrar no diretório de testes
+    cd test
+    
+    # Executar todos os testes
+    go test -v ./...  Executa todos os testes
+    
+    # Execute apenas um test
+    go test -v Address_test.go
+
+
+```
 ## :page_with_curl: Descrição do método
 
 Para a requisição de _Signup_ é utilizado o método POST para fazer requisição para a API da OSC. Essa função recebe uma _struct_
