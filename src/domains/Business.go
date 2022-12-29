@@ -3,8 +3,8 @@ package domains
 import "encoding/json"
 
 type Business struct {
-	Occupation      Occupation
-	Profession      Profession
+	Occupation      Occupation `json:"occupation"`
+	Profession      Profession `json:"profession"`
 	CompanyName      string `json:"companyName"`
 	Phone            string `json:"phone"`
 	Income           string `json:"income"`
@@ -16,7 +16,7 @@ type Business struct {
 	Number           string `json:"number"`
 	Complement       string `json:"complement"`
 	District         string `json:"district"`
-	State            HomeTownState
+	State            HomeTownState `json:"state"`
 	City             string `json:"city"`
 }
 
