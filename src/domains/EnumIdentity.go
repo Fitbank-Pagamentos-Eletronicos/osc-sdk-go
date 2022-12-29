@@ -1,16 +1,14 @@
 package domains
 
-type IdentityType struct {
-	identityType string
-}
+type IdentityType string
 
-var (
-	RG            IdentityType = IdentityType{"RG"}
-	CNH           IdentityType = IdentityType{"CNH"}
-	PASSAPORTE    IdentityType = IdentityType{"PASSAPORTE"}
-	CARTEIRA_CRC  IdentityType = IdentityType{"CARTEIRA CRC"}
-	CARTEIRA_CREA IdentityType = IdentityType{"CARTEIRA CREA"}
-	CARTEIRA_OAB  IdentityType = IdentityType{"CARTEIRA OAB"}
-	CARTEIRA_CRE  IdentityType = IdentityType{"CARTEIRA CRE"}
+const (
+	RG            IdentityType ="RG"
+	CNH           IdentityType ="CNH"
+	PASSAPORTE    IdentityType ="PASSAPORTE"
+	CARTEIRA_CRC  IdentityType ="CARTEIRA CRC"
+	CARTEIRA_CREA IdentityType ="CARTEIRA CREA"
+	CARTEIRA_OAB  IdentityType ="CARTEIRA OAB"
+	CARTEIRA_CRE  IdentityType ="CARTEIRA CRE"
 )
 
