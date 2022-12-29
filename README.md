@@ -2,7 +2,7 @@
 
 Branch: Features/TR-6298 - Escrita de exemplo Signup
 
-## Descrição do Projeto
+ ## :blue_book: Descrição do Projeto
 
 SDK para integração com a API da OSC.
     
