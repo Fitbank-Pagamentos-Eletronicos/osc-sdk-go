@@ -27,25 +27,16 @@ Depois disso execute os seguintes comandos:
 
 ## :file_folder: Estrutura dos diretórios
 
-├── :file_folder: osc-sdk-go
-
-│   ├── :file_folder: Idea
-
-│   ├── :file_folder: bin
-
-│   ├── :file_folder: pkg
-
-│   ├── :file_folder: src
-
-│   │    ├── :file_folder: domains
-
-│   │    ├── :file_folder: main
-
-│   │    ├── :file_folder: requests
-
-│   │    ├── :file_folder: utils
-
-├──  :file_folder:test
+    ├── :file_folder: osc-sdk-go
+    │   ├── :file_folder: Idea
+    │   ├── :file_folder: bin
+    │   ├── :file_folder: pkg
+    │   ├── :file_folder: src
+    │   │    ├── :file_folder: domains
+    │   │    ├── :file_folder: main
+    │   │    ├── :file_folder: requests
+    │   │    ├── :file_folder: utils
+    ├──  :file_folder:test
 
 
 ##  :hammer_and_wrench: Como executar os testes
