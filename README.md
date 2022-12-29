@@ -113,5 +113,14 @@ func (osc *OSC) createInstance(clientId string, clientSecret string) *OSC {
   return osc
 }
 
+func (osc *OSC) signup(signupObject SignupMatch) string {
+  if !osc.authorized {
+    osc.authorized = true
+    osc.auth.auth(osc.clientId, osc.clientSecret, "signup")
+  }
+  signupJson := osc.api.signup(signupObject, osc.auth.accessToken)
+  return signupJson
+}
+
 ```
 
