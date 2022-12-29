@@ -17,6 +17,7 @@ Depois disso execute os seguintes comandos:
     
     # Entre no repositório
     cd osc-sdk-go
+    cd src/main
     
     # Execute o projeto
     go run main.go
@@ -26,7 +27,11 @@ Depois disso execute os seguintes comandos:
 
 ## :file_folder: Estrutura dos diretórios
 
-        
+├── :file_folder: src
+│ ├── :file_folder: main
+
+
+
         ├── osc-sdk-go
         │   ├── Idea
         │   ├── bin
