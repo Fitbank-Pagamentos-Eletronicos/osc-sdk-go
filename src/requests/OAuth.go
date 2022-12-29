@@ -51,7 +51,6 @@ func OAuth() domains.AuthSucess {
        var authSucess domains.AuthSucess
        json.Unmarshal(body, &authSucess)
 
-
        return authSucess
 
 }

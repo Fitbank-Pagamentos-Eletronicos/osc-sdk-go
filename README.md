@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Branches desenvolvida para a tarefa 139774 - Implementar requisição /v2.1/process/proposal{id}
+Branches desenvolvida para a tarefa 139778 - Implementar requisição /v2.1/process/simple_proposal{id}
 
 ## Ferramentas
 
