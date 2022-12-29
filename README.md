@@ -38,8 +38,6 @@ como "id", "name", "cpf", "dataCriação", e " dataAtualização". Caso ocorra a
 
 ### Signup
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nulla lorem, rhoncus id placerat at, dictum vitae lectus. Etiam tristique pellentesque lorem, eu consequat tellus pulvinar et. Vestibulum diam arcu, eleifend quis vestibulum at, auctor in ligula. Ut ut hendrerit nunc, a facilisis nisl. Nulla sollicitudin interdum venenatis. Etiam at.
-
 #### Fluxograma
 ```mermaid
 sequenceDiagram
@@ -61,8 +59,62 @@ sequenceDiagram
     SDK-->>-Client: pipeline instance
 ```
 #### Codificação
-```
-!
+```Go
+package main
+
+import (
+    "fmt", 
+    "strings"
+)
+
+type OSC struct {
+  clientId  string
+  clientSecret string
+  authorized bool
+  api  *API
+  auth *Auth
+}
+
+
+func (osc *OSC) CreateInstance(clientId string, clientSecret string) *OSC{
+    // criar uma instância do objecto do OSC
+    
+    osc = &OSC{clientId: clientId, clientSecret: clientSecret}
+    
+    // retorna o valor do objeto instanciado
+    return osc
+}
+
+func (osc *OSC) Signup(signupObject SignupObject) (pipelineJson PipelineJson, err error) {
+	// verificar se o pedido de inscrição está autorizado
+	if !osc.IsAuthorized() {
+		// se não estiver autorizado, solicite um código de acesso ao serviço Auth
+		accessToken, err := osc.auth.Auth(osc.clientId, osc.clientSecret, "write:pipelines")
+		if err != nil {
+			return pipelineJson, err
+		}
+	}
+	// enviar o pedido de inscrição para o serviço API
+	pipelineJson, err = osc.api.Signup(signupObject, accessToken)
+	if err != nil {
+		return pipelineJson, err
+	}
+	// devolver a instância pipeline
+	return pipelineJson, nil
+}
+
+func (osc *OSC) IsAuthorized() bool {
+	// verificar se o objeto OSC é definido como verdadeiro
+	return osc.authorized
+}
+
+type Auth struct{}
+
+func (api *API) Signup(signupObject SignupObject, accessToken string) (PipelineJson, error) {
+	// enviar o pedido de inscrição ao API e devolve a instância de pipeline
+	return PipelineJson{Pipeline: "pipeline instance"}, nil
+}
+
 ```
 
 ### Signup + respostas
@@ -260,105 +312,4 @@ sequenceDiagram
 ```
 !
 ```
-# !!!!!
-#### Codificação
-    package requests
 
-    import (
-        "fmt"
-        "net/http"
-        "io/ioutil"
-        "strings"
-        "encoding/json"
-        "modulo/src/domains"
-    )
-
-    func SignupMatchRequest() string {
-
-        url:= "https://demo-api.easycredito.com.br/api/external//v2.1/process/signup"
-        method := "POST"
-    
-        simpleToJson, _ := json.Marshal(data)
-    
-        payload := strings.NewReader(string(simpleToJson))
-    
-        client := &http.Client{}
-        req, err := http.NewRequest(method, url, payload)
-    
-        if err != nil {
-            fmt.Println(err)
-            return  ""
-        }
-        
-        req.Header.Add("Content-Type", "application/json")
-        req.Header.Add("Accept", "application/json")
-        req.Header.Add("Authorization", "Bearer " + GetToken()) // Para a autenticação é necessário o token esse token é feito na função GetToken()
-    
-        res, err := client.Do(req)
-        if err != nil {
-            fmt.Println(err)
-            return ""
-        }
-        defer res.Body.Close()
-    
-        body, err := ioutil.ReadAll(res.Body)
-    
-        if err != nil {
-            fmt.Println(err)
-            return ""
-        }
-    
-        return string(body)
-}
-
-### Função GetToken
-
-    func GetToken () string {
-        if auth.Access_token == "" || auth.Expire_at == "" {
-        auth = Auth()
-        return auth.Access_token
-
-    }
-
-    var expireAt, _ = time.Parse("2006-01-02T15:04:05.000Z", auth.Expire_at)
-
-    if time.Now().After(expireAt) {
-        auth = Auth()
-        return auth.Access_token
-    }
-
-    return auth.Access_token
-
-}
-
-
-   
-    
-
-## Execução 
-Para a execução desse função _SignupMatchRequest_ é necessário importar o pacote _requests_ e chamar a função _SignupMatchRequest_.
-package main.
-
-    import (
-        "fmt"
-        "modulo/src/requests"
-    )
-
-    func main() {
-       requests.SignupMatchRequest()
-       
-    }
-
-### Execução da função main
-
-    go run main.go
-
-### Retorno da função
-        {
-            "id": "1k8l4f7bhv8jc33p4ardd847b41f7694041879443333f9d5513",
-            "name": "Carlos Alexandre",
-            "status": "SIGNUP_ANALISIS",
-            "cpf": 36761586011,
-            "dateCreated": "2022-12-26T12:22:05.949Z",
-            "lastUpdated": "2022-12-26T12:22:05.949Z"
-        }
