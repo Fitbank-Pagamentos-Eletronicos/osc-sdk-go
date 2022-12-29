@@ -22,6 +22,7 @@ func convertbase64(auth domains.Auth) string {
 
 func OAuth() domains.AuthSucess {
 	url := "https://auth.easycredito.com.br/client/auth"
+
        method := "POST"
        payload := strings.NewReader("grant_type=client_credentials&client_id=" + DataBase.Client_id + "&client_secret=" + DataBase.Client_secret + "&scope=api-external")
 
@@ -52,4 +53,5 @@ func OAuth() domains.AuthSucess {
 
 
        return authSucess
+
 }

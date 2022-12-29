@@ -1,7 +1,5 @@
 # osc-sdk-go
 
-Branch: Features/ops---139774
-
 ## Descrição
 
 Branches desenvolvida para a tarefa 139774 - Implementar requisição /v2.1/process/proposal{id}
