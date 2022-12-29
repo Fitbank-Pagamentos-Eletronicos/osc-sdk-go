@@ -163,6 +163,8 @@ package main
 import (
     "fmt", 
     "strings"
+    "cloud.google.com/go/pubsub"
+    "google.golang.org/api/option"
 )
 
 type OSC struct {
@@ -183,6 +185,33 @@ func (osc *OSC) createInstance(clientId string, clientSecret string) *OSC {
   
   return osc
 }
+
+func (osc *OSC) setResponseListening(listeningFunction func(response string)) {
+  if !osc.authorized {
+    osc.auth.auth(osc.clientId, osc.clientSecret, "pubsub")
+    osc.authorized = true
+  }
+  
+  pubsubConfig := osc.api.pubsub(osc.auth.accessToken)
+  ctx := context.Background()
+  client, err := pubsub.NewClient(ctx, pubsubConfig.ProjectId, option.WithCredentialsJSON([]byte(pubsubConfig.Credentials)))
+  if err != nil {
+    fmt.Println(err)
+  }
+  defer client.Close()
+  
+  sub := client.Subscription(pubsubConfig.Subscription)
+  err = sub.Receive(ctx, func(ctx context.Context, msg *pubsub.Message) {
+    msg.Ack()
+    listeningFunction(string(msg.Data))
+  })
+  if err != nil {
+    fmt.Println(err)
+  }
+}
+
+```
+
 
 
 
