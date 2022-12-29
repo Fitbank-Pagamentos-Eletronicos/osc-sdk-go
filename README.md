@@ -6,29 +6,46 @@ Branch: Features/TR-6298 - Escrita de exemplo Signup
 
 SDK para integração com a API da OSC.
     
+## :hammer: Instalando
+
+Para clonar o projeto e executar essa aplicação, você precisará do [Git](https://git-scm.com) e do [Go](https://golang.org/) instalados em seu computador.
+Depois disso execute os seguintes comandos:
+
+```bash
+    # Clone esse repositório
+    git clone https://github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go.git
+    
+    # Entre no repositório
+    cd osc-sdk-go
+    
+    # Execute o projeto
+    go run main.go
+
+
+```
 
 ## :file_folder: Estrutura dos diretórios
 
         
-        ├── :open_file_folder: osc-sdk-go
-        │   ├── :file_folder: Idea
-        │   ├── :file_folder: bin
-        │   ├── :file_folder: pkg
-        │   ├── :open_file_folder: src
-        │   │   ├── :file_folder: domains
-        │   │   ├── :file_folder: main
-        │   │   ├── :file_folder: requests
-        │   │   ├── :file_folder: utils
-        ├──:file_folder: test
+        ├── osc-sdk-go
+        │   ├── Idea
+        │   ├── bin
+        │   ├── pkg
+        │   ├── src
+        │   │   ├── domains
+        │   │   ├── main
+        │   │   ├── requests
+        │   │   ├── utils
+        ├── test
         │   └── ...
        
 
-## Como executar os testes
+##  :hammer_and_wrench: Como executar os testes
     
     go test -v ./...  Executa todos os testes
     go test -v Address_test.go  Executa o teste de endereço
 
-## Descrição dos métodos
+## :page_with_curl: Descrição dos métodos
 
 Para a requisição de _Signup_ é utilizado o método POST para fazer requisição para a API da OSC. Essa função recebe uma _struct_
 _SigupMatch_ com todos os dados necessários para a requisição. A função retorna uma _string_ com o corpo da função. O corpo da retorna dados do cliente
