@@ -6,7 +6,7 @@ Branch: Features/TR-6298 - Escrita de exemplo Signup
 
 SDK para integração com a API da OSC.
     
-## :hammer: Instalando
+## :rocket: Instalando
 
 Para clonar o projeto e executar essa aplicação, você precisará do [Git](https://git-scm.com) e do [Go](https://golang.org/) instalados em seu computador.
 Depois disso execute os seguintes comandos:
@@ -44,13 +44,14 @@ Depois disso execute os seguintes comandos:
     go test -v ./...  Executa todos os testes
     go test -v Address_test.go  Executa o teste de endereço
 
-## :page_with_curl: Descrição dos métodos
+## :page_with_curl: Descrição do método
 
 Para a requisição de _Signup_ é utilizado o método POST para fazer requisição para a API da OSC. Essa função recebe uma _struct_
 _SigupMatch_ com todos os dados necessários para a requisição. A função retorna uma _string_ com o corpo da função. O corpo da retorna dados do cliente
 como "id", "name", "cpf", "dataCriação", e " dataAtualização". Caso ocorra algum erro, a função retorna uma _string_ com a mensagem de erro.
 
-## Exemplo de uso
+
+## :dart: Exemplo de uso
 
 ### Signup
 
@@ -133,199 +134,4 @@ func (api *API) Signup(signupObject SignupObject, accessToken string) (PipelineJ
 
 ```
 
-### Signup + respostas
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nulla lorem, rhoncus id placerat at, dictum vitae lectus. Etiam tristique pellentesque lorem, eu consequat tellus pulvinar et. Vestibulum diam arcu, eleifend quis vestibulum at, auctor in ligula. Ut ut hendrerit nunc, a facilisis nisl. Nulla sollicitudin interdum venenatis. Etiam at.
-
-#### Fluxograma
-```mermaid
-sequenceDiagram
-    participant Client
-    participant SDK
-    participant Auth
-    participant API
-    participant PubSub
-
-    Client->>+SDK: OSC.createInstance(client_id, client_secret)
-    SDK-->>-Client: instancia osc
-    
-    Client->>+SDK: osc.setResponseListening(listeningFunction)
-        opt Não autorizado 
-            SDK->>+Auth: auth(client_id, client_secret, scope)
-            Auth-->>-SDK: access_token
-        end
-        SDK->>+API: pubsub(access_token)
-        API-->>-SDK: pubsubConfig
-        par Abre socket
-            SDK->>PubSub: subscription(pubsubConfig)
-        end
-    SDK-->>-Client: pipeline instance
-    
-    Client->>+SDK: osc.signup(signupObject)
-        opt Não autorizado 
-            SDK->>+Auth: auth(client_id, client_secret, scope)
-            Auth-->>-SDK: access_token
-        end
-        SDK->>+API: signup(signupJson, access_token)
-        API-->>-SDK: pipelineJson
-    SDK-->>-Client: pipeline instance
-    API->>PubSub: publica(signupResponse)
-    PubSub-->>SDK: subscriptionSocket(signupResponse)
-    SDK-->>Client: listeningFunction(signupResponse)
-    
-```
-#### Codificação
-```
-!
-```
-
-
-### Signup + Proposal
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nulla lorem, rhoncus id placerat at, dictum vitae lectus. Etiam tristique pellentesque lorem, eu consequat tellus pulvinar et. Vestibulum diam arcu, eleifend quis vestibulum at, auctor in ligula. Ut ut hendrerit nunc, a facilisis nisl. Nulla sollicitudin interdum venenatis. Etiam at.
-
-#### Fluxograma
-```mermaid
-sequenceDiagram
-    participant Client
-    participant SDK
-    participant Auth
-    participant API
-    participant PubSub
-
-    Client->>+SDK: OSC.createInstance(client_id, client_secret)
-    SDK-->>-Client: instancia osc
-    
-    Client->>+SDK: osc.setResponseListening(listeningFunction)
-        opt Não autorizado 
-            SDK->>+Auth: auth(client_id, client_secret, scope)
-            Auth-->>-SDK: access_token
-        end
-        SDK->>+API: pubsub(access_token)
-        API-->>-SDK: pubsubConfig
-        par Abre socket
-            SDK->>PubSub: subscription(pubsubConfig)
-        end
-    SDK-->>-Client: pipeline instance
-    
-    Client->>+SDK: osc.signup(signupObject)
-        opt Não autorizado 
-            SDK->>+Auth: auth(client_id, client_secret, scope)
-            Auth-->>-SDK: access_token
-        end
-        SDK->>+API: signup(signupJson, access_token)
-        API-->>-SDK: pipelineJson
-    SDK-->>-Client: pipeline instance
-    API->>PubSub: publica(signupResponse)
-    PubSub-->>SDK: subscriptionSocket(signupResponse)
-    SDK-->>Client: listeningFunction(signupResponse)
-    
-    Client->>+SDK: osc.proposal(pipeline_id, proposalObject)
-        opt Não autorizado 
-            SDK->>+Auth: auth(client_id, client_secret, scope)
-            Auth-->>-SDK: access_token
-        end
-        SDK->>+API: proposal(pipeline_id, proposalJson, access_token)
-        API-->>-SDK: pipelineJson
-    SDK-->>-Client: pipeline instance
-    API->>PubSub: publica(proposalResponse)
-    PubSub-->>SDK: subscriptionSocket(proposalResponse)
-    SDK-->>Client: listeningFunction(proposalResponse)
-    
-```
-#### Codificação
-```
-!
-```
-
-### Fluxo Completo
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nulla lorem, rhoncus id placerat at, dictum vitae lectus. Etiam tristique pellentesque lorem, eu consequat tellus pulvinar et. Vestibulum diam arcu, eleifend quis vestibulum at, auctor in ligula. Ut ut hendrerit nunc, a facilisis nisl. Nulla sollicitudin interdum venenatis. Etiam at.
-
-#### Fluxograma
-```mermaid
-sequenceDiagram
-    participant Client
-    participant SDK
-    participant Auth
-    participant API
-    participant PubSub
-
-    Client->>+SDK: OSC.createInstance(client_id, client_secret)
-    SDK-->>-Client: instancia osc
-    
-    Client->>+SDK: osc.setResponseListening(listeningFunction)
-        opt Não autorizado 
-            SDK->>+Auth: auth(client_id, client_secret, scope)
-            Auth-->>-SDK: access_token
-        end
-        SDK->>+API: pubsub(access_token)
-        API-->>-SDK: pubsubConfig
-        par Abre socket
-            SDK->>PubSub: subscription(pubsubConfig)
-        end
-    SDK-->>-Client: pipeline instance
-    
-    Client->>+SDK: osc.signup(signupObject)
-        opt Não autorizado 
-            SDK->>+Auth: auth(client_id, client_secret, scope)
-            Auth-->>-SDK: access_token
-        end
-        SDK->>+API: signup(signupJson, access_token)
-        API-->>-SDK: pipelineJson
-    SDK-->>-Client: pipeline instance
-    API->>PubSub: publica(signupResponse)
-    PubSub-->>SDK: subscriptionSocket(signupResponse)
-    SDK-->>Client: listeningFunction(signupResponse)
-    
-    Client->>+SDK: osc.proposal(pipeline_id, proposalObject)
-        opt Não autorizado 
-            SDK->>+Auth: auth(client_id, client_secret, scope)
-            Auth-->>-SDK: access_token
-        end
-        SDK->>+API: proposal(pipeline_id, proposalJson, access_token)
-        API-->>-SDK: pipelineJson
-    SDK-->>-Client: pipeline instance
-    
-    API->>PubSub: publica(proposalResponse)
-    PubSub-->>SDK: subscriptionSocket(proposalResponse)
-    SDK-->>Client: listeningFunction(proposalResponse)
-    
-    par Continuara recevbendo atualização de status durante o fluxo
-        API->>PubSub: publica(proposalStatusUpdateResponse)
-        PubSub-->>SDK: subscriptionSocket(proposalResponse)
-        SDK-->>Client: listeningFunction(proposalResponse)
-    and Nesta etapa o envio de documentos esta liberado
-        Client->>+SDK: osc.document(pipeline_id, documentObject)
-            opt Não autorizado 
-                SDK->>+Auth: auth(client_id, client_secret, scope)
-                Auth-->>-SDK: access_token
-            end
-            SDK->>+API: proposal(pipeline_id, documentJson, access_token)
-            API-->>-SDK: documentResponseJson
-        SDK-->>-Client: documentResponse instance
-    and Caso alguma proposta retorne que tem contratos para asinatura
-        Client->>+SDK: osc.getContracts(customerServiceNumber)
-            opt Não autorizado 
-                SDK->>+Auth: auth(client_id, client_secret, scope)
-                Auth-->>-SDK: access_token
-            end
-            SDK->>+API: getContracts(customerServiceNumber, access_token)
-            API-->>-SDK: contractsResponseJson
-        SDK-->>-Client: contractsResponse instance
-        
-        Client->>+SDK: osc.SignContracts(customerServiceNumber, contractsObject)
-            opt Não autorizado 
-                SDK->>+Auth: auth(client_id, client_secret, scope)
-                Auth-->>-SDK: access_token
-            end
-            SDK->>+API: SignContracts(customerServiceNumber, contractsObject, access_token)
-            API-->>-SDK: signContractsResponseJson
-        SDK-->>-Client: signContractsResponse instance
-    end
-```
-#### Codificação
-```
-Modificação feita agora!
-```
 
