@@ -8,6 +8,6 @@ import (
 func main() {
 
     fmt.Println("==================Requisição de CustomerServerNumber==================")
-    requests.CustomerServiceNumberGET()
+    requests.CustomerServiceNumberPOST()
 
 }

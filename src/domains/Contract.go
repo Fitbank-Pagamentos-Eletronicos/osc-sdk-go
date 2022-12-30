@@ -3,8 +3,8 @@ package domains
 import "encoding/json"
 
 type Contract struct {
-	AceptedCheckSum string
-	LogData_        LogData
+	AceptedCheckSum []string `json:"aceptedCheckSum"`
+	LogData     LogData `json:"logData"`
 }
 
 func (a *Contract) ToJson() string {
