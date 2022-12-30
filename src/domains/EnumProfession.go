@@ -3,13 +3,13 @@ package domains
 type Profession string
 
 const (
-	ACOUGUEIRO                                    Profession = "Acougueiro"
-	ACUMPURISTA                                   Profession = "Acumpurista"
-	ADESTRADOR                                    Profession = "Adestrador/Tratador de Animais/Treinador de Animais"
-	ADMINISTRADOR                                 Profession = "Administrador"
-	ADVOGADO                                      Profession = "Advogado"
-	AEROVIARIO                                    Profession = "Aeroviario/Empregado de Aeroporto"
-	AFIADOR                                       Profession = "Afiador"
+	ACOUGUEIRO                                    Profession = "ACOUGUEIRO"
+	ACUMPURISTA                                   Profession = "ACUMPURISTA"
+	ADESTRADOR                                    Profession = "ADESTRADOR"
+	ADMINISTRADOR                                 Profession = "ADMINISTRADOR"
+	ADVOGADO                                      Profession = "ADVOGADO"
+	AEROVIARIO                                    Profession = "AEROVIARIO"
+	AFIADOR                                       Profession = "AFIADOR"
 	AGENCIADOR_DE_PROPAGANDA                      Profession = "Agenciador de Propaganda"
 	AGENCIADOR_CARGAS_TRANSPORTES                 Profession = "Agenciador de Serv. Cargas/Transportes"
 	AGENTE_ADMINISTRATIVO                         Profession = "Agente Administrativo"

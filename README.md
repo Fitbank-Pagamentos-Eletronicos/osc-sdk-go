@@ -1,6 +1,5 @@
 # osc-sdk-go
 
-Branch: Features/TR-6101
 
 ## Descrição
 
