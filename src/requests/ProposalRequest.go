@@ -10,18 +10,18 @@ import (
 )
 
 var dataProposal = domains.Proposal {
-    Mother:     "Maria",
+    Mother:     "Fulana Mãe",
     Gender:    domains.FEMININO,
-    Nationality: domains.BRASILEIRA,
+    Nationality: domains.BRASILEIRO,
     HomeTownState: domains.GOIAS,
     HomeTownCity: "Goiânia",
     Education: domains.POS_GRADUACAO,
     RelationshipStatus: domains.CASADO,
-    PhoneLandLine: "62987832321",
+    PhoneLandLine: "6232345678",
 
     Identity: domains.Identity{
         Tipo: domains.RG,
-        Number: "123456789",
+        Number: "123456",
         Issuer: domains.SSP,
         State: domains.GOIAS,
         IssuingDate: "2010-01-01",
@@ -29,11 +29,11 @@ var dataProposal = domains.Proposal {
     },
 
     Address: domains.Address{
-        ZipCode: "74180040",
-        Address: "Rua 1",
-        Number: "123",
-        Complement: "Casa 1",
-        District: "Setor Central",
+        ZipCode: "74000000",
+        Address:"Cidade de Goiânia",
+        Number: "0",
+        Complement: "toda a cidade",
+        District: "geral",
         State: domains.GOIAS,
         City: "Goiânia",
         HomeType: domains.ALUGADA,
@@ -41,24 +41,24 @@ var dataProposal = domains.Proposal {
     },
 
     Vehicle: domains.Vehicle{
-        LicensePlate: "ABC1234",
+        LicensePlate: "XXX0000",
     },
 
     ConsumerUnit: domains.ConsumerUnit{
-        Number: "123456789",
+        Number: "000000000",
     },
 
     Business: domains.Business{
         Occupation: domains.ASSALARIADO,
-        Profession: domains.ADVOGADO,
+        Profession: domains.ADMINISTRADOR,
         CompanyName: "Empresa 1",
-        Phone: "62987832321",
-        Income: "1000.00",
+        Phone: "6239413142",
+        Income: "1500",
         EmploymentSince: domains.LESS_THAN_SIX_MONTHS,
         Payday: "10",
         BenefitNumber: "123456789",
         ZipCode: "74180040",
-        Address: "Rua 1",
+        Address:"Cidade de Goiânia",
         Number: "123",
         Complement: "Casa 1",
         District: "Setor Central",

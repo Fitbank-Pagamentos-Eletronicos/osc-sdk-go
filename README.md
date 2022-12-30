@@ -1,7 +1,5 @@
 # osc-sdk-go
 
-Branch: Features/ops---139783
-
 ## Descrição
 
 Branches desenvolvida para a tarefa 139783 - Implementar chamada GET ​/v2.1​/contract​/{customerServiceNumber}
