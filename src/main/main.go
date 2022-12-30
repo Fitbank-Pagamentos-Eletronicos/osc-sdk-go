@@ -7,7 +7,6 @@ import (
 
 func main() {
 
-
     fmt.Println("==================Requisição de CustomerServerNumber==================")
     requests.CustomerServiceNumberPOST()
 

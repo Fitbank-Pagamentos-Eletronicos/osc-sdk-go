@@ -1,7 +1,5 @@
 # osc-sdk-go
 
-Branch: Features/TR-6107
-
 ## Descrição
 
 Branches desenvolvida para a tarefa 6107 - Implementar chamada POST ​/v2.1​/contract​/{customerServiceNumber}
