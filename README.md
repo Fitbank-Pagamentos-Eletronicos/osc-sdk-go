@@ -1,7 +1,5 @@
 # osc-sdk-go
 
-Branch: Features/ops---139781
-
 ## Descrição
 
 Branches desenvolvida para a tarefa 139781 - Implementar requisição /v2/process/document{id}
