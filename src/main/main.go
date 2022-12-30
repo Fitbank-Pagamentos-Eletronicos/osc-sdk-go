@@ -9,7 +9,6 @@ import (
 )
 
 func main() {
-    requests.SignupMatchRequest()
 
     var SignupResponse domains.SignupMatchResponse
     response := requests.SignupMatchRequest()
@@ -19,8 +18,9 @@ func main() {
     time.Sleep(10 * time.Second)
 
 
+    fmt.Println("==================Requisição de DocumentRequest==================")
+    requests.DocumentRequest(SignupResponse.ID)
 
-    fmt.Println("==================Requisição de SimpleProposalRequest==================")
-    requests.SimpleProposalRequest(SignupResponse.ID)
+
 
 }
