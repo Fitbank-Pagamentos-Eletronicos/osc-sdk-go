@@ -3,7 +3,7 @@
 
 ## Descrição
 
-Branches desenvolvida para a tarefa 6071 - Implementar chamada GET ​/v2.1​/pubsub
+Branches desenvolvida para a tarefa 6110 - Implementar PubsubSubscribe
 ## Ferramentas
 
 - [Go](https://golang.org/)
