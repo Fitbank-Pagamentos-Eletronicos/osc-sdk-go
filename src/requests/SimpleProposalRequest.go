@@ -8,7 +8,6 @@ import (
     "io/ioutil"
     "strings"
     "modulo/src/domains"
-
 )
 
 var dataSimpleProposal = domains.ProposalBankAccount {
