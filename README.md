@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Branches desenvolvida para a tarefa 139781 - Implementar requisição /v2/process/document{id}
+Branches desenvolvida para a tarefa 139783 - Implementar chamada GET ​/v2.1​/contract​/{customerServiceNumber}
 
 ## Ferramentas
 
