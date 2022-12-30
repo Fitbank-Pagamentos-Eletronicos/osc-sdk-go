@@ -1,7 +1,5 @@
 # osc-sdk-go
 
-Branch: Features/TR-6298 - Escrita de exemplo Signup
-
  ## :blue_book: Descrição do Projeto
 
 SDK para integração com a API da OSC.

@@ -124,7 +124,6 @@ func TestProposalRequest(t *testing.T)  {
             assert.Equal(t, 200, status)
             t.Errorf("Erro ao fazer a requisição")
         } else {
-            assert.Equal(t, 400, status)
-            t.Log("Requisição feita com sucesso")
+           t.Log("Requisição feita com sucesso")
         }
 }
