@@ -10,10 +10,10 @@ type Address struct {
 	Number string `json:"number"`
 	Complement string `json:"complement"`
 	District string `json:"district"`
-	State HomeTownState
+	State HomeTownState `json:"state"`
 	City string     `json:"city"`
-	HomeType HomeType
-	HomeSince HomeSince
+	HomeType HomeType `json:"homeType"`
+	HomeSince HomeSince `json:"homeSince"`
 }
 
 func (a *Address) ToJson() string{
