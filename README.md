@@ -392,7 +392,43 @@ sequenceDiagram
 ```
 #### Codificação
 ```Go
-fmt.Ptintln("Iniciando SDK")
+package main
+ 
+ import (
+    "fmt", 
+    "strings"
+    "cloud.google.com/go/pubsub"
+    "google.golang.org/api/option"
+ )
+
+    type OSC struct {
+      clientId  string
+      clientSecret string
+      authorized bool
+      api  *API
+      auth *Auth
+    }
+    
+     func (osc *OSC) setResponseListening(listeningFunction func(message *pubsub.Message)) {
+       if !osc.authorized {
+          osc.authorized = true
+          osc.auth.authorize(osc.clientId, osc.clientSecret, "pubsub")
+       }
+     
+     func (osc *OSC) Proposal(pipelineId string, proposalObject interface{}) {
+         if !osc.authorized {
+            osc.auth.auth(osc.clientId, osc.clientSecret, "pubsub")
+            osc.authorized = true
+         }
+     }
+     
+     func SinupMatchRequest(signupMatch *SignupMatch, auth *Auth) {
+         signupMatchJson, _ := json.Marshal(signupMatch)
+         signupMatchResponseJson := api.signup(signupMatchJson, auth.accessToken)
+         signupMatchResponse := SignupMatchResponse{}
+         json.Unmarshal(signupMatchResponseJson, &signupMatchResponse)
+         return signupMatchResponse
+     }
 
 ```
 
