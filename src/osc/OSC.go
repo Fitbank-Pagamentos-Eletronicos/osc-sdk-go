@@ -82,12 +82,23 @@ func GetInstance(name string) (OSC, bool) {
 	return osc, ok
 }
 
+func (osc *OSC) SetResponseListening(listeningFunction func(domains.Pipeline, bool)) bool {
+	pubSubConfig := requests.PubSubRequest(osc)
+	return requests.PubSubSubscribe(pubSubConfig.Project_id, pubSubConfig.Topic_id, pubSubConfig.Subscription_id,
+		pubSubConfig.Service_account, listeningFunction)
+}
+
 func (osc *OSC) SignupMatch(signupObject domains.SignupMatch) domains.Pipeline {
-	signupJson := requests.SignupMatchRequest(osc, signupObject)
-	return signupJson
+	pipeline := requests.SignupMatchRequest(osc, signupObject)
+	return pipeline
 }
 
 func (osc *OSC) SimpleSignup(signupObject domains.SimpleSignup) domains.Pipeline {
-	signupJson := requests.SimpleSignupRequests(osc, signupObject)
-	return signupJson
+	pipeline := requests.SimpleSignupRequests(osc, signupObject)
+	return pipeline
+}
+
+func (osc *OSC) Proposal(pipelineId string, proposalObject domains.ProposalReq) domains.Pipeline {
+	pipeline := requests.ProposalRequest(osc, pipelineId, proposalObject)
+	return pipeline
 }

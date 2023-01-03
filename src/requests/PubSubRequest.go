@@ -1,44 +1,45 @@
 package requests
 
 import (
-    "fmt"
-    "net/http"
-    "io/ioutil"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"modulo/src/domains"
+	"modulo/src/osc"
+	"net/http"
 )
 
-func PubSubRequest() string {
-    url :=  "https://staging-api.easycredito.com.br/api/external/v2.1/pubsub"
-    method := "GET"
+func PubSubRequest(osc *osc.OSC) domains.PubsubResponse {
+	url := "https://staging-api.easycredito.com.br/api/external/v2.1/pubsub"
+	method := "GET"
 
-    client := &http.Client {}
+	client := &http.Client{}
 
-    req, err := http.NewRequest(method, url, nil)
+	req, err := http.NewRequest(method, url, nil)
 
-    if err != nil {
-        fmt.Println(err)
-        return ""
-    }
+	if err != nil {
+		fmt.Println(err)
+		return domains.PubsubResponse{}
+	}
 
-    req.Header.Add("Accept", "application/json")
-    req.Header.Add("Authorization", "Bearer " + GetToken())
+	req.Header.Add("Accept", "application/json")
+	req.Header.Add("Authorization", "Bearer "+osc.GetToken())
 
+	res, err := client.Do(req)
+	if err != nil {
+		fmt.Println(err)
+		return domains.PubsubResponse{}
+	}
 
+	defer res.Body.Close()
 
-    res, err := client.Do(req)
-    if err != nil {
-        fmt.Println(err)
-        return ""
-    }
-
-    defer res.Body.Close()
-
-    body, err := ioutil.ReadAll(res.Body)
-    if err != nil {
-        fmt.Println(err)
-        return ""
-    }
-    fmt.Println(string(body))
-    return string(body)
-
-
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		fmt.Println(err)
+		return domains.PubsubResponse{}
+	}
+	fmt.Println(string(body))
+	var pubsubResponse domains.PubsubResponse
+	json.Unmarshal(body, &pubsubResponse)
+	return pubsubResponse
 }
