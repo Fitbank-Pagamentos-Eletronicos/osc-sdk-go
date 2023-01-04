@@ -90,6 +90,7 @@ sequenceDiagram
     SDK-->>-Client: pipeline instance
 ```
 #### Codificação
+<summary><h3>CREATE & GET INSTANCE</h3></summary>
 
 ```Go
 package examples
@@ -103,8 +104,8 @@ import (
 
 func main() {
 	var instance, _ = osc.CreateInstance("", "", "default")
-	var data = domains.SignupMatch{[...](https://github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/blob/features/TR-6298/examples/signupExample.go)}
-	
+	var data = domains.SignupMatch{[...](https://openai.com "OpenAI's website")}
+    
 	var pipeline = instance.SignupMatch(data)
 	fmt.Printf("#{pipeline.id}")
 	
