@@ -90,42 +90,26 @@ sequenceDiagram
     SDK-->>-Client: pipeline instance
 ```
 #### Codificação
+
 ```Go
-package main
+package examples
 
 import (
-    "fmt", 
-    "strings"
+	"fmt"
+	"modulo/src/domains"
+	"modulo/src/osc"
 )
 
-type OSC struct {
-  clientId  string
-  clientSecret string
-  authorized bool
-  api  *API
-  auth *Auth
+
+func main() {
+	var instance, _ = osc.CreateInstance("", "", "default")
+	var data = domains.SignupMatch{[...](https://github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/blob/features/TR-6298/examples/signupExample.go)}
+	
+	var pipeline = instance.SignupMatch(data)
+	fmt.Printf("#{pipeline.id}")
+	
+	
 }
-
-
-func (osc *OSC) createInstance(clientId string, clientSecret string) *OSC {
-  osc.clientId = clientId
-  osc.clientSecret = clientSecret
-  osc.authorized = false
-  osc.api = new(API)
-  osc.auth = new(Auth)
-  
-  return osc
-}
-
-func (osc *OSC) signup(signupObject SignupMatch) string {
-  if !osc.authorized {
-    osc.authorized = true
-    osc.auth.auth(osc.clientId, osc.clientSecret, "signup")
-  }
-  signupJson := osc.api.signup(signupObject, osc.auth.accessToken)
-  return signupJson
-}
-
 ```
 ### Signup + Proposal
 #### Fluxograma
