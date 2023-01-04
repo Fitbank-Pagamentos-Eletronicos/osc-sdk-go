@@ -167,7 +167,6 @@ package examples
 
 import (
 	"fmt"
-	"golang.org/x/net/ipv6"
 	"modulo/src/domains"
 	"modulo/src/osc"
 )
