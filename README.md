@@ -90,9 +90,8 @@ sequenceDiagram
     SDK-->>-Client: pipeline instance
 ```
 #### Codificação
-<summary><h3>CREATE & GET INSTANCE</h3></summary>
 
-```Go
+```
 package examples
 
 import (
@@ -104,7 +103,7 @@ import (
 
 func main() {
 	var instance, _ = osc.CreateInstance("", "", "default")
-	var data = domains.SignupMatch{[...](https://openai.com "OpenAI's website")}
+	var data = domains.SignupMatch{[package-name](https://github.com/user/repo/tree/branch/path/to/package)} 
     
 	var pipeline = instance.SignupMatch(data)
 	fmt.Printf("#{pipeline.id}")
