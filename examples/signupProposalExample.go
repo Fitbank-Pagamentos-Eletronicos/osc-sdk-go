@@ -17,7 +17,7 @@ func main() {
 		case domains.SIGNUP_COMPLETED:
 			fmt.Printf("Async %s cadastro em completo", pipeline.Id)
 			// Envia chamada da proposta
-			proposal(pipeline.Id)
+			Proposal(pipeline.Id)
 		case domains.SIGNUP_DENIED:
 			fmt.Printf("Async %s cadastro regeitado", pipeline.Id)
 		case domains.PROPOSAL_ANALISIS:
@@ -28,10 +28,10 @@ func main() {
 			fmt.Printf("Async %s proposta regeitado", pipeline.Id)
 		}
 	})
-	signup()
+	Signup()
 }
 
-func signup() {
+func Signup() {
 	var data = domains.SimpleSignup{
 		Cpf:            "720.825.560-18",
 		Name:           "Carlos Henrique",
@@ -60,7 +60,7 @@ func signup() {
 	fmt.Printf("%s", pipeline.Id)
 }
 
-func proposal(pipelineId string) {
+func Proposal(pipelineId string) {
 
 	var data = domains.ProposalReq{
 		Mother:             "Fulana Mãe",
