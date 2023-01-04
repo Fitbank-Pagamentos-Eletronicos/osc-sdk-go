@@ -194,6 +194,7 @@ func main() {
 	})
 	Signup()
 }
+
 func Signup() {
     var data = domains.SimpleSignup{...} 
     var pipeline = instance.SimpleSignup(data)
@@ -235,58 +236,25 @@ sequenceDiagram
 ```
 #### Codificação
 ```Go
- package main
+ package examples
  
  import (
-    "fmt", 
-    "strings"
-    "cloud.google.com/go/pubsub"
-    "google.golang.org/api/option"
+	 "fmt"
+	 "modulo/src/osc"
+	 "modulo/src/domains"
  )
-
-    type OSC struct {
-      clientId  string
-      clientSecret string
-      authorized bool
-      api  *API
-      auth *Auth
+func main (){
+	var instance, _ = osc.CreateInstance("", "", "default")
+	
+	instance.setResponseListening(func(pipeline domains.Pipeline, err bool)){
+		fmt.Printf("Async %s", pipeline.Id)
     }
-    
-
-    func (osc *OSC) createInstance(clientId string, clientSecret string) *OSC {
-      osc.clientId = clientId
-      osc.clientSecret = clientSecret
-      osc.authorized = false
-      osc.api = new(API)
-      osc.auth = new(Auth)
-      
-      return osc
-          
-    }
-    
-    func (osc *OSC) setResponseListening(listeningFunction func(message *pubsub.Message)) {
-       if !osc.authorized {
-          osc.authorized = true
-          osc.auth.authorize(osc.clientId, osc.clientSecret, "pubsub")
-       }
-          
-       pubsubConfig := osc.api.pubsub(osc.auth.accessToken)
-       ctx := context.Background()
-       client, err := pubsub.NewClient(ctx, pubsubConfig.ProjectId, option.WithCredentialsJSON([]byte(pubsubConfig.Credentials)))
-       if err != nil {
-         fmt.Println(err)
-       }
-       defer client.Close()
-          
-       sub := client.Subscription(pubsubConfig.Subscription)
-       err = sub.Receive(ctx, func(ctx context.Context, msg *pubsub.Message) {
-          msg.Ack()
-          listeningFunction(string(msg.Data))
-       })
-       if err != nil {
-         fmt.Println(err)
-       }
-    }
+	
+	var data = domains.SimpleSignup{...}
+	var pipeline = instance.SimpleSignup(data)
+	fmt.Printf("%s", pipeline.Id)
+	
+}
 ```
 ### Fluxo completo
 
