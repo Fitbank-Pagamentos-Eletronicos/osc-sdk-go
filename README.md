@@ -344,43 +344,55 @@ sequenceDiagram
 ```
 #### Codificação
 ```Go
-package main
+package examples
  
- import (
-    "fmt", 
-    "strings"
-    "cloud.google.com/go/pubsub"
-    "google.golang.org/api/option"
- )
+import (
+    "fmt"
+    "modulo/src/osc"
+    "modulo/src/domains"
+)
 
-    type OSC struct {
-      clientId  string
-      clientSecret string
-      authorized bool
-      api  *API
-      auth *Auth
-    }
-    
-     func (osc *OSC) setResponseListening(listeningFunction func(message *pubsub.Message)) {
-       if !osc.authorized {
-          osc.authorized = true
-          osc.auth.authorize(osc.clientId, osc.clientSecret, "pubsub")
-       }
-     
-     func (osc *OSC) Proposal(pipelineId string, proposalObject interface{}) {
-         if !osc.authorized {
-            osc.auth.auth(osc.clientId, osc.clientSecret, "pubsub")
-            osc.authorized = true
-         }
-     }
-     
-     func SinupMatchRequest(signupMatch *SignupMatch, auth *Auth) {
-         signupMatchJson, _ := json.Marshal(signupMatch)
-         signupMatchResponseJson := api.signup(signupMatchJson, auth.accessToken)
-         signupMatchResponse := SignupMatchResponse{}
-         json.Unmarshal(signupMatchResponseJson, &signupMatchResponse)
-         return signupMatchResponse
-     }
+func main(){
+	var instance, _ = osc.CreateInstance("", "", "dafault")
+
+	instance.SetResponseListening(func(pipeline domains.Pipeline, err bool) {
+
+		switch pipeline.Status {
+		case domains.SIGNUP_ANALISIS:
+			fmt.Printf("Async %s cadastro em analise", pipeline.Id)
+		case domains.SIGNUP_COMPLETED:
+			fmt.Printf("Async %s cadastro em completo", pipeline.Id)
+			// Envia chamada da proposta
+			proposal(pipeline.Id)
+		case domains.SIGNUP_DENIED:
+			fmt.Printf("Async %s cadastro regeitado", pipeline.Id)
+		case domains.PROPOSAL_ANALISIS:
+			fmt.Printf("Async %s proposta em analise", pipeline.Id)
+		case domains.PROPOSAL_CREATED:
+			fmt.Printf("Async %s proposta em completo", pipeline.Id)
+			for i, proposal := range pipeline.Proposals {
+				fmt.Println(i, proposal)
+			}
+		case domains.PROPOSAL_DENIED:
+			fmt.Printf("Async %s proposta regeitado", pipeline.Id)
+		}
+    })
+	signup()	
+}
+
+func signup(){
+    var data = domains.SimpleSignup{...}
+	var instance, _ = osc.GetInstance("dafault")
+    var pipeline = instance.SimpleSignup(data)
+    fmt.Printf("%s", pipeline.Id)
+}
+
+func proposal(pipelineId string){
+    var data = domains.ProposalReq{...}
+    var instance, _ = osc.GetInstance("dafault")
+    var pipeline = instance.Proposal(pipelineId, data)
+    fmt.Printf("%s", pipeline.Id)
+}
 
 ```
 
