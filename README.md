@@ -91,7 +91,7 @@ sequenceDiagram
 ```
 #### Codificação
 
-```
+```Go
 package examples
 
 import (
@@ -100,17 +100,17 @@ import (
 	"modulo/src/osc"
 )
 
-
 func main() {
 	var instance, _ = osc.CreateInstance("", "", "default")
-	var data = domains.SignupMatch{[package-name](https://github.com/user/repo/tree/branch/path/to/package)} 
+	var data = domains.SimpleSignup{...} 
     
-	var pipeline = instance.SignupMatch(data)
-	fmt.Printf("#{pipeline.id}")
-	
+	var pipeline = instance.SimpleSignup(data)
+	fmt.Printf("%s", pipeline.Id)
 	
 }
+
 ```
+
 ### Signup + Proposal
 #### Fluxograma
 ```mermaid
@@ -161,47 +161,49 @@ sequenceDiagram
     SDK-->>Client: listeningFunction(proposalResponse)
 ```
 #### Codificação
+
 ```Go
-package main
+package examples
 
 import (
-    "fmt", 
-    "strings"
-    "cloud.google.com/go/pubsub"
-    "google.golang.org/api/option"
+	"fmt"
+	"golang.org/x/net/ipv6"
+	"modulo/src/domains"
+	"modulo/src/osc"
 )
 
-type OSC struct {
-  clientId  string
-  clientSecret string
-  authorized bool
-  api  *API
-  auth *Auth
+func main() {
+	var instance, _ = osc.CreateInstance("", "", "default")
+
+	instance.SetResponseListening(func(pipeline domains.Pipeline, err boll) {
+		switch pipeline.Status {
+		case domains.SIGNUP_ANALISIS:
+			fmt.Printf("Async %s cadastro em analise", pipeline.Id)
+		case domains.SIGNUP_COMPLETED:
+			fmt.Printf("Async %s cadastro concluido", pipeline.Id)
+			Proposal(pipeline.Id)
+		case domains.SIGNUP_DENIED:
+			fmt.Printf("Async %s cadastro regeitado", pipeline.Id)
+		case domains.PROPOSAL_ANALISIS:
+			fmt.Printf("Async %s proposta em analise", pipeline.Id)
+		case domains.PROPOSAL_CREATED:
+			fmt.Printf("Async %s proposta criada", pipeline.Id)
+		case domains.PROPOSAL_DENIED:
+			fmt.Printf("Async %s proposta regeitada", pipeline.Id)
+		}
+	})
+	Signup()
+}
+func Signup() {
+    var data = domains.SimpleSignup{...} 
+    var pipeline = instance.SimpleSignup(data)
+    fmt.Printf("%s", pipeline.Id)
 }
 
-
-func (osc *OSC) createInstance(clientId string, clientSecret string) *OSC {
-  osc.clientId = clientId
-  osc.clientSecret = clientSecret
-  osc.authorized = false
-  osc.api = new(API)
-  osc.auth = new(Auth)
-  
-  return osc
-}
-
-func (osc *OSC) setResponseListening(listeningFunction func(response string)) {
-  if !osc.authorized {
-    osc.auth.auth(osc.clientId, osc.clientSecret, "pubsub")
-    osc.authorized = true
-  }
-
-}
-func (osc *OSC) Proposal(pipelineId string, proposalObject interface{}) {
-  if !osc.authorized {
-    osc.auth.auth(osc.clientId, osc.clientSecret, "pubsub")
-    osc.authorized = true
-  }
+func Proposal(pipelineId string) {
+    var data = domains.ProposalReq{...} 
+    var pipeline = instance.Proposal(pipelineId, data)
+    fmt.Printf("%s", pipeline.Id)
 }
 
 ```
