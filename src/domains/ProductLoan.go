@@ -3,7 +3,7 @@ package domains
 import "encoding/json"
 
 type ProductLoan struct {
-	Tipo         ProductType
+	Type         ProductType
 	Value        int
 	Installments int
 }

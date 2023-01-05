@@ -3,11 +3,11 @@ package domains
 import "encoding/json"
 
 type Identity struct {
-	Tipo        IdentityType `json:"type"`
-	Number      string `json:"number"`
+	Type        IdentityType       `json:"type"`
+	Number      string             `json:"number"`
 	Issuer      IdentityTypeIssuer `json:"issuer"`
-	State       HomeTownState `json:"state"`
-	IssuingDate string `json:"issuingDate"`
+	State       HomeTownState      `json:"state"`
+	IssuingDate string             `json:"issuingDate"`
 }
 
 func (a *Identity) ToJson() string {
