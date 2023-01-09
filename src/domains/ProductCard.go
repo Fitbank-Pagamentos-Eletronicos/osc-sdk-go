@@ -3,7 +3,7 @@ package domains
 import "encoding/json"
 
 type ProductCard struct {
-	Tipo    ProductType
+	Type    ProductType
 	Network NetWork
 	Payday  string
 }

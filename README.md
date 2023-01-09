@@ -90,43 +90,27 @@ sequenceDiagram
     SDK-->>-Client: pipeline instance
 ```
 #### Codificação
+
 ```Go
-package main
+package examples
 
 import (
-    "fmt", 
-    "strings"
+	"fmt"
+	"modulo/src/domains"
+	"modulo/src/osc"
 )
 
-type OSC struct {
-  clientId  string
-  clientSecret string
-  authorized bool
-  api  *API
-  auth *Auth
-}
-
-
-func (osc *OSC) createInstance(clientId string, clientSecret string) *OSC {
-  osc.clientId = clientId
-  osc.clientSecret = clientSecret
-  osc.authorized = false
-  osc.api = new(API)
-  osc.auth = new(Auth)
-  
-  return osc
-}
-
-func (osc *OSC) signup(signupObject SignupMatch) string {
-  if !osc.authorized {
-    osc.authorized = true
-    osc.auth.auth(osc.clientId, osc.clientSecret, "signup")
-  }
-  signupJson := osc.api.signup(signupObject, osc.auth.accessToken)
-  return signupJson
+func main() {
+	var instance, _ = osc.CreateInstance("", "", "default")
+	var data = domains.SimpleSignup{...} 
+    
+	var pipeline = instance.SimpleSignup(data)
+	fmt.Printf("%s", pipeline.Id)
+	
 }
 
 ```
+
 ### Signup + Proposal
 #### Fluxograma
 ```mermaid
@@ -177,47 +161,49 @@ sequenceDiagram
     SDK-->>Client: listeningFunction(proposalResponse)
 ```
 #### Codificação
+
 ```Go
-package main
+package examples
 
 import (
-    "fmt", 
-    "strings"
-    "cloud.google.com/go/pubsub"
-    "google.golang.org/api/option"
+	"fmt"
+	"modulo/src/domains"
+	"modulo/src/osc"
 )
 
-type OSC struct {
-  clientId  string
-  clientSecret string
-  authorized bool
-  api  *API
-  auth *Auth
+func main() {
+	var instance, _ = osc.CreateInstance("", "", "default")
+
+	instance.SetResponseListening(func(pipeline domains.Pipeline, err boll) {
+		switch pipeline.Status {
+		case domains.SIGNUP_ANALISIS:
+			fmt.Printf("Async %s cadastro em analise", pipeline.Id)
+		case domains.SIGNUP_COMPLETED:
+			fmt.Printf("Async %s cadastro concluido", pipeline.Id)
+			Proposal(pipeline.Id)
+		case domains.SIGNUP_DENIED:
+			fmt.Printf("Async %s cadastro regeitado", pipeline.Id)
+		case domains.PROPOSAL_ANALISIS:
+			fmt.Printf("Async %s proposta em analise", pipeline.Id)
+		case domains.PROPOSAL_CREATED:
+			fmt.Printf("Async %s proposta criada", pipeline.Id)
+		case domains.PROPOSAL_DENIED:
+			fmt.Printf("Async %s proposta regeitada", pipeline.Id)
+		}
+	})
+	Signup()
 }
 
-
-func (osc *OSC) createInstance(clientId string, clientSecret string) *OSC {
-  osc.clientId = clientId
-  osc.clientSecret = clientSecret
-  osc.authorized = false
-  osc.api = new(API)
-  osc.auth = new(Auth)
-  
-  return osc
+func Signup() {
+    var data = domains.SimpleSignup{...} 
+    var pipeline = instance.SimpleSignup(data)
+    fmt.Printf("%s", pipeline.Id)
 }
 
-func (osc *OSC) setResponseListening(listeningFunction func(response string)) {
-  if !osc.authorized {
-    osc.auth.auth(osc.clientId, osc.clientSecret, "pubsub")
-    osc.authorized = true
-  }
-
-}
-func (osc *OSC) Proposal(pipelineId string, proposalObject interface{}) {
-  if !osc.authorized {
-    osc.auth.auth(osc.clientId, osc.clientSecret, "pubsub")
-    osc.authorized = true
-  }
+func Proposal(pipelineId string) {
+    var data = domains.ProposalReq{...} 
+    var pipeline = instance.Proposal(pipelineId, data)
+    fmt.Printf("%s", pipeline.Id)
 }
 
 ```
@@ -249,58 +235,25 @@ sequenceDiagram
 ```
 #### Codificação
 ```Go
- package main
+ package examples
  
  import (
-    "fmt", 
-    "strings"
-    "cloud.google.com/go/pubsub"
-    "google.golang.org/api/option"
+	 "fmt"
+	 "modulo/src/osc"
+	 "modulo/src/domains"
  )
-
-    type OSC struct {
-      clientId  string
-      clientSecret string
-      authorized bool
-      api  *API
-      auth *Auth
+func main (){
+	var instance, _ = osc.CreateInstance("", "", "default")
+	
+	instance.setResponseListening(func(pipeline domains.Pipeline, err bool)){
+		fmt.Printf("Async %s", pipeline.Id)
     }
-    
-
-    func (osc *OSC) createInstance(clientId string, clientSecret string) *OSC {
-      osc.clientId = clientId
-      osc.clientSecret = clientSecret
-      osc.authorized = false
-      osc.api = new(API)
-      osc.auth = new(Auth)
-      
-      return osc
-          
-    }
-    
-    func (osc *OSC) setResponseListening(listeningFunction func(message *pubsub.Message)) {
-       if !osc.authorized {
-          osc.authorized = true
-          osc.auth.authorize(osc.clientId, osc.clientSecret, "pubsub")
-       }
-          
-       pubsubConfig := osc.api.pubsub(osc.auth.accessToken)
-       ctx := context.Background()
-       client, err := pubsub.NewClient(ctx, pubsubConfig.ProjectId, option.WithCredentialsJSON([]byte(pubsubConfig.Credentials)))
-       if err != nil {
-         fmt.Println(err)
-       }
-       defer client.Close()
-          
-       sub := client.Subscription(pubsubConfig.Subscription)
-       err = sub.Receive(ctx, func(ctx context.Context, msg *pubsub.Message) {
-          msg.Ack()
-          listeningFunction(string(msg.Data))
-       })
-       if err != nil {
-         fmt.Println(err)
-       }
-    }
+	
+	var data = domains.SimpleSignup{...}
+	var pipeline = instance.SimpleSignup(data)
+	fmt.Printf("%s", pipeline.Id)
+	
+}
 ```
 ### Fluxo completo
 
@@ -390,7 +343,55 @@ sequenceDiagram
 ```
 #### Codificação
 ```Go
-fmt.Ptintln("Iniciando SDK")
+package examples
+ 
+import (
+    "fmt"
+    "modulo/src/osc"
+    "modulo/src/domains"
+)
+
+func main(){
+	var instance, _ = osc.CreateInstance("", "", "dafault")
+
+	instance.SetResponseListening(func(pipeline domains.Pipeline, err bool) {
+
+		switch pipeline.Status {
+		case domains.SIGNUP_ANALISIS:
+			fmt.Printf("Async %s cadastro em analise", pipeline.Id)
+		case domains.SIGNUP_COMPLETED:
+			fmt.Printf("Async %s cadastro em completo", pipeline.Id)
+			// Envia chamada da proposta
+			proposal(pipeline.Id)
+		case domains.SIGNUP_DENIED:
+			fmt.Printf("Async %s cadastro regeitado", pipeline.Id)
+		case domains.PROPOSAL_ANALISIS:
+			fmt.Printf("Async %s proposta em analise", pipeline.Id)
+		case domains.PROPOSAL_CREATED:
+			fmt.Printf("Async %s proposta em completo", pipeline.Id)
+			for i, proposal := range pipeline.Proposals {
+				fmt.Println(i, proposal)
+			}
+		case domains.PROPOSAL_DENIED:
+			fmt.Printf("Async %s proposta regeitado", pipeline.Id)
+		}
+    })
+	signup()	
+}
+
+func signup(){
+    var data = domains.SimpleSignup{...}
+	var instance, _ = osc.GetInstance("dafault")
+    var pipeline = instance.SimpleSignup(data)
+    fmt.Printf("%s", pipeline.Id)
+}
+
+func proposal(pipelineId string){
+    var data = domains.ProposalReq{...}
+    var instance, _ = osc.GetInstance("dafault")
+    var pipeline = instance.Proposal(pipelineId, data)
+    fmt.Printf("%s", pipeline.Id)
+}
 
 ```
 

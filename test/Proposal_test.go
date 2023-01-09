@@ -104,7 +104,7 @@ func TestProposal(t *testing.T) {
 		ProductHome: productHome,
 	}
 	fmt.Println(products.ToJson())
-	proposal := domains.Proposal{
+	proposal := domains.ProposalReq{
 		Mother:             "Maria",
 		Gender:             domains.FEMININO,
 		Natianality:        domains.BRASILEIRA,

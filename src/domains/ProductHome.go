@@ -3,7 +3,7 @@ package domains
 import "encoding/json"
 
 type ProductHome struct {
-	Tipo               ProductType
+	Type               ProductType
 	Value              float64
 	Installments       int
 	RealEstateType_    RealEstateType

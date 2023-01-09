@@ -1,24 +1,40 @@
 package domains
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"time"
+)
 
 type Proposal struct {
-	Mother             string `json:"mother"`
-	Gender             Gender `json:"gender"`
-	Nationality        Nationality `json:"nationality"`
-	HomeTownState      HomeTownState `json:"hometownState"`
-	HomeTownCity       string `json:"hometown"`
-	Education          EducationLevel `json:"education"`
-	RelationshipStatus RelationshipStatus `json:"relationshipStatus"`
-	PhoneLandLine      string `json:"phoneLandline"`
-	Identity           Identity `json:"identity"`
-	Address            Address  `json:"address"`
-	Vehicle            Vehicle `json:"vehicle"`
-	ConsumerUnit       ConsumerUnit `json:"consumerUnit"`
-	Business           Business `json:"business"`
-	Bank               Bank `json:"bank"`
-	Reference          Reference
-	Products           Products
+	CustomerServiceNumber string      `json:"customerServiceNumber"`
+	Type                  ProductType `json:"type"`
+	Product               string      `json:"product"`
+	ProductId             int         `json:"productId"`
+	HasDocuments          bool        `json:"hasDocuments"`
+	HasContracts          bool        `json:"hasContracts"`
+	Logo                  string      `json:"logo"`
+	LastStatus            string      `json:"lastStatus"`
+	DateCreated           time.Time   `json:"dateCreated"`
+	LastUpdated           time.Time   `json:"lastUpdated"`
+	PendentDocuments      []string    `json:"pendentDocuments"`
+
+	// Loan, Auto, Home
+	Value             int       `json:"value"`
+	Installments      int       `json:"installments"`
+	MonthlyTax        float64   `json:"monthlyTax"`
+	InstallmentsValue float64   `json:"installmentsValue"`
+	IofValue          float64   `json:"iofValue"`
+	GrossValue        float64   `json:"grossValue"`
+	FirstPaymentDate  time.Time `json:"firstPaymentDate"`
+	Cet               float64   `json:"cet"`
+	ReleasedDate      time.Time `json:"releasedDate"`
+
+	// Card
+	International  bool    `json:"international"`
+	Annuity        float64 `json:"annuity"`
+	Network        string  `json:"network"`
+	Prepaid        bool    `json:"prepaid"`
+	DigitalAccount bool    `json:"digitalAccount"`
 }
 
 func (a *Proposal) ToJson() string {

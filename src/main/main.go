@@ -1,19 +1,39 @@
 package main
 
 import (
-    "modulo/src/requests"
-    "encoding/json"
-    "fmt"
-
+	"encoding/json"
+	"fmt"
+	"modulo/src/domains"
+	"modulo/src/osc"
+	"modulo/src/requests"
 )
+
 func main() {
-     var response requests.PubsubResponse
-     res := requests.PubSubRequest()
+	var response domains.PubsubResponse
+	res := requests.PubSubRequest(&osc.OSC{})
 
-     json.Unmarshal([]byte(res), &response)
+	bytes, err := json.Marshal(res)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
-    fmt.Println("==================Requisição PubSub==================")
-    requests.PubSubSubscribe(response.Project_id, response.Topic_id, response.Subscription_id, response.Service_account)
-    fmt.Println("==================Fim da Requisição PubSub==================")
+	json.Unmarshal(bytes, &response)
+
+	fmt.Println("==================Requisição PubSub==================")
+	requests.PubSubSubscribe(
+		response.Project_id,
+		response.Topic_id,
+		response.Subscription_id,
+		response.Service_account,
+		func(pipeline domains.Pipeline, success bool) {
+			if success {
+				fmt.Println("Pipeline: ", pipeline)
+			} else {
+				fmt.Println("Falha ao receber pipeline")
+			}
+		})
+
+	fmt.Println("==================Fim da Requisição PubSub==================")
 
 }
