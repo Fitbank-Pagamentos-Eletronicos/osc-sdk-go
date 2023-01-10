@@ -9,7 +9,7 @@ type PipelineWithProposal struct {
 	Name        string
 	DateCreated string
 	LastUpdated string
-	Proposals_  Proposals
+	Proposals   Proposal
 }
 
 func (a *PipelineWithProposal) ToJson() string {

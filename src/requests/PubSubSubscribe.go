@@ -9,8 +9,7 @@ import (
 	"modulo/src/domains"
 )
 
-func PubSubSubscribe(projectId, topicId, subscriptionId, serviceAccount string,
-	listeningFunction func(domains.Pipeline, bool)) bool {
+func PubSubSubscribe(projectId, topicId, subscriptionId, serviceAccount string, listeningFunction func(domains.Pipeline, bool)) bool {
 
 	ctx := context.Background()
 
