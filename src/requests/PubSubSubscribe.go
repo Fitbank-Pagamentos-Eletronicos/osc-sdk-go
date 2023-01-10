@@ -21,7 +21,6 @@ func PubSubSubscribe(projectId, topicId, subscriptionId, serviceAccount string, 
 	}
 
 	// Receive messages on the subscription
-
 	subscription := client.Subscription(subscriptionId)
 	if err != nil {
 		log.Fatalf("Failed to create subscription: %v", err)

@@ -73,7 +73,7 @@ func Proposal(pipelineId string) {
 		PhoneLandLine:      "6232345678",
 
 		Identity: domains.Identity{
-			Tipo:        domains.RG,
+			Type:        domains.RG,
 			Number:      "123456",
 			Issuer:      domains.SSP,
 			State:       domains.GOIAS,
@@ -131,37 +131,19 @@ func Proposal(pipelineId string) {
 		},
 
 		Products: domains.Products{
-			ProductLoan: domains.ProductLoan{
-				Tipo:         domains.LOAN,
-				Value:        7000.00,
-				Installments: 12,
-			},
-
-			ProductCard: domains.ProductCard{
-				Tipo:    domains.CARD,
-				Network: domains.MASTERCARD,
-				Payday:  "10",
-			},
-
-			ProductAuto: domains.ProductAuto{
-				Tipo:             domains.REFINANCING_AUTO,
-				Value:            8000.00,
-				VehicleBrand:     "Volkswagen",
-				VehicleModel:     "Gol",
-				Installments:     12,
-				VehicleModelYear: "2010",
-				CodeFipe:         "123456789",
-				VehicleFipeValue: 10000.00,
-			},
-
-			ProductHome: domains.ProductHome{
-				Tipo:               domains.REFINANCING_HOME,
-				Value:              15000.00,
-				Installments:       12,
-				RealEstateType_:    domains.HOUSE,
-				RealEstateValue:    148000.00,
-				OutstandingBalance: 50000.00,
-			},
+			Type:               domains.LOAN,
+			Value:              7000.00,
+			Installments:       12,
+			Network:            domains.MASTERCARD,
+			Payday:             "1",
+			VehicleBrand:       "Volkswagen",
+			VehicleModel:       "Gol",
+			VehicleModelYear:   "2010",
+			CodeFipe:           "123456789",
+			VehicleFipeValue:   10000.00,
+			RealEstateType:     domains.HOUSE,
+			RealEstateValue:    148000.00,
+			OutstandingBalance: 50000.00,
 		},
 	}
 

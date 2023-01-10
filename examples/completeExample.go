@@ -24,8 +24,8 @@ func main() {
 			fmt.Printf("Async %s proposta em analise", pipeline.Id)
 		case domains.PROPOSAL_CREATED:
 			fmt.Printf("Async %s proposta em completo", pipeline.Id)
-			for i, proposal := range pipeline.Proposals {
-				fmt.Println(i, proposal)
+			for _, proposal := range pipeline.Proposals {
+				fmt.Println(proposal)
 			}
 
 			// TODO
