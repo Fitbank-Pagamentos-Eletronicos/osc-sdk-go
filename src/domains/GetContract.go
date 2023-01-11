@@ -3,8 +3,8 @@ package domains
 import "encoding/json"
 
 type GetContract struct {
-	CustomerServiceNumber string
-	Contracts             []string
+	CustomerServiceNumber string `json:"customerServiceNumber"`
+	Contracts             []ContractBody `json:"contracts"`
 }
 
 func (a *GetContract) ToJson() string {

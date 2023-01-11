@@ -1,7 +1,6 @@
 package requests
 
 import (
-	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -10,10 +9,6 @@ import (
 	"net/http"
 	"strings"
 )
-
-func convertbase64(auth domains.Auth) string {
-	return base64.StdEncoding.EncodeToString([]byte(auth.Client_id + ":" + auth.Client_secret))
-}
 
 func OAuth(osc *osc.OSC) domains.AuthSucess {
 	url := "https://auth.easycredito.com.br/client/auth"

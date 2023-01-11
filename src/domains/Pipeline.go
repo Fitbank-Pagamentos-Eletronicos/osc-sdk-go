@@ -3,14 +3,14 @@ package domains
 import "encoding/json"
 
 type Pipeline struct {
-	Id          string
-	Status      PipelineStatus
-	Cpf         string
-	Name        string
-	DateCreated string
-	LastUpdated string
-	Matches     Match
-	Proposals   []Proposal
+	Id          string         `json:"id"`
+	Status      PipelineStatus `json:"status"`
+	Cpf         string         `json:"cpf"`
+	Name        string         `json:"name"`
+	DateCreated string         `json:"dateCreated"`
+	LastUpdated string         `json:"lastUpdated"`
+	Matches     Match          `json:"matches"`
+	Proposals   []Proposal     `json:"proposals"`
 }
 
 func (a *Pipeline) ToJson() string {

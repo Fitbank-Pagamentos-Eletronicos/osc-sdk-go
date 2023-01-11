@@ -3,7 +3,8 @@ package domains
 import "encoding/json"
 
 type SingContract struct {
-	AceptedCheckSum string
+	AceptedCheckSum string `json:"aceptedCheckSum"`
+
 }
 
 func (a *SingContract) ToJson() string {

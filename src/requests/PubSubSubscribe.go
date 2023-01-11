@@ -9,8 +9,7 @@ import (
 	"modulo/src/domains"
 )
 
-func PubSubSubscribe(projectId, topicId, subscriptionId, serviceAccount string,
-	listeningFunction func(domains.Pipeline, bool)) bool {
+func PubSubSubscribe(projectId, topicId, subscriptionId, serviceAccount string, listeningFunction func(domains.Pipeline, bool)) bool {
 
 	ctx := context.Background()
 
@@ -22,7 +21,6 @@ func PubSubSubscribe(projectId, topicId, subscriptionId, serviceAccount string,
 	}
 
 	// Receive messages on the subscription
-
 	subscription := client.Subscription(subscriptionId)
 	if err != nil {
 		log.Fatalf("Failed to create subscription: %v", err)
