@@ -1,44 +1,45 @@
 package requests
 
 import (
-    "fmt"
-    "net/http"
-    "io/ioutil"
+	"fmt"
+	"io/ioutil"
+	"modulo/src/osc"
+	"net/http"
 )
 
-func CustomerServiceNumberGET() string{
-    url := "https://demo-api.easycredito.com.br/api/external//v2.1/contract/20221109182327351003700"
-    method := "GET"
+func CustomerServiceNumberGET(osc *osc.OSC) string {
+	url := "https://demo-api.easycredito.com.br/api/external//v2.1/contract/20221109182327351003700"
+	method := "GET"
 
-    client := &http.Client{}
+	client := &http.Client{}
 
-    req, err := http.NewRequest(method, url, nil)
+	req, err := http.NewRequest(method, url, nil)
 
-    if err != nil {
-        fmt.Println(err)
-        return ""
-    }
+	if err != nil {
+		fmt.Println(err)
+		return ""
+	}
 
-    req.Header.Add("Accept", "application/json")
-    req.Header.Add("Authorization", "Bearer " + GetToken())
+	req.Header.Add("Accept", "application/json")
+	req.Header.Add("Authorization", "Bearer "+osc.GetToken())
 
-    res, err := client.Do(req)
-    if err != nil {
-        fmt.Println(err)
-        return ""
-    }
+	res, err := client.Do(req)
+	if err != nil {
+		fmt.Println(err)
+		return ""
+	}
 
-    defer res.Body.Close()
+	defer res.Body.Close()
 
-    body, err := ioutil.ReadAll(res.Body)
+	body, err := ioutil.ReadAll(res.Body)
 
-    if err != nil {
-        fmt.Println(err)
-        return ""
-    }
+	if err != nil {
+		fmt.Println(err)
+		return ""
+	}
 
-    fmt.Println(string(body))
+	fmt.Println(string(body))
 
-    return string(body)
+	return string(body)
 
 }
