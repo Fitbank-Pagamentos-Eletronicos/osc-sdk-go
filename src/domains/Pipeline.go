@@ -1,6 +1,6 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type Pipeline struct {
 	Id          string         `json:"id"`
@@ -14,6 +14,6 @@ type Pipeline struct {
 }
 
 func (a *Pipeline) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

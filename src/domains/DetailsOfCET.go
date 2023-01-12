@@ -1,6 +1,6 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type DetailsOfCET struct {
 	InterestPercentage   string `json:"interestPercentage"`
@@ -10,6 +10,6 @@ type DetailsOfCET struct {
 }
 
 func (a *DetailsOfCET) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

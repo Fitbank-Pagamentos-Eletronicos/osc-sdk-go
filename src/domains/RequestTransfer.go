@@ -1,6 +1,6 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type RequestTransfer struct {
 	Value            string      `json:"value"`
@@ -13,6 +13,6 @@ type RequestTransfer struct {
 }
 
 func (a *RequestTransfer) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

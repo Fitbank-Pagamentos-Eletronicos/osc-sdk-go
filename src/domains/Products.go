@@ -1,6 +1,6 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type Products struct {
 	//Loan
@@ -26,6 +26,6 @@ type Products struct {
 }
 
 func (a *Products) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

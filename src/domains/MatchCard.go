@@ -1,16 +1,16 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type MatchCard struct {
-	ProductId int
-	Name      string
-	Logo      string
-	Annuity   float64
-	Network   NetWork
+	ProductId int     `json:"productId"`
+	Name      string  `json:"name"`
+	Logo      string  `json:"logo"`
+	Annuity   float64 `json:"annuity"`
+	Network   NetWork `json:"network"`
 }
 
 func (a *MatchCard) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

@@ -1,6 +1,6 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type ErrorFields struct {
 	Code    string
@@ -9,6 +9,6 @@ type ErrorFields struct {
 }
 
 func (a *ErrorFields) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

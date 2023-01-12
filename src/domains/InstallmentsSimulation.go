@@ -1,5 +1,7 @@
 package domains
 
+import json2 "encoding/json"
+
 type InstallmentsSimulation struct {
 	Account                   string                     `json:"account"`
 	GrossValue                string                     `json:"grossValue"`
@@ -22,5 +24,10 @@ type InstallmentsSimulation struct {
 	TotalInsurance            string                     `json:"totalInsurance"`
 	TotalInterest             string                     `json:"totalInterest"`
 	TotalAmountOfInstallments string                     `json:"totalAmountOfInstallments"`
-	//	DetailsCET string `json:"detailsCET"`
+	DetailsCET                DetailsOfCET               `json:"detailsCET"`
+}
+
+func (a *InstallmentsSimulation) ToJson() string {
+	json, _ := json2.Marshal(a)
+	return string(json)
 }

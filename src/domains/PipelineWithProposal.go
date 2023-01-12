@@ -1,18 +1,18 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type PipelineWithProposal struct {
-	Id          string
-	Status      string
-	Cpf         string
-	Name        string
-	DateCreated string
-	LastUpdated string
-	Proposals   Proposal
+	Id          string   `json:"id"`
+	Status      string   `json:"status"`
+	Cpf         string   `json:"cpf"`
+	Name        string   `json:"name"`
+	DateCreated string   `json:"dateCreated"`
+	LastUpdated string   `json:"lastUpdated"`
+	Proposals   Proposal `json:"proposals"`
 }
 
 func (a *PipelineWithProposal) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

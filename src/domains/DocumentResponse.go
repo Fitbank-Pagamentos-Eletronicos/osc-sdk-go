@@ -1,6 +1,6 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type DocumentResponse struct {
 	Type     DocumentType `json:"tipo"`
@@ -10,6 +10,6 @@ type DocumentResponse struct {
 }
 
 func (a *DocumentResponse) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

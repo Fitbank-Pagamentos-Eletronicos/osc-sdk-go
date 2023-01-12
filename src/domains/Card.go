@@ -1,11 +1,11 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type Card struct {
 }
 
 func (a *Card) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

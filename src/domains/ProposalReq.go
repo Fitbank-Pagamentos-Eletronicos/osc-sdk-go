@@ -1,6 +1,6 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type ProposalReq struct {
 	Mother             string             `json:"mother"`
@@ -22,6 +22,6 @@ type ProposalReq struct {
 }
 
 func (a *ProposalReq) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

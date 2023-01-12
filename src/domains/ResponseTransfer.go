@@ -1,6 +1,6 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type ResponseTransfer struct {
 	ID               string      `json:"id"`
@@ -17,6 +17,6 @@ type ResponseTransfer struct {
 }
 
 func (a *ResponseTransfer) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

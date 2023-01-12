@@ -1,6 +1,6 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type Credit struct {
 	CustomerServiceNumber string           `json:"customerServiceNumber"`
@@ -17,6 +17,6 @@ type Credit struct {
 }
 
 func (a *Credit) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }
