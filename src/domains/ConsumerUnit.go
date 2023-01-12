@@ -3,7 +3,7 @@ package domains
 import "encoding/json"
 
 type ConsumerUnit struct {
-	Number string
+	Number string `json:"number"`
 }
 
 func (a *ConsumerUnit) ToJson() string {

@@ -15,12 +15,9 @@ func main() {
 	bytes, err := json.Marshal(res)
 	if err != nil {
 		fmt.Println(err)
-		return
 	}
-
 	json.Unmarshal(bytes, &response)
 
-	fmt.Println("==================Requisição PubSub==================")
 	requests.PubSubSubscribe(
 		response.Project_id,
 		response.Topic_id,

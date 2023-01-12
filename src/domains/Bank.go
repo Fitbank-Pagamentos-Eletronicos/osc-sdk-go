@@ -3,10 +3,10 @@ package domains
 import "encoding/json"
 
 type Bank struct {
-	Bank   Banks `json:"bank"`
-	Tipo    AccountType `json:"type"`
-	Agency  string `json:"agency"`
-	Account string `json:"account"`
+	Bank    Banks       `json:"bank"`
+	Type    AccountType `json:"type"`
+	Agency  string      `json:"agency"`
+	Account string      `json:"account"`
 }
 
 func (a *Bank) ToJson() string {
