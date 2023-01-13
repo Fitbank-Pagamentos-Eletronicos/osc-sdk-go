@@ -133,7 +133,7 @@ func proposal(pipelineId string) {
 
 		Bank: domains.Bank{
 			Bank:    domains.BANCO_DO_BRASIL,
-			Tipo:    domains.CONTA_CORRENTE_INDIVIDUAL,
+			Type:    domains.CONTA_CORRENTE_INDIVIDUAL,
 			Agency:  "0001",
 			Account: "123456789",
 		},
