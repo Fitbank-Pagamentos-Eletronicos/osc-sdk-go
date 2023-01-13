@@ -1,7 +1,6 @@
 package test
 
 import (
-	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -24,8 +23,6 @@ func TestProducts(t *testing.T) {
 		OutstandingBalance: 1000.00,
 	}
 
-	fmt.Println(products.ToJson())
-
 	assert.Equal(t, products.Type, domains.LOAN)
 	assert.Equal(t, products.Value, 1000.00)
 	assert.Equal(t, products.Installments, 12)
@@ -38,5 +35,5 @@ func TestProducts(t *testing.T) {
 	assert.Equal(t, products.RealEstateType, domains.HOUSE)
 	assert.Equal(t, products.RealEstateValue, 10000.00)
 	assert.Equal(t, products.OutstandingBalance, 1000.00)
-	
+
 }

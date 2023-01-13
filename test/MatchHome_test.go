@@ -1,7 +1,6 @@
 package test
 
 import (
-	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -19,8 +18,6 @@ func TestMatchHome(t *testing.T) {
 		MaxInstallment: 12,
 		MonthlyTax:     0.01,
 	}
-
-	fmt.Println(matchHome.ToJson())
 
 	assert.Equal(t, matchHome.ProductId, 1)
 	assert.Equal(t, matchHome.Name, "Casa")

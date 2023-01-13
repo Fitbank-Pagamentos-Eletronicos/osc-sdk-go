@@ -1,7 +1,6 @@
 package test
 
 import (
-	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -16,8 +15,6 @@ func TestIdentity(t *testing.T) {
 		State:       domains.BAHIA,
 		IssuingDate: "01/01/2019",
 	}
-
-	fmt.Println(identity.ToJson())
 
 	assert.Equal(t, domains.RG, identity.Type)
 	assert.Equal(t, "123456789", identity.Number)

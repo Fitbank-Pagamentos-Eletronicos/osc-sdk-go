@@ -1,7 +1,6 @@
 package test
 
 import (
-	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -9,43 +8,7 @@ import (
 )
 
 func TestSignupMatch(t *testing.T) {
-	productLoan := domains.ProductLoan{
-		Type:         domains.LOAN,
-		Value:        1000,
-		Installments: 12,
-	}
-
-	fmt.Println(productLoan.ToJson())
-
-	productCard := domains.ProductCard{
-		Type:    domains.CARD,
-		Network: domains.VISA,
-		Payday:  "10",
-	}
-	fmt.Println(productCard.ToJson())
-
-	productAuto := domains.ProductAuto{
-		Type:             domains.LOAN,
-		Value:            1000.00,
-		VehicleBrand:     "Fiat",
-		VehicleModel:     "Uno",
-		Installments:     12,
-		CodeFipe:         "123456",
-		VehicleFipeValue: 1000.00,
-	}
-	fmt.Println(productAuto.ToJson())
-
-	productHome := domains.ProductHome{
-		Type:               domains.LOAN,
-		Value:              1000.00,
-		Installments:       12,
-		RealEstateType:     domains.HOUSE,
-		RealEstateValue:    1000.00,
-		OutstandingBalance: 1000.00,
-	}
-
-	fmt.Println(productHome.ToJson())
-
+	
 	products := domains.Products{
 		Type:               domains.LOAN,
 		Value:              1000.00,
@@ -61,7 +24,6 @@ func TestSignupMatch(t *testing.T) {
 		OutstandingBalance: 1000.00,
 	}
 
-	fmt.Println(products.ToJson())
 	logData := domains.LogData{
 		Latitude:       1.0,
 		Longitude:      1.0,
@@ -70,7 +32,6 @@ func TestSignupMatch(t *testing.T) {
 		Ip:             "0.0.0.0",
 		Mac:            "00:00:00:00:00:00",
 	}
-	fmt.Println(logData.ToJson())
 
 	signupMatch := domains.SignupMatch{
 		Cpf:            "123456789",
@@ -90,7 +51,6 @@ func TestSignupMatch(t *testing.T) {
 		Products:       products,
 		LogData:        logData,
 	}
-	fmt.Println(signupMatch.ToJson())
 
 	assert.Equal(t, signupMatch.Cpf, "123456789")
 	assert.Equal(t, signupMatch.Name, "John Doe")

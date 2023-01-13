@@ -1,7 +1,6 @@
 package test
 
 import (
-	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -13,8 +12,6 @@ func TestAuthSucess(t *testing.T) {
 		Access_token: "teste",
 		Expire_at:    "teste",
 	}
-
-	fmt.Println(authSucess.ToJson())
 
 	assert.Equal(t, "teste", authSucess.Access_token)
 	assert.Equal(t, "teste", authSucess.Expire_at)

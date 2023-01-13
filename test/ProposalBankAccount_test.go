@@ -54,7 +54,6 @@ func TestProposalBankAccount(t *testing.T) {
 		Business:           business,
 		Products:           productBankAccount,
 	}
-	fmt.Println(proposalBankAccount.ToJson())
 
 	assert.Equal(t, "Julia", proposalBankAccount.Mother)
 	assert.Equal(t, domains.FEMININO, proposalBankAccount.Gender)

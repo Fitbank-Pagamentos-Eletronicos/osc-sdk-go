@@ -1,7 +1,6 @@
 package test
 
 import (
-	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -14,7 +13,6 @@ func TestProductCard(t *testing.T) {
 		Network: domains.VISA,
 		Payday:  "20",
 	}
-	fmt.Println(productCard.ToJson())
 
 	assert.Equal(t, productCard.Type, domains.CARD)
 	assert.Equal(t, productCard.Network, domains.VISA)

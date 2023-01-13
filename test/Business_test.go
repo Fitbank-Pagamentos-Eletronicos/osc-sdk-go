@@ -1,7 +1,6 @@
 package test
 
 import (
-	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -25,8 +24,6 @@ func TestBusiness(t *testing.T) {
 		State:           domains.ALAGOAS,
 		City:            "Maceió",
 	}
-
-	fmt.Println(business.ToJson())
 
 	assert.Equal(t, domains.AUTONOMO, business.Occupation)
 	assert.Equal(t, domains.ACOUGUEIRO, business.Profession)

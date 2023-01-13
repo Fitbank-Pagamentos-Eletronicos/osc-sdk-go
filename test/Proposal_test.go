@@ -54,48 +54,11 @@ func TestProposal(t *testing.T) {
 		Agency:  "1234",
 		Account: "123456",
 	}
-	fmt.Println(bank.ToJson())
+
 	reference := domains.Reference{
 		Name:  "Referência",
 		Phone: "123456789",
 	}
-
-	fmt.Println(reference.ToJson())
-
-	productLoan := domains.ProductLoan{
-		Type:         domains.LOAN,
-		Value:        1000,
-		Installments: 12,
-	}
-	fmt.Println(productLoan.ToJson())
-
-	productCard := domains.ProductCard{
-		Type:    domains.CARD,
-		Network: domains.VISA,
-		Payday:  "10",
-	}
-	fmt.Println(productCard.ToJson())
-
-	productAuto := domains.ProductAuto{
-		Type:             domains.LOAN,
-		Value:            1000.00,
-		VehicleBrand:     "Fiat",
-		VehicleModel:     "Uno",
-		Installments:     12,
-		CodeFipe:         "123456",
-		VehicleFipeValue: 1000.00,
-	}
-	fmt.Println(productAuto.ToJson())
-
-	productHome := domains.ProductHome{
-		Type:               domains.LOAN,
-		Value:              1000.00,
-		Installments:       12,
-		RealEstateType:     domains.HOUSE,
-		RealEstateValue:    1000.00,
-		OutstandingBalance: 1000.00,
-	}
-	fmt.Println(productHome.ToJson())
 
 	products := domains.Products{
 		Type:               domains.LOAN,
@@ -138,8 +101,6 @@ func TestProposal(t *testing.T) {
 		Products:           products,
 	}
 
-	fmt.Println(proposal.ToJson())
-
 	assert.Equal(t, proposal.Mother, "Maria")
 	assert.Equal(t, proposal.Gender, domains.FEMININO)
 	assert.Equal(t, proposal.Nationality, domains.BRASILEIRO)
@@ -147,7 +108,7 @@ func TestProposal(t *testing.T) {
 	assert.Equal(t, proposal.HomeTownCity, "Rio Branco")
 	assert.Equal(t, proposal.Education, domains.ENSINO_FUNDAMENTAL_COMPLETO)
 	assert.Equal(t, proposal.RelationshipStatus, domains.CASADO)
-	assert.Equal(t, proposal.Identity, domains.CNH)
+	assert.Equal(t, proposal.Identity, identity)
 	assert.Equal(t, address, proposal.Address)
 	assert.Equal(t, vehicle, proposal.Vehicle)
 	assert.Equal(t, consumerUnit, proposal.ConsumerUnit)

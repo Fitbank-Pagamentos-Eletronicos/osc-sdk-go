@@ -1,7 +1,6 @@
 package test
 
 import (
-	"fmt"
 	"modulo/src/domains"
 	"testing"
 
@@ -15,8 +14,6 @@ func TestProductLoan(t *testing.T) {
 		Value:        1000,
 		Installments: 12,
 	}
-
-	fmt.Println(productLoan.ToJson())
 
 	assert.Equal(t, productLoan.Type, domains.LOAN)
 	assert.Equal(t, productLoan.Value, 1000)
