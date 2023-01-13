@@ -44,8 +44,8 @@ func Auth(osc *OSC) domains.AuthSucess {
 func (osc *OSC) GetToken() string {
 	if osc.AccessToken == "" || time.Time.IsZero(osc.ExpireAt) || time.Now().After(osc.ExpireAt) {
 		var resp = Auth(osc)
-		osc.AccessToken = resp.Access_token
-		var ExpireAt, _ = time.Parse("2006-01-02T15:04:05.000Z", resp.Expire_at)
+		osc.AccessToken = resp.AccessToken
+		var ExpireAt, _ = time.Parse("2006-01-02T15:04:05.000Z", resp.ExpireAt)
 		osc.ExpireAt = ExpireAt
 	}
 	return osc.AccessToken
