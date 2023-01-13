@@ -5,12 +5,11 @@ import (
 	"fmt"
 	"io/ioutil"
 	"modulo/src/domains"
-	"modulo/src/osc"
 	"net/http"
 	"strings"
 )
 
-func OAuth(osc *osc.OSC) domains.AuthSucess {
+func OAuth(osc *OSC) domains.AuthSucess {
 	url := "https://auth.easycredito.com.br/client/auth"
 
 	method := "POST"

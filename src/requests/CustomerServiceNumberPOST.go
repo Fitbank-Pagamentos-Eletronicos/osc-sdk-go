@@ -5,13 +5,12 @@ import (
 	"fmt"
 	"io/ioutil"
 	"modulo/src/domains"
-	"modulo/src/osc"
 	"net/http"
 	"strings"
 )
 
 var baseContract = domains.Contract{
-	AceptedCheckSum: []string{"97cc0c24610e982d38e2d28e80e7ff5af14bebd72491d548c1c5c1d2a4b7da06", "6cd99b452562c89d3cfccf2fd30c5e8633e59731795c89250be7d16cd3b034e1"},
+	AcceptedCheckSum: []string{"97cc0c24610e982d38e2d28e80e7ff5af14bebd72491d548c1c5c1d2a4b7da06", "6cd99b452562c89d3cfccf2fd30c5e8633e59731795c89250be7d16cd3b034e1"},
 	LogData: domains.LogData{
 		Latitude:       -16.6982283,
 		Longitude:      -49.2581201,
@@ -22,7 +21,7 @@ var baseContract = domains.Contract{
 	},
 }
 
-func CustomerServiceNumberPOST(osc *osc.OSC) domains.GetContract {
+func CustomerServiceNumberPOST(osc *OSC) domains.GetContract {
 	url := "https://demo-api.easycredito.com.br/api/external//v2.1/contract/20221109182327351003700"
 	method := "POST"
 

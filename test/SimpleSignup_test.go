@@ -10,12 +10,12 @@ import (
 
 func TestSimpleSignup(t *testing.T) {
 	logData := domains.LogData{
-		Latitude:      12.3,
-		Longitude:     45.7,
-		OccurenceData: "2019-01-01T00:00:00Z",
-		UserAgent:     "Mozilla/5.0",
-		Ip:            "1.0.0.0",
-		Mac:           "00:00:00:00:00:00",
+		Latitude:       12.3,
+		Longitude:      45.7,
+		OccurrenceDate: "2019-01-01T00:00:00Z",
+		UserAgent:      "Mozilla/5.0",
+		Ip:             "1.0.0.0",
+		Mac:            "00:00:00:00:00:00",
 	}
 
 	fmt.Println(logData.ToJson())
@@ -32,7 +32,7 @@ func TestSimpleSignup(t *testing.T) {
 		HasOwnHouse:    true,
 		HasVehicle:     true,
 		HasAndroid:     true,
-		LogaData:       logData,
+		LogData:        logData,
 	}
 
 	fmt.Println(simpleSignup.ToJson())
@@ -48,5 +48,5 @@ func TestSimpleSignup(t *testing.T) {
 	assert.Equal(t, true, simpleSignup.HasOwnHouse)
 	assert.Equal(t, true, simpleSignup.HasVehicle)
 	assert.Equal(t, true, simpleSignup.HasAndroid)
-	assert.Equal(t, logData, simpleSignup.LogaData)
+	assert.Equal(t, logData, simpleSignup.LogData)
 }

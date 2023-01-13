@@ -3,8 +3,8 @@ package domains
 import json2 "encoding/json"
 
 type AuthSucess struct {
-	AccessToken string `json:"accessToken"`
-	ExpireAt    string `json:"expireAt"`
+	Access_token string `json:"access_token"`
+	Expire_at    string `json:"expire_at"`
 }
 
 func (a *AuthSucess) ToJson() string {

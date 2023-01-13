@@ -10,7 +10,7 @@ import (
 
 func TestDocumentResponse(t *testing.T) {
 	documentResponse := domains.DocumentResponse{
-		Tipo:     domains.IDENTITY_BACK,
+		Type:     domains.IDENTITY_BACK,
 		MimeType: domains.IMAGE_JPEG,
 		Name:     "Teste",
 		Url:      "Teste",
@@ -18,7 +18,7 @@ func TestDocumentResponse(t *testing.T) {
 
 	fmt.Println(documentResponse.ToJson())
 
-	assert.Equal(t, domains.IDENTITY_BACK, documentResponse.Tipo)
+	assert.Equal(t, domains.IDENTITY_BACK, documentResponse.Type)
 	assert.Equal(t, domains.IMAGE_JPEG, documentResponse.MimeType)
 	assert.Equal(t, "Teste", documentResponse.Name)
 	assert.Equal(t, "Teste", documentResponse.Url)

@@ -11,7 +11,7 @@ import (
 func TestCredit(t *testing.T) {
 	credit := domains.Credit{
 		CustomerServiceNumber: "123456789",
-		Tipo:                  domains.REFINANCING_HOME,
+		Type:                  domains.REFINANCING_HOME,
 		Product:               "Crédito Imobiliário",
 		ProductId:             1,
 		HasDocuments:          true,
@@ -26,7 +26,7 @@ func TestCredit(t *testing.T) {
 	fmt.Println(credit.ToJson())
 
 	assert.Equal(t, "123456789", credit.CustomerServiceNumber)
-	assert.Equal(t, domains.REFINANCING_HOME, credit.Tipo)
+	assert.Equal(t, domains.REFINANCING_HOME, credit.Type)
 	assert.Equal(t, "Crédito Imobiliário", credit.Product)
 	assert.Equal(t, 1, credit.ProductId)
 	assert.Equal(t, true, credit.HasDocuments)

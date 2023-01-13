@@ -1,79 +1,75 @@
 package requests
 
-
 import (
-    "encoding/json"
-    "fmt"
-    "net/http"
-    "io/ioutil"
-    "strings"
-    "modulo/src/domains"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"modulo/src/domains"
+	"net/http"
+	"strings"
 )
 
-var dataSimpleProposal = domains.ProposalBankAccount {
-    Mother:     "Fulana Mãe",
-    Gender: domains.FEMININO,
-    Nationality: domains.BRASILEIRA,
-    HomeTownState: domains.GOIAS,
-    RelationshipStatus: domains.CASADO,
+var dataSimpleProposal = domains.ProposalBankAccount{
+	Mother:             "Fulana Mãe",
+	Gender:             domains.FEMININO,
+	Nationality:        domains.BRASILEIRO,
+	HomeTownState:      domains.GOIAS,
+	RelationshipStatus: domains.CASADO,
 
-    Address: domains.Address{
-        ZipCode: "74000000",
-        Address: "Cidade de Goiânia",
-        Number: "0",
-        Complement: "Casa 1",
-        District: "Geral",
-        State: domains.GOIAS,
-        City: "Goiânia",
-    },
-    Business: domains.Business{
-        Income: "1000.00",
-    },
-    Products: domains.ProductBankAccount{
-        Tipo: "BANK_ACCOUNT",
-        ProductId: 5823637,
-    },
-
+	Address: domains.Address{
+		ZipCode:    "74000000",
+		Address:    "Cidade de Goiânia",
+		Number:     "0",
+		Complement: "Casa 1",
+		District:   "Geral",
+		State:      domains.GOIAS,
+		City:       "Goiânia",
+	},
+	Business: domains.Business{
+		Income: "1000.00",
+	},
+	Products: domains.ProductBankAccount{
+		Type: "BANK_ACCOUNT",
+	},
 }
 
-func SimpleProposalRequest(ID string) (string, int) {
-    url:= "https://demo-api.easycredito.com.br/api/external//v2.1/process/simple_proposal/" + ID
-    method := "POST"
+func SimpleProposalRequest(osc *OSC, ID string) (string, int) {
+	url := "https://demo-api.easycredito.com.br/api/external//v2.1/process/simple_proposal/" + ID
+	method := "POST"
 
-    fmt.Println("URL:>", url)
+	fmt.Println("URL:>", url)
 
-    jsonValue, _ := json.Marshal(dataSimpleProposal)
-    payload := strings.NewReader(string(jsonValue))
+	jsonValue, _ := json.Marshal(dataSimpleProposal)
+	payload := strings.NewReader(string(jsonValue))
 
-    client := &http.Client {}
+	client := &http.Client{}
 
-    req, err := http.NewRequest(method, url, payload)
+	req, err := http.NewRequest(method, url, payload)
 
-    if err != nil {
-        fmt.Println(err)
-        return "", 0
-    }
+	if err != nil {
+		fmt.Println(err)
+		return "", 0
+	}
 
-    req.Header.Add("Content-Type", "application/json")
-    req.Header.Add("Accept", "application/json")
-    req.Header.Add("Authorization", "Bearer " + GetToken())
+	req.Header.Add("Content-Type", "application/json")
+	req.Header.Add("Accept", "application/json")
+	req.Header.Add("Authorization", "Bearer "+osc.GetToken())
 
-    res, err := client.Do(req)
-    if err != nil {
-        fmt.Println(err)
-        return "", 0
-    }
+	res, err := client.Do(req)
+	if err != nil {
+		fmt.Println(err)
+		return "", 0
+	}
 
-    defer res.Body.Close()
+	defer res.Body.Close()
 
-    body, err := ioutil.ReadAll(res.Body)
-    if err != nil {
-        fmt.Println(err)
-        return "", 0
-    }
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		fmt.Println(err)
+		return "", 0
+	}
 
-    fmt.Println(string(body))
-    return string(body), res.StatusCode
-
+	fmt.Println(string(body))
+	return string(body), res.StatusCode
 
 }

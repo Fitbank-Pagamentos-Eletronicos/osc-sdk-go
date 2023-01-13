@@ -9,54 +9,34 @@ import (
 )
 
 func TestProducts(t *testing.T) {
-	loan := domains.ProductLoan{
-		Tipo:         domains.LOAN,
-		Value:        1000,
-		Installments: 12,
-	}
-
-	fmt.Println(loan.ToJson())
-
-	card := domains.ProductCard{
-		Tipo:    domains.CARD,
-		Network: domains.VISA,
-		Payday:  "20",
-	}
-	fmt.Println(card.ToJson())
-
-	auto := domains.ProductAuto{
-		Tipo:             domains.LOAN,
-		Value:            1000.00,
-		VehicleBrand:     "Fiat",
-		VehicleModel:     "Uno",
-		Installments:     12,
-		CodeFipe:         "123",
-		VehicleFipeValue: 10000.00,
-	}
-	fmt.Println(auto.ToJson())
-
-	home := domains.ProductHome{
-		Tipo:               domains.LOAN,
+	products := domains.Products{
+		Type:               domains.LOAN,
 		Value:              1000.00,
 		Installments:       12,
-		RealEstateType_:    domains.HOUSE,
+		Network:            domains.VISA,
+		Payday:             "20",
+		VehicleBrand:       "Fiat",
+		VehicleModel:       "Uno",
+		CodeFipe:           "123",
+		VehicleFipeValue:   10000.00,
+		RealEstateType:     domains.HOUSE,
 		RealEstateValue:    10000.00,
 		OutstandingBalance: 1000.00,
 	}
 
-	fmt.Println(home.ToJson())
-
-	products := domains.Products{
-		ProductLoan: loan,
-		ProductCard: card,
-		ProductAuto: auto,
-		ProductHome: home,
-	}
 	fmt.Println(products.ToJson())
 
-	assert.Equal(t, loan, products.ProductLoan)
-	assert.Equal(t, card, products.ProductCard)
-	assert.Equal(t, auto, products.ProductAuto)
-	assert.Equal(t, home, products.ProductHome)
-
+	assert.Equal(t, products.Type, domains.LOAN)
+	assert.Equal(t, products.Value, 1000.00)
+	assert.Equal(t, products.Installments, 12)
+	assert.Equal(t, products.Network, domains.VISA)
+	assert.Equal(t, products.Payday, "20")
+	assert.Equal(t, products.VehicleBrand, "Fiat")
+	assert.Equal(t, products.VehicleModel, "Uno")
+	assert.Equal(t, products.CodeFipe, "123")
+	assert.Equal(t, products.VehicleFipeValue, 10000.00)
+	assert.Equal(t, products.RealEstateType, domains.HOUSE)
+	assert.Equal(t, products.RealEstateValue, 10000.00)
+	assert.Equal(t, products.OutstandingBalance, 1000.00)
+	
 }

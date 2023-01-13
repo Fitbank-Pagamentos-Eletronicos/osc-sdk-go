@@ -2,9 +2,9 @@ package test
 
 import (
 	"fmt"
+	"github.com/stretchr/testify/assert"
 	"modulo/src/domains"
 	"testing"
-    "github.com/stretchr/testify/assert"
 )
 
 func TestAddress(t *testing.T) {
@@ -16,8 +16,8 @@ func TestAddress(t *testing.T) {
 		District:   "Teste",
 		State:      domains.ACRE,
 		City:       "Teste",
-		HomeType_:  domains.ALUGADA,
-		HomeSince_: domains.MENOR_6_MESES,
+		HomeType:   domains.ALUGADA,
+		HomeSince:  domains.MENOR_6_MESES,
 	}
 
 	fmt.Println(address.ToJson())
@@ -29,6 +29,6 @@ func TestAddress(t *testing.T) {
 	assert.Equal(t, "Teste", address.District)
 	assert.Equal(t, domains.ACRE, address.State)
 	assert.Equal(t, "Teste", address.City)
-	assert.Equal(t, domains.ALUGADA, address.HomeType_)
-	assert.Equal(t, domains.MENOR_6_MESES, address.HomeSince_)
+	assert.Equal(t, domains.ALUGADA, address.HomeType)
+	assert.Equal(t, domains.MENOR_6_MESES, address.HomeSince)
 }

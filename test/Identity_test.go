@@ -10,7 +10,7 @@ import (
 
 func TestIdentity(t *testing.T) {
 	identity := domains.Identity{
-		Tipo:        domains.RG,
+		Type:        domains.RG,
 		Number:      "123456789",
 		Issuer:      domains.SSP,
 		State:       domains.BAHIA,
@@ -19,7 +19,7 @@ func TestIdentity(t *testing.T) {
 
 	fmt.Println(identity.ToJson())
 
-	assert.Equal(t, domains.RG, identity.Tipo)
+	assert.Equal(t, domains.RG, identity.Type)
 	assert.Equal(t, "123456789", identity.Number)
 	assert.Equal(t, domains.SSP, identity.Issuer)
 	assert.Equal(t, domains.BAHIA, identity.State)

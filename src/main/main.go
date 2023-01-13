@@ -1,22 +1,21 @@
 package main
 
 import (
-	"encoding/json"
+	json2 "encoding/json"
 	"fmt"
 	"modulo/src/domains"
-	"modulo/src/osc"
 	"modulo/src/requests"
 )
 
 func main() {
 	var response domains.PubsubResponse
-	res := requests.PubSubRequest(&osc.OSC{})
+	res := requests.PubSubRequest(&requests.OSC{})
 
-	bytes, err := json.Marshal(res)
+	bytes, err := json2.Marshal(res)
 	if err != nil {
 		fmt.Println(err)
 	}
-	json.Unmarshal(bytes, &response)
+	json2.Unmarshal(bytes, &response)
 
 	requests.PubSubSubscribe(
 		response.Project_id,

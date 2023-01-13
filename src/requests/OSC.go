@@ -1,10 +1,9 @@
-package osc
+package requests
 
 import (
 	"golang.org/x/text/transform"
 	"golang.org/x/text/unicode/norm"
 	"modulo/src/domains"
-	"modulo/src/requests"
 	"regexp"
 	"strings"
 	"time"
@@ -38,14 +37,14 @@ func isMn(runner rune) bool {
 }
 
 func Auth(osc *OSC) domains.AuthSucess {
-	return requests.OAuth(osc)
+	return OAuth(osc)
 }
 
 func (osc *OSC) GetToken() string {
 	if osc.AccessToken == "" || time.Time.IsZero(osc.ExpireAt) || time.Now().After(osc.ExpireAt) {
 		var resp = Auth(osc)
-		osc.AccessToken = resp.AccessToken
-		var ExpireAt, _ = time.Parse("2006-01-02T15:04:05.000Z", resp.ExpireAt)
+		osc.AccessToken = resp.Access_token
+		var ExpireAt, _ = time.Parse("2006-01-02T15:04:05.000Z", resp.Expire_at)
 		osc.ExpireAt = ExpireAt
 	}
 	return osc.AccessToken
@@ -83,22 +82,22 @@ func GetInstance(name string) (OSC, bool) {
 }
 
 func (osc *OSC) SetResponseListening(listeningFunction func(domains.Pipeline, bool)) bool {
-	pubSubConfig := requests.PubSubRequest(osc)
-	return requests.PubSubSubscribe(pubSubConfig.Project_id, pubSubConfig.Topic_id, pubSubConfig.Subscription_id,
+	pubSubConfig := PubSubRequest(osc)
+	return PubSubSubscribe(pubSubConfig.Project_id, pubSubConfig.Topic_id, pubSubConfig.Subscription_id,
 		pubSubConfig.Service_account, listeningFunction)
 }
 
 func (osc *OSC) SignupMatch(signupObject domains.SignupMatch) domains.Pipeline {
-	pipeline := requests.SignupMatchRequest(osc, signupObject)
+	pipeline := SignupMatchRequest(osc, signupObject)
 	return pipeline
 }
 
 func (osc *OSC) SimpleSignup(signupObject domains.SimpleSignup) domains.Pipeline {
-	pipeline := requests.SimpleSignupRequests(osc, signupObject)
+	pipeline := SimpleSignupRequests(osc, signupObject)
 	return pipeline
 }
 
 func (osc *OSC) Proposal(pipelineId string, proposalObject domains.ProposalReq) domains.Pipeline {
-	pipeline := requests.ProposalRequest(osc, pipelineId, proposalObject)
+	pipeline := ProposalRequest(osc, pipelineId, proposalObject)
 	return pipeline
 }

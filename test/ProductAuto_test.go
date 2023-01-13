@@ -10,7 +10,7 @@ import (
 
 func TestProductAuto(t *testing.T) {
 	productAuto := domains.ProductAuto{
-		Tipo:             domains.LOAN,
+		Type:             domains.LOAN,
 		Value:            1000.00,
 		VehicleBrand:     "Fiat",
 		VehicleModel:     "Uno",
@@ -21,7 +21,7 @@ func TestProductAuto(t *testing.T) {
 
 	fmt.Println(productAuto.ToJson())
 
-	assert.Equal(t, productAuto.Tipo, domains.LOAN)
+	assert.Equal(t, productAuto.Type, domains.LOAN)
 	assert.Equal(t, productAuto.Value, 1000.00)
 	assert.Equal(t, productAuto.VehicleBrand, "Fiat")
 	assert.Equal(t, productAuto.VehicleModel, "Uno")

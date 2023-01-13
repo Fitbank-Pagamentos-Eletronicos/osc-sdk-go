@@ -3,11 +3,11 @@ package examples
 import (
 	"fmt"
 	"modulo/src/domains"
-	"modulo/src/osc"
+	"modulo/src/requests"
 )
 
 func main() {
-	var instance, _ = osc.CreateInstance("", "", "dafault")
+	var instance, _ = requests.CreateInstance("", "", "dafault")
 	var data = domains.SimpleSignup{
 		Cpf:            "720.825.560-18",
 		Name:           "Carlos Henrique",
