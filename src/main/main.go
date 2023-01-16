@@ -3,8 +3,8 @@ package main
 import (
 	json2 "encoding/json"
 	"fmt"
-	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/domains"
-	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/requests"
+	"osc-sdk-go/src/domains"
+	"osc-sdk-go/src/requests"
 )
 
 func main() {

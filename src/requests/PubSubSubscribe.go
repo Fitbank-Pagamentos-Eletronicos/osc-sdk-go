@@ -4,9 +4,9 @@ import (
 	"cloud.google.com/go/pubsub"
 	"context"
 	json2 "encoding/json"
-	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/domains"
 	"google.golang.org/api/option"
 	"log"
+	"osc-sdk-go/src/domains"
 )
 
 func PubSubSubscribe(projectId, topicId, subscriptionId, serviceAccount string, listeningFunction func(domains.Pipeline, bool)) bool {

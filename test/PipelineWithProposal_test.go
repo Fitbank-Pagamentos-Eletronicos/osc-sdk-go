@@ -1,7 +1,7 @@
 package test
 
 import (
-	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/domains"
+	"osc-sdk-go/src/domains"
 	"testing"
 	"time"
 

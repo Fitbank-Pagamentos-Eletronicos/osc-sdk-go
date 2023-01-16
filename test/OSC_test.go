@@ -1,9 +1,9 @@
 package test
 
 import (
-	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/domains"
-	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/requests"
 	"github.com/stretchr/testify/assert"
+	"osc-sdk-go/src/domains"
+	"osc-sdk-go/src/requests"
 	"testing"
 )
 
