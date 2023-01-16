@@ -2,8 +2,8 @@ package examples
 
 import (
 	"fmt"
-	"modulo/src/domains"
-	"modulo/src/requests"
+	"osc-sdk-go/src/domains"
+	"osc-sdk-go/src/requests"
 )
 
 func main() {
