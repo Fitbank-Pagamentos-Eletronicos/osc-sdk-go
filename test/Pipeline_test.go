@@ -1,10 +1,9 @@
 package test
 
 import (
-	"modulo/src/domains"
-	"testing"
-
+	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/domains"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestPipeline(t *testing.T) {

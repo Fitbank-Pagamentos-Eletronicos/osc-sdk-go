@@ -2,7 +2,7 @@ package test
 
 import (
 	"fmt"
-	"modulo/src/domains"
+	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/domains"
 	"testing"
 
 	"github.com/stretchr/testify/assert"

@@ -3,8 +3,8 @@ package requests
 import (
 	json2 "encoding/json"
 	"fmt"
+	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/domains"
 	"io/ioutil"
-	"modulo/src/domains"
 	"net/http"
 	"strings"
 )

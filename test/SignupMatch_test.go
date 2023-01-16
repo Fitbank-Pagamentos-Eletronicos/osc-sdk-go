@@ -1,14 +1,14 @@
 package test
 
 import (
-	"modulo/src/domains"
+	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/domains"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
 
 func TestSignupMatch(t *testing.T) {
-	
+
 	products := domains.Products{
 		Type:               domains.LOAN,
 		Value:              1000.00,
