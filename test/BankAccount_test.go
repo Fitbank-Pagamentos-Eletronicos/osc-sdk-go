@@ -1,8 +1,7 @@
 package test
 
 import (
-	"fmt"
-	"modulo/src/domains"
+	"osc-sdk-go/src/domains"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -19,8 +18,6 @@ func TestBankAccount(t *testing.T) {
 		DateCreated:           "2020-01-01",
 		LastUpdated:           "2020-01-01",
 	}
-
-	fmt.Println(bankAccount.ToJson())
 
 	assert.Equal(t, "123456789", bankAccount.CustomerServiceNumber)
 	assert.Equal(t, "Conta Corrente", bankAccount.Product)

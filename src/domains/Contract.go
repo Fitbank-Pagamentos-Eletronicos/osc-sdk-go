@@ -1,13 +1,13 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type Contract struct {
-	AceptedCheckSum []string `json:"aceptedCheckSum"`
-	LogData     LogData `json:"logData"`
+	AcceptedCheckSum []string `json:"acceptedCheckSum"`
+	LogData          LogData  `json:"logData"`
 }
 
 func (a *Contract) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

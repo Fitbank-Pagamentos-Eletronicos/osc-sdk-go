@@ -1,22 +1,21 @@
 package requests
 
 import (
-	"encoding/json"
+	json2 "encoding/json"
 	"fmt"
 	"io/ioutil"
-	"modulo/src/domains"
-	"modulo/src/osc"
 	"net/http"
+	"osc-sdk-go/src/domains"
 	"strings"
 )
 
-func ProposalRequest(osc *osc.OSC, pipelineId string, proposalObject domains.ProposalReq) domains.Pipeline {
+func ProposalRequest(osc *OSC, pipelineId string, proposalObject domains.ProposalReq) domains.Pipeline {
 	url := "https://demo-api.easycredito.com.br/api/external/v2.1/process/proposal/" + pipelineId
 	method := "POST"
 
 	fmt.Println("URL:>", url)
 
-	simpleProposalToJson, _ := json.Marshal(proposalObject)
+	simpleProposalToJson, _ := json2.Marshal(proposalObject)
 	payload := strings.NewReader(string(simpleProposalToJson))
 
 	client := &http.Client{}
@@ -44,6 +43,6 @@ func ProposalRequest(osc *osc.OSC, pipelineId string, proposalObject domains.Pro
 	}
 	fmt.Println(string(body))
 	var pipeline domains.Pipeline
-	json.Unmarshal(body, &pipeline)
+	json2.Unmarshal(body, &pipeline)
 	return pipeline
 }

@@ -1,6 +1,6 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type Identity struct {
 	Type        IdentityType       `json:"type"`
@@ -11,6 +11,6 @@ type Identity struct {
 }
 
 func (a *Identity) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

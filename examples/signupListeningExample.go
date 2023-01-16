@@ -2,12 +2,12 @@ package examples
 
 import (
 	"fmt"
-	"modulo/src/domains"
-	"modulo/src/osc"
+	"osc-sdk-go/src/domains"
+	"osc-sdk-go/src/requests"
 )
 
 func main() {
-	var instance, _ = osc.CreateInstance("", "", "dafault")
+	var instance, _ = requests.CreateInstance("", "", "dafault")
 
 	instance.SetResponseListening(func(pipeline domains.Pipeline, err bool) {
 		fmt.Printf("Async %s", pipeline.Id)

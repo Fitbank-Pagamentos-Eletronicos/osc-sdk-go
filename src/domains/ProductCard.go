@@ -1,14 +1,14 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type ProductCard struct {
-	Type    ProductType
-	Network NetWork
-	Payday  string
+	Type    ProductType `json:"type"`
+	Network NetWork     `json:"network"`
+	Payday  string      `json:"payday"`
 }
 
 func (a *ProductCard) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

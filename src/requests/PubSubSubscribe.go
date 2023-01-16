@@ -3,10 +3,10 @@ package requests
 import (
 	"cloud.google.com/go/pubsub"
 	"context"
-	"encoding/json"
+	json2 "encoding/json"
 	"google.golang.org/api/option"
 	"log"
-	"modulo/src/domains"
+	"osc-sdk-go/src/domains"
 )
 
 func PubSubSubscribe(projectId, topicId, subscriptionId, serviceAccount string, listeningFunction func(domains.Pipeline, bool)) bool {
@@ -29,7 +29,7 @@ func PubSubSubscribe(projectId, topicId, subscriptionId, serviceAccount string, 
 
 	err = subscription.Receive(ctx, func(ctx context.Context, msg *pubsub.Message) {
 		var pipeline domains.Pipeline
-		error := json.Unmarshal(msg.Data, &pipeline)
+		error := json2.Unmarshal(msg.Data, &pipeline)
 		if error == nil {
 			go listeningFunction(pipeline, true)
 			msg.Ack()

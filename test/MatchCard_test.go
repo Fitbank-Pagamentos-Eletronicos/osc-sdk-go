@@ -1,8 +1,7 @@
 package test
 
 import (
-	"fmt"
-	"modulo/src/domains"
+	"osc-sdk-go/src/domains"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -17,8 +16,6 @@ func TestMatchCard(t *testing.T) {
 		Annuity:   1.00,
 		Network:   domains.VISA,
 	}
-
-	fmt.Println(matchCard.ToJson())
 
 	assert.Equal(t, 2, matchCard.ProductId)
 	assert.Equal(t, "Cartão de Crédito", matchCard.Name)

@@ -1,12 +1,12 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type Vehicle struct {
-	LicensePlate string
+	LicensePlate string `json:"licensePlate"`
 }
 
 func (a *Vehicle) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

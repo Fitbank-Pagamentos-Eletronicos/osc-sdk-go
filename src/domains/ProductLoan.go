@@ -1,14 +1,14 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type ProductLoan struct {
-	Type         ProductType
-	Value        int
-	Installments int
+	Type         ProductType `json:"type"`
+	Value        int         `json:"value"`
+	Installments int         `json:"installments"`
 }
 
 func (a *ProductLoan) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

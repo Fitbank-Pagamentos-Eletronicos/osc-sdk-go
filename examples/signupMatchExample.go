@@ -2,12 +2,12 @@ package examples
 
 import (
 	"fmt"
-	"modulo/src/domains"
-	"modulo/src/osc"
+	"osc-sdk-go/src/domains"
+	"osc-sdk-go/src/requests"
 )
 
 func main() {
-	var instance, _ = osc.CreateInstance("", "", "dafault")
+	var instance, _ = requests.CreateInstance("", "", "dafault")
 	var data = domains.SignupMatch{
 		Cpf:            "720.825.560-18",
 		Name:           "Carlos Henrique",

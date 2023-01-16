@@ -1,6 +1,6 @@
 package domains
 
-import "encoding/json"
+import json2 "encoding/json"
 
 type ProductAuto struct {
 	Type             ProductType `json:"type"`
@@ -14,6 +14,6 @@ type ProductAuto struct {
 }
 
 func (a *ProductAuto) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

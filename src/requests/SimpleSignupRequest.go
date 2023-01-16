@@ -4,13 +4,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"modulo/src/domains"
-	"modulo/src/osc"
 	"net/http"
+	"osc-sdk-go/src/domains"
 	"strings"
 )
 
-func SimpleSignupRequests(osc *osc.OSC, signupObject domains.SimpleSignup) domains.Pipeline {
+func SimpleSignupRequests(osc *OSC, signupObject domains.SimpleSignup) domains.Pipeline {
 
 	url := "https://demo-api.easycredito.com.br/api/external/v2.1/process/simple_signup"
 	method := "POST"

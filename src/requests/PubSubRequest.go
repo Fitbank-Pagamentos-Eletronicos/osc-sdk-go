@@ -4,12 +4,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"modulo/src/domains"
-	"modulo/src/osc"
 	"net/http"
+	"osc-sdk-go/src/domains"
 )
 
-func PubSubRequest(osc *osc.OSC) domains.PubsubResponse {
+func PubSubRequest(osc *OSC) domains.PubsubResponse {
 	url := "https://staging-api.easycredito.com.br/api/external/v2.1/pubsub"
 	method := "GET"
 

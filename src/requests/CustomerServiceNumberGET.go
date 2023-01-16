@@ -3,11 +3,10 @@ package requests
 import (
 	"fmt"
 	"io/ioutil"
-	"modulo/src/osc"
 	"net/http"
 )
 
-func CustomerServiceNumberGET(osc *osc.OSC) string {
+func CustomerServiceNumberGET(osc *OSC) string {
 	url := "https://demo-api.easycredito.com.br/api/external//v2.1/contract/20221109182327351003700"
 	method := "GET"
 

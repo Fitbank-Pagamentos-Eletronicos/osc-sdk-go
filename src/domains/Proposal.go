@@ -1,7 +1,7 @@
 package domains
 
 import (
-	"encoding/json"
+	json2 "encoding/json"
 	"time"
 )
 
@@ -38,6 +38,6 @@ type Proposal struct {
 }
 
 func (a *Proposal) ToJson() string {
-	json, _ := json.Marshal(a)
+	json, _ := json2.Marshal(a)
 	return string(json)
 }

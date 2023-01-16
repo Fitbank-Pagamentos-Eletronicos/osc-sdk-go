@@ -4,9 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"modulo/src/domains"
-	"modulo/src/osc"
 	"net/http"
+	"osc-sdk-go/src/domains"
 	"strings"
 )
 
@@ -17,7 +16,7 @@ var dataDocument = domains.Document{
 	Base64:   "9j/4AAQSkZJRgABAQAAAQABAAD/7QDWUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAA",
 }
 
-func DocumentRequest(osc *osc.OSC, ID string) string {
+func DocumentRequest(osc *OSC, ID string) string {
 	url := "https://demo-api.easycredito.com.br/api/external//v2/process/document/" + ID
 	method := "PUT"
 

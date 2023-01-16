@@ -1,8 +1,7 @@
 package test
 
 import (
-	"fmt"
-	"modulo/src/domains"
+	"osc-sdk-go/src/domains"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,8 +13,6 @@ func TestProduct(t *testing.T) {
 		Name:      "Empréstimo",
 		Logo:      "logo",
 	}
-
-	fmt.Println(product.ToJson())
 
 	assert.Equal(t, product.ProductId, 1)
 	assert.Equal(t, product.Name, "Empréstimo")

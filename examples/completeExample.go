@@ -2,12 +2,12 @@ package examples
 
 import (
 	"fmt"
-	"modulo/src/domains"
-	"modulo/src/osc"
+	"osc-sdk-go/src/domains"
+	"osc-sdk-go/src/requests"
 )
 
 func main() {
-	var instance, _ = osc.CreateInstance("", "", "dafault")
+	var instance, _ = requests.CreateInstance("", "", "dafault")
 
 	instance.SetResponseListening(func(pipeline domains.Pipeline, err bool) {
 
@@ -67,7 +67,7 @@ func signup() {
 		},
 	}
 
-	var instance, _ = osc.GetInstance("dafault")
+	var instance, _ = requests.GetInstance("dafault")
 	var pipeline = instance.SimpleSignup(data)
 
 	fmt.Printf("%s", pipeline.Id)
@@ -133,7 +133,7 @@ func proposal(pipelineId string) {
 
 		Bank: domains.Bank{
 			Bank:    domains.BANCO_DO_BRASIL,
-			Tipo:    domains.CONTA_CORRENTE_INDIVIDUAL,
+			Type:    domains.CONTA_CORRENTE_INDIVIDUAL,
 			Agency:  "0001",
 			Account: "123456789",
 		},
@@ -158,7 +158,7 @@ func proposal(pipelineId string) {
 		},
 	}
 
-	var instance, _ = osc.GetInstance("dafault")
+	var instance, _ = requests.GetInstance("dafault")
 	var pipeline = instance.Proposal(pipelineId, data)
 
 	fmt.Printf("%s", pipeline.Id)
