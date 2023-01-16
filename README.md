@@ -96,8 +96,8 @@ package examples
 
 import (
 	"fmt"
-	"modulo/src/domains"
-	"modulo/src/osc"
+	"osc-sdk-go/src/domains"
+	"osc-sdk-go/src/osc"
 )
 
 func main() {
@@ -167,8 +167,8 @@ package examples
 
 import (
 	"fmt"
-	"modulo/src/domains"
-	"modulo/src/osc"
+	"osc-sdk-go/src/domains"
+	"osc-sdk-go/src/osc"
 )
 
 func main() {
@@ -239,8 +239,8 @@ sequenceDiagram
  
  import (
 	 "fmt"
-	 "modulo/src/osc"
-	 "modulo/src/domains"
+	 "osc-sdk-go/src/osc"
+	 "osc-sdk-go/src/domains"
  )
 func main (){
 	var instance, _ = osc.CreateInstance("", "", "default")
@@ -347,8 +347,8 @@ package examples
  
 import (
     "fmt"
-    "modulo/src/osc"
-    "modulo/src/domains"
+    "osc-sdk-go/src/osc"
+    "osc-sdk-go/src/domains"
 )
 
 func main(){
