@@ -9,15 +9,8 @@ import (
 	"strings"
 )
 
-var dataDocument = domains.Document{
-	Type:     domains.IDENTITY_BACK,
-	MimeType: domains.IMAGE_JPEG,
-	Name:     "44983829865_CNH_20102022_CNH Aberta.jpg",
-	Base64:   "9j/4AAQSkZJRgABAQAAAQABAAD/7QDWUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAA",
-}
-
-func DocumentRequest(osc *OSC, ID string) string {
-	url := "https://demo-api.easycredito.com.br/api/external//v2/process/document/" + ID
+func DocumentRequest(token string, id string, dataDocument domains.Document) domains.DocumentResponse {
+	url := "https://demo-api.easycredito.com.br/api/external/v2/process/document/" + id
 	method := "PUT"
 
 	fmt.Println("URL: ", url)
@@ -30,17 +23,17 @@ func DocumentRequest(osc *OSC, ID string) string {
 
 	if err != nil {
 		fmt.Println(err)
-		return ""
+		return domains.DocumentResponse{}
 	}
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", "Bearer "+osc.GetToken())
+	req.Header.Add("Authorization", "Bearer "+token)
 
 	res, err := client.Do(req)
 
 	if err != nil {
 		fmt.Println(err)
-		return ""
+		return domains.DocumentResponse{}
 	}
 
 	defer res.Body.Close()
@@ -49,7 +42,7 @@ func DocumentRequest(osc *OSC, ID string) string {
 
 	if err != nil {
 		fmt.Println(err)
-		return ""
+		return domains.DocumentResponse{}
 	}
 
 	fmt.Println(string(body))
