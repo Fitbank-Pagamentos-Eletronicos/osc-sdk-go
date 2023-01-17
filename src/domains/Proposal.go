@@ -6,17 +6,17 @@ import (
 )
 
 type Proposal struct {
-	CustomerServiceNumber string           `json:"customerServiceNumber"`
-	Type                  ProductType      `json:"type"`
-	Product               string           `json:"product"`
-	ProductId             int              `json:"productId"`
-	HasDocuments          bool             `json:"hasDocuments"`
-	HasContracts          bool             `json:"hasContracts"`
-	Logo                  string           `json:"logo"`
-	LastStatus            CreditStatus     `json:"lastStatus"`
-	DateCreated           time.Time        `json:"dateCreated"`
-	LastUpdated           time.Time        `json:"lastUpdated"`
-	PendentDocuments      PendentDocuments `json:"pendentDocuments"`
+	CustomerServiceNumber string             `json:"customerServiceNumber"`
+	Type                  ProductType        `json:"type"`
+	Product               string             `json:"product"`
+	ProductId             int                `json:"productId"`
+	HasDocuments          bool               `json:"hasDocuments"`
+	HasContracts          bool               `json:"hasContracts"`
+	Logo                  string             `json:"logo"`
+	LastStatus            CreditStatus       `json:"lastStatus"`
+	DateCreated           time.Time          `json:"dateCreated"`
+	LastUpdated           time.Time          `json:"lastUpdated"`
+	PendentDocuments      []PendentDocuments `json:"pendentDocuments"`
 
 	// Loan, Auto, Home
 	Value             int       `json:"value"`

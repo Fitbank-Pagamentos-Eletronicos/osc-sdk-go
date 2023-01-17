@@ -9,7 +9,7 @@ type Pipeline struct {
 	Name        string         `json:"name"`
 	DateCreated string         `json:"dateCreated"`
 	LastUpdated string         `json:"lastUpdated"`
-	Matches     Match          `json:"matches"`
+	Matches     []Match        `json:"matches"`
 	Proposals   []Proposal     `json:"proposals"`
 }
 

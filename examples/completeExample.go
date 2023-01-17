@@ -26,6 +26,7 @@ func main() {
 			fmt.Printf("Async %s proposta em completo", pipeline.Id)
 			for _, proposal := range pipeline.Proposals {
 				fmt.Println(proposal)
+
 			}
 
 			// TODO
@@ -39,6 +40,7 @@ func main() {
 		case domains.PROPOSAL_DENIED:
 			fmt.Printf("Async %s proposta regeitado", pipeline.Id)
 		}
+
 	})
 
 	signup()
