@@ -90,7 +90,9 @@ func (osc *OSC) SignupMatch(signupObject domains.SignupMatch) domains.Pipeline {
 	pipeline := SignupMatchRequest(osc, signupObject)
 	return pipeline
 }
-
+func (osc *OSC) Contract(dataDocument domains.Contract) domains.GetContract {
+	return CustomerServiceNumberPOST(osc.GetToken(), dataDocument)
+}
 func (osc *OSC) SimpleSignup(signupObject domains.SimpleSignup) domains.Pipeline {
 	pipeline := SimpleSignupRequests(osc, signupObject)
 	return pipeline
