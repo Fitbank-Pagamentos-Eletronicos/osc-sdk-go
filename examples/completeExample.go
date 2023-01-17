@@ -26,6 +26,7 @@ func main() {
 			fmt.Printf("Async %s proposta em completo", pipeline.Id)
 			for _, proposal := range pipeline.Proposals {
 				fmt.Println(proposal)
+
 				for _, pendentDocuments := range proposal.PendentDocuments {
 					switch pendentDocuments {
 					case domains.SELF_:
@@ -173,6 +174,7 @@ func proposal(pipelineId string) {
 
 	fmt.Printf("%s", pipeline.Id)
 }
+
 func sendDocuments(id string, data domains.Document) domains.DocumentResponse {
 	var instance, _ = osc.GetInstance("dafault")
 	return instance.SendDocument(id, data)
@@ -212,7 +214,6 @@ func sendDocumentsBack(id string) domains.DocumentResponse {
 		Name:     "44983829865_CNH_20102022_CNH Aberta.jpg",
 		Base64:   "9j/4AAQSkZJRgABAQAAAQABAAD/7QDWUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAA",
 	}
-
 	return sendDocuments(id, data)
 }
 
