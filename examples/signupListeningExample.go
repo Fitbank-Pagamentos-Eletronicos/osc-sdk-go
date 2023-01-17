@@ -3,11 +3,11 @@ package examples
 import (
 	"fmt"
 	"osc-sdk-go/src/domains"
-	"osc-sdk-go/src/requests"
+	"osc-sdk-go/src/osc"
 )
 
 func main() {
-	var instance, _ = requests.CreateInstance("", "", "dafault")
+	var instance, _ = osc.CreateInstance("", "", "dafault")
 
 	instance.SetResponseListening(func(pipeline domains.Pipeline, err bool) {
 		fmt.Printf("Async %s", pipeline.Id)

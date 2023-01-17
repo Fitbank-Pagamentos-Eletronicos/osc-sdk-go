@@ -3,11 +3,11 @@ package examples
 import (
 	"fmt"
 	"osc-sdk-go/src/domains"
-	"osc-sdk-go/src/requests"
+	"osc-sdk-go/src/osc"
 )
 
 func main() {
-	var instance, _ = requests.CreateInstance("", "", "dafault")
+	var instance, _ = osc.CreateInstance("", "", "dafault")
 	var data = domains.SimpleSignup{
 		Cpf:            "720.825.560-18",
 		Name:           "Carlos Henrique",

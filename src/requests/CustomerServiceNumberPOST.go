@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func CustomerServiceNumberPOST(token string, baseContract domains.Contract) domains.GetContract {
+func CustomerServiceNumberPOST(token string, baseContract domains.Contract) domains.SignContract {
 	url := "https://demo-api.easycredito.com.br/api/external//v2.1/contract/20221109182327351003700"
 	method := "POST"
 
@@ -28,7 +28,7 @@ func CustomerServiceNumberPOST(token string, baseContract domains.Contract) doma
 	res, err := client.Do(req)
 	if err != nil {
 		fmt.Println(err)
-		return domains.GetContract{}
+		return domains.SignContract{}
 	}
 	defer res.Body.Close()
 
@@ -36,10 +36,10 @@ func CustomerServiceNumberPOST(token string, baseContract domains.Contract) doma
 
 	if err != nil {
 		fmt.Println(err)
-		return domains.GetContract{}
+		return domains.SignContract{}
 	}
 	fmt.Println(string(body))
-	var getContract domains.GetContract
+	var getContract domains.SignContract
 	json2.Unmarshal(body, &getContract)
 
 	return getContract

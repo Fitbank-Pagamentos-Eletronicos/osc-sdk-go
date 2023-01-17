@@ -9,7 +9,7 @@ import (
 
 func main() {
 	var response domains.PubsubResponse
-	res := requests.PubSubRequest(&requests.OSC{})
+	res := requests.PubSubRequest("token")
 
 	bytes, err := json2.Marshal(res)
 	if err != nil {

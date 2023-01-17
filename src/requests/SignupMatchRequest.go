@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func SignupMatchRequest(osc *OSC, signupObject domains.SignupMatch) domains.Pipeline {
+func SignupMatchRequest(token string, signupObject domains.SignupMatch) domains.Pipeline {
 	url := "https://demo-api.easycredito.com.br/api/external/v2.1/process/signup"
 	method := "POST"
 
@@ -27,7 +27,7 @@ func SignupMatchRequest(osc *OSC, signupObject domains.SignupMatch) domains.Pipe
 
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", "Bearer "+osc.GetToken())
+	req.Header.Add("Authorization", "Bearer "+token)
 
 	res, err := client.Do(req)
 	if err != nil {

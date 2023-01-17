@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func ProposalRequest(osc *OSC, pipelineId string, proposalObject domains.ProposalReq) domains.Pipeline {
+func ProposalRequest(token string, pipelineId string, proposalObject domains.ProposalReq) domains.Pipeline {
 	url := "https://demo-api.easycredito.com.br/api/external/v2.1/process/proposal/" + pipelineId
 	method := "POST"
 
@@ -27,7 +27,7 @@ func ProposalRequest(osc *OSC, pipelineId string, proposalObject domains.Proposa
 	}
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", "Bearer "+osc.GetToken())
+	req.Header.Add("Authorization", "Bearer "+token)
 
 	res, err := client.Do(req)
 	if err != nil {

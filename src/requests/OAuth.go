@@ -6,14 +6,18 @@ import (
 	"io/ioutil"
 	"net/http"
 	"osc-sdk-go/src/domains"
+
 	"strings"
 )
 
-func OAuth(osc *OSC) domains.AuthSucess {
+func OAuth(ClientId, ClientSecret string) domains.AuthSucess {
 	url := "https://auth.easycredito.com.br/client/auth"
 
 	method := "POST"
-	payload := strings.NewReader("grant_type=client_credentials&client_id=" + osc.ClientId + "&client_secret=" + osc.ClientSecret + "&scope=api-external")
+	payload := strings.NewReader(
+		"grant_type=client_credentials&client_id=" + ClientId +
+			"&client_secret=" + ClientSecret +
+			"&scope=api-external")
 
 	client := &http.Client{}
 	req, err := http.NewRequest(method, url, payload)

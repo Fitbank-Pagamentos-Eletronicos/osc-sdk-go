@@ -1,12 +1,14 @@
 package requests
 
 import (
+	json2 "encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"osc-sdk-go/src/domains"
 )
 
-func CustomerServiceNumberGET(osc *OSC) string {
+func CustomerServiceNumberGET(token string) domains.GetContract {
 	url := "https://demo-api.easycredito.com.br/api/external//v2.1/contract/20221109182327351003700"
 	method := "GET"
 
@@ -16,16 +18,16 @@ func CustomerServiceNumberGET(osc *OSC) string {
 
 	if err != nil {
 		fmt.Println(err)
-		return ""
+		return domains.GetContract{}
 	}
 
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", "Bearer "+osc.GetToken())
+	req.Header.Add("Authorization", "Bearer "+token)
 
 	res, err := client.Do(req)
 	if err != nil {
 		fmt.Println(err)
-		return ""
+		return domains.GetContract{}
 	}
 
 	defer res.Body.Close()
@@ -34,11 +36,13 @@ func CustomerServiceNumberGET(osc *OSC) string {
 
 	if err != nil {
 		fmt.Println(err)
-		return ""
+		return domains.GetContract{}
 	}
 
 	fmt.Println(string(body))
 
-	return string(body)
+	var contract domains.GetContract
+	json2.Unmarshal(body, &contract)
+	return contract
 
 }

@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func SimpleSignupRequests(osc *OSC, signupObject domains.SimpleSignup) domains.Pipeline {
+func SimpleSignupRequests(token string, signupObject domains.SimpleSignup) domains.Pipeline {
 
 	url := "https://demo-api.easycredito.com.br/api/external/v2.1/process/simple_signup"
 	method := "POST"
@@ -25,7 +25,7 @@ func SimpleSignupRequests(osc *OSC, signupObject domains.SimpleSignup) domains.P
 	}
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", "Bearer "+osc.GetToken())
+	req.Header.Add("Authorization", "Bearer "+token)
 
 	res, err := client.Do(req)
 	if err != nil {

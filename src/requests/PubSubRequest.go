@@ -1,14 +1,14 @@
 package requests
 
 import (
-	"encoding/json"
+	json2 "encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"osc-sdk-go/src/domains"
 )
 
-func PubSubRequest(osc *OSC) domains.PubsubResponse {
+func PubSubRequest(token string) domains.PubsubResponse {
 	url := "https://staging-api.easycredito.com.br/api/external/v2.1/pubsub"
 	method := "GET"
 
@@ -22,7 +22,7 @@ func PubSubRequest(osc *OSC) domains.PubsubResponse {
 	}
 
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", "Bearer "+osc.GetToken())
+	req.Header.Add("Authorization", "Bearer "+token)
 
 	res, err := client.Do(req)
 	if err != nil {
@@ -39,6 +39,6 @@ func PubSubRequest(osc *OSC) domains.PubsubResponse {
 	}
 	fmt.Println(string(body))
 	var pubsubResponse domains.PubsubResponse
-	json.Unmarshal(body, &pubsubResponse)
+	json2.Unmarshal(body, &pubsubResponse)
 	return pubsubResponse
 }

@@ -1,9 +1,10 @@
-package requests
+package osc
 
 import (
 	"golang.org/x/text/transform"
 	"golang.org/x/text/unicode/norm"
 	"osc-sdk-go/src/domains"
+	"osc-sdk-go/src/requests"
 	"regexp"
 	"strings"
 	"time"
@@ -37,7 +38,7 @@ func isMn(runner rune) bool {
 }
 
 func Auth(osc *OSC) domains.AuthSucess {
-	return OAuth(osc)
+	return requests.OAuth(osc.ClientId, osc.ClientSecret)
 }
 
 func (osc *OSC) GetToken() string {
@@ -82,25 +83,32 @@ func GetInstance(name string) (OSC, bool) {
 }
 
 func (osc *OSC) SetResponseListening(listeningFunction func(domains.Pipeline, bool)) bool {
-	pubSubConfig := PubSubRequest(osc)
-	return PubSubSubscribe(pubSubConfig.Project_id, pubSubConfig.Topic_id, pubSubConfig.Subscription_id,
+	pubSubConfig := requests.PubSubRequest(osc.GetToken())
+	return requests.PubSubSubscribe(pubSubConfig.Project_id, pubSubConfig.Topic_id, pubSubConfig.Subscription_id,
 		pubSubConfig.Service_account, listeningFunction)
 }
 func (osc *OSC) SignupMatch(signupObject domains.SignupMatch) domains.Pipeline {
-	pipeline := SignupMatchRequest(osc, signupObject)
+	pipeline := requests.SignupMatchRequest(osc.GetToken(), signupObject)
 	return pipeline
 }
-func (osc *OSC) Contract(dataDocument domains.Contract) domains.GetContract {
-	return CustomerServiceNumberPOST(osc.GetToken(), dataDocument)
+func (osc *OSC) ContractGET() domains.GetContract {
+	return requests.CustomerServiceNumberGET(osc.GetToken())
+}
+
+func (osc *OSC) ContractPOST(baseContract domains.Contract) domains.SignContract {
+	return requests.CustomerServiceNumberPOST(osc.GetToken(), baseContract)
 }
 func (osc *OSC) SimpleSignup(signupObject domains.SimpleSignup) domains.Pipeline {
-	pipeline := SimpleSignupRequests(osc, signupObject)
+	pipeline := requests.SimpleSignupRequests(osc.GetToken(), signupObject)
 	return pipeline
 }
 func (osc *OSC) SendDocument(id string, dataDocument domains.Document) domains.DocumentResponse {
-	return DocumentRequest(osc.GetToken(), id, dataDocument)
+	return requests.DocumentRequest(osc.GetToken(), id, dataDocument)
 }
 func (osc *OSC) Proposal(pipelineId string, proposalObject domains.ProposalReq) domains.Pipeline {
-	pipeline := ProposalRequest(osc, pipelineId, proposalObject)
+	pipeline := requests.ProposalRequest(osc.GetToken(), pipelineId, proposalObject)
 	return pipeline
+}
+func (osc *OSC) SimpleProposal(id string, dataSimpleProposal domains.ProposalReq) domains.ProposalReq {
+	return requests.SimpleProposalRequest(osc.GetToken(), id, dataSimpleProposal)
 }
