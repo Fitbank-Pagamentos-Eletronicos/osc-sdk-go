@@ -26,23 +26,22 @@ func main() {
 			fmt.Printf("Async %s proposta em completo", pipeline.Id)
 			for _, proposal := range pipeline.Proposals {
 				fmt.Println(proposal)
-
 				for _, pendentDocuments := range proposal.PendentDocuments {
 					switch pendentDocuments {
 					case domains.SELF_:
-						sendDocumentsSelf(proposal.Id)
+						sendDocumentsSelf(pipeline.Id)
 					case domains.IDENTITY_FRONT_:
-						//
+						sendDocumentsFront(pipeline.Id)
 					case domains.IDENTITY_BACK_:
-						//
+						sendDocumentsBack(pipeline.Id)
 					case domains.ADDRESS_PROOF_:
-						//
+						sendDocumentsAddress(pipeline.Id)
 					case domains.INCOME_PROOF_:
-						//
+						sendDocumentsIncome(pipeline.Id)
 					}
 				}
 				if proposal.HasContracts {
-					go domains.getContract(proposal)
+					//	go getContract(proposal)
 				}
 			}
 
@@ -181,7 +180,49 @@ func sendDocuments(id string, data domains.Document) domains.DocumentResponse {
 
 func sendDocumentsSelf(id string) domains.DocumentResponse {
 	data := domains.Document{
+		Type:     domains.SELF,
+		MimeType: domains.IMAGE_JPEG,
+		Name:     "44983829865_CNH_20102022_CNH Aberta.jpg",
+		Base64:   "9j/4AAQSkZJRgABAQAAAQABAAD/7QDWUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAA",
+	}
+
+	return sendDocuments(id, data)
+}
+func sendDocumentsFront(id string) domains.DocumentResponse {
+	data := domains.Document{
+		Type:     domains.IDENTITY_FRONT,
+		MimeType: domains.IMAGE_JPEG,
+		Name:     "44983829865_CNH_20102022_CNH Aberta.jpg",
+		Base64:   "9j/4AAQSkZJRgABAQAAAQABAAD/7QDWUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAA",
+	}
+
+	return sendDocuments(id, data)
+}
+
+func sendDocumentsBack(id string) domains.DocumentResponse {
+	data := domains.Document{
 		Type:     domains.IDENTITY_BACK,
+		MimeType: domains.IMAGE_JPEG,
+		Name:     "44983829865_CNH_20102022_CNH Aberta.jpg",
+		Base64:   "9j/4AAQSkZJRgABAQAAAQABAAD/7QDWUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAA",
+	}
+
+	return sendDocuments(id, data)
+}
+
+func sendDocumentsAddress(id string) domains.DocumentResponse {
+	data := domains.Document{
+		Type:     domains.ADDRESS_PROOF,
+		MimeType: domains.IMAGE_JPEG,
+		Name:     "44983829865_CNH_20102022_CNH Aberta.jpg",
+		Base64:   "9j/4AAQSkZJRgABAQAAAQABAAD/7QDWUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAA",
+	}
+
+	return sendDocuments(id, data)
+}
+func sendDocumentsIncome(id string) domains.DocumentResponse {
+	data := domains.Document{
+		Type:     domains.INCOME_PROOF,
 		MimeType: domains.IMAGE_JPEG,
 		Name:     "44983829865_CNH_20102022_CNH Aberta.jpg",
 		Base64:   "9j/4AAQSkZJRgABAQAAAQABAAD/7QDWUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAA",

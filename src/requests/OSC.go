@@ -86,7 +86,6 @@ func (osc *OSC) SetResponseListening(listeningFunction func(domains.Pipeline, bo
 	return PubSubSubscribe(pubSubConfig.Project_id, pubSubConfig.Topic_id, pubSubConfig.Subscription_id,
 		pubSubConfig.Service_account, listeningFunction)
 }
-
 func (osc *OSC) SignupMatch(signupObject domains.SignupMatch) domains.Pipeline {
 	pipeline := SignupMatchRequest(osc, signupObject)
 	return pipeline
@@ -99,7 +98,6 @@ func (osc *OSC) SimpleSignup(signupObject domains.SimpleSignup) domains.Pipeline
 func (osc *OSC) SendDocument(id string, dataDocument domains.Document) domains.DocumentResponse {
 	return DocumentRequest(osc.GetToken(), id, dataDocument)
 }
-
 func (osc *OSC) Proposal(pipelineId string, proposalObject domains.ProposalReq) domains.Pipeline {
 	pipeline := ProposalRequest(osc, pipelineId, proposalObject)
 	return pipeline
