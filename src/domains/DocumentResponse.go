@@ -3,7 +3,7 @@ package domains
 import json2 "encoding/json"
 
 type DocumentResponse struct {
-	Type     DocumentType `json:"tipo"`
+	Type     DocumentType `json:"type"`
 	MimeType MimeType     `json:"mimeType"`
 	Name     string       `json:"name"`
 	Url      string       `json:"url"`

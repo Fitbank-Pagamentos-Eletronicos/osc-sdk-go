@@ -27,15 +27,24 @@ func main() {
 			for _, proposal := range pipeline.Proposals {
 				fmt.Println(proposal)
 
+				for _, pendentDocuments := range proposal.PendentDocuments {
+					switch pendentDocuments {
+					case domains.SELF_:
+						sendDocumentsSelf(proposal.Id)
+					case domains.IDENTITY_FRONT_:
+						//
+					case domains.IDENTITY_BACK_:
+						//
+					case domains.ADDRESS_PROOF_:
+						//
+					case domains.INCOME_PROOF_:
+						//
+					}
+				}
+				if proposal.HasContracts {
+					go domains.getContract(proposal)
+				}
 			}
-
-			// TODO
-			//proposal.PendentDocuments
-			//sendDocuments
-			//
-			//proposal.HasContracts
-			//getContracts
-			//signContractsVis
 
 		case domains.PROPOSAL_DENIED:
 			fmt.Printf("Async %s proposta regeitado", pipeline.Id)
@@ -164,4 +173,19 @@ func proposal(pipelineId string) {
 	var pipeline = instance.Proposal(pipelineId, data)
 
 	fmt.Printf("%s", pipeline.Id)
+}
+func sendDocuments(id string, data domains.Document) domains.DocumentResponse {
+	var instance, _ = requests.GetInstance("dafault")
+	return instance.SendDocument(id, data)
+}
+
+func sendDocumentsSelf(id string) domains.DocumentResponse {
+	data := domains.Document{
+		Type:     domains.IDENTITY_BACK,
+		MimeType: domains.IMAGE_JPEG,
+		Name:     "44983829865_CNH_20102022_CNH Aberta.jpg",
+		Base64:   "9j/4AAQSkZJRgABAQAAAQABAAD/7QDWUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAA",
+	}
+
+	return sendDocuments(id, data)
 }

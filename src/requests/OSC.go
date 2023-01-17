@@ -96,6 +96,9 @@ func (osc *OSC) SimpleSignup(signupObject domains.SimpleSignup) domains.Pipeline
 	pipeline := SimpleSignupRequests(osc, signupObject)
 	return pipeline
 }
+func (osc *OSC) SendDocument(id string, dataDocument domains.Document) domains.DocumentResponse {
+	return DocumentRequest(osc.GetToken(), id, dataDocument)
+}
 
 func (osc *OSC) Proposal(pipelineId string, proposalObject domains.ProposalReq) domains.Pipeline {
 	pipeline := ProposalRequest(osc, pipelineId, proposalObject)
