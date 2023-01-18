@@ -9,7 +9,7 @@ import (
 
 func main() {
 	var response domains.PubsubResponse
-	res := requests.PubSubRequest("eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9")
+	res := requests.PubSubRequest("1346579")
 
 	bytes, err := json2.Marshal(res)
 	if err != nil {
@@ -17,11 +17,7 @@ func main() {
 	}
 	json2.Unmarshal(bytes, &response)
 
-	requests.PubSubSubscribe(
-		response.Project_id,
-		response.Topic_id,
-		response.Subscription_id,
-		response.Service_account,
+	requests.PubSubSubscribe(response.ProjectId, response.TopicId, response.SubscriptionId, response.ServiceAccount,
 		func(pipeline domains.Pipeline, success bool) {
 			if success {
 				fmt.Println("Pipeline: ", pipeline)

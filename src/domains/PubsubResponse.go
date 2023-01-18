@@ -3,10 +3,10 @@ package domains
 import json2 "encoding/json"
 
 type PubsubResponse struct {
-	Topic_id        string `json:"topic_id"`
-	Subscription_id string `json:"subscription_id"`
-	Project_id      string `json:"project_id"`
-	Service_account string `json:"service_account"`
+	TopicId        string `json:"topicId"`
+	SubscriptionId string `json:"subscriptionId"`
+	ProjectId      string `json:"projectId"`
+	ServiceAccount string `json:"serviceAccount"`
 }
 
 func (a *PubsubResponse) ToJson() string {

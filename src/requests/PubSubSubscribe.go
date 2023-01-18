@@ -9,7 +9,7 @@ import (
 	"osc-sdk-go/src/domains"
 )
 
-func PubSubSubscribe(projectId, topicId, subscriptionId, serviceAccount string, listeningFunction func(domains.Pipeline, bool)) bool {
+func PubSubSubscribe(projectId string, topicId string, subscriptionId string, serviceAccount string, listeningFunction func(domains.Pipeline, bool)) bool {
 
 	ctx := context.Background()
 

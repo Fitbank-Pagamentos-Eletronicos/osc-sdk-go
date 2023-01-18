@@ -84,8 +84,8 @@ func GetInstance(name string) (OSC, bool) {
 
 func (osc *OSC) SetResponseListening(listeningFunction func(domains.Pipeline, bool)) bool {
 	pubSubConfig := requests.PubSubRequest(osc.GetToken())
-	return requests.PubSubSubscribe(pubSubConfig.Project_id, pubSubConfig.Topic_id, pubSubConfig.Subscription_id,
-		pubSubConfig.Service_account, listeningFunction)
+	return requests.PubSubSubscribe(pubSubConfig.ProjectId, pubSubConfig.TopicId, pubSubConfig.SubscriptionId,
+		pubSubConfig.ServiceAccount, listeningFunction)
 }
 
 func (osc *OSC) SignupMatch(signupObject domains.SignupMatch) domains.Pipeline {
