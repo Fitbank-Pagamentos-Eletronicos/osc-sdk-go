@@ -103,7 +103,7 @@ import (
 	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/osc"
 )
 
-func main() {
+func SignupExample() {
 	var instance, _ = osc.CreateInstance("", "", "default")
 	var data = domains.SimpleSignup{...} 
     
@@ -174,7 +174,7 @@ import (
 	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/osc"
 )
 
-func main() {
+func SignupProposalExample() {
 	var instance, _ = osc.CreateInstance("", "", "default")
 
 	instance.SetResponseListening(func(pipeline domains.Pipeline, err boll) {
@@ -245,10 +245,10 @@ sequenceDiagram
 	 "github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/osc"
 	 "github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/domains"
  )
-func main (){
+func SignupListeningExample(){
 	var instance, _ = osc.CreateInstance("", "", "default")
 	
-	instance.setResponseListening(func(pipeline domains.Pipeline, err bool)){
+	instance.SetResponseListening(func(pipeline domains.Pipeline, err bool)){
 		fmt.Printf("Async %s", pipeline.Id)
     }
 	
@@ -350,11 +350,11 @@ package examples
  
 import (
     "fmt"
-    "osc-sdk-go/src/osc"
-    "osc-sdk-go/src/domains"
+    "github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/osc"
+    "github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/domains"
 )
 
-func main(){
+func CompleteExample(){
 	var instance, _ = osc.CreateInstance("", "", "dafault")
 
 	instance.SetResponseListening(func(pipeline domains.Pipeline, err bool) {
