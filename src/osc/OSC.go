@@ -1,10 +1,10 @@
 package osc
 
 import (
+	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/domains"
+	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/requests"
 	"golang.org/x/text/transform"
 	"golang.org/x/text/unicode/norm"
-	"osc-sdk-go/src/domains"
-	"osc-sdk-go/src/requests"
 	"regexp"
 	"strings"
 	"time"
