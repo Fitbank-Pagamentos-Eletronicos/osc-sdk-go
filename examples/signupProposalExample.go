@@ -2,8 +2,8 @@ package examples
 
 import (
 	"fmt"
-	"osc-sdk-go/src/domains"
-	"osc-sdk-go/src/osc"
+	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/domains"
+	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/osc"
 )
 
 func SignupProposalExample() {

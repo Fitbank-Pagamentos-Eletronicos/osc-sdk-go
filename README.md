@@ -99,8 +99,8 @@ package examples
 
 import (
 	"fmt"
-	"osc-sdk-go/src/domains"
-	"osc-sdk-go/src/osc"
+	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/domains"
+	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/osc"
 )
 
 func main() {
@@ -170,8 +170,8 @@ package examples
 
 import (
 	"fmt"
-	"osc-sdk-go/src/domains"
-	"osc-sdk-go/src/osc"
+	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/domains"
+	"github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/osc"
 )
 
 func main() {
@@ -242,8 +242,8 @@ sequenceDiagram
  
  import (
 	 "fmt"
-	 "osc-sdk-go/src/osc"
-	 "osc-sdk-go/src/domains"
+	 "github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/osc"
+	 "github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go/src/domains"
  )
 func main (){
 	var instance, _ = osc.CreateInstance("", "", "default")
