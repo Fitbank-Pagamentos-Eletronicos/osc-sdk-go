@@ -17,6 +17,9 @@ Depois disso execute os seguintes comandos:
     cd osc-sdk-go
     cd src/main
     
+    # Verifica as dependências  
+    go mod tidy
+    
     # Execute o projeto
     go run main.go
 
