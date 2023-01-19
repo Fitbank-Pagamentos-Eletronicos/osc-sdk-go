@@ -28,4 +28,7 @@ func main() {
 
 	fmt.Println("==================Fim da Requisição PubSub==================")
 
+	//res := examples.SignupExample
+	//
+	//fmt.Println("Estou aqui ", res)
 }

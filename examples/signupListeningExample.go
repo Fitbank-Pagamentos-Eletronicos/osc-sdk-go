@@ -6,7 +6,7 @@ import (
 	"osc-sdk-go/src/osc"
 )
 
-func main() {
+func SignupListeningExample() {
 	var instance, _ = osc.CreateInstance("", "", "dafault")
 
 	instance.SetResponseListening(func(pipeline domains.Pipeline, err bool) {

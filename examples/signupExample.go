@@ -6,7 +6,7 @@ import (
 	"osc-sdk-go/src/osc"
 )
 
-func main() {
+func SignupExample() {
 	var instance, _ = osc.CreateInstance("", "", "dafault")
 	var data = domains.SimpleSignup{
 		Cpf:            "720.825.560-18",
