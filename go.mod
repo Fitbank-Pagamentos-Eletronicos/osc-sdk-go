@@ -1,4 +1,4 @@
-module osc-sdk-go
+module github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go
 
 go 1.19
 
