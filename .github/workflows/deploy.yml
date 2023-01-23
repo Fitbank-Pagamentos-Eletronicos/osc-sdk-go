@@ -1,9 +1,13 @@
 name: Go package
 
-on: [push]
-tags:
-  - v\d+.\d+.\d+.*
-
+on:
+    push:
+        branches:
+          - features/TR-6298
+        tags:
+          - v\d+.\d+.\d+.*
+          - v\d+.\d+.*
+          - v\d+.*
 jobs:
   build:
 
