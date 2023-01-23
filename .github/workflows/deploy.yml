@@ -1,17 +1,15 @@
-name: Go package
+name: Deploy on tag
 
 on:
-    push:
-        branches:
-          - features/TR-6298
-        tags:
-          - v\d+.\d+.\d+.*
-          - v\d+.\d+.*
-          - v\d+.*
+  push:
+      tags:
+         - v\d+.\d+.\d+.*
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
       - uses: actions/checkout@v3
       - name: Set up Go
         uses: actions/setup-go@v3
