@@ -2,7 +2,9 @@ name: Deploy on tag
 
 on:
   push:
-      tags:
+    braches:
+      - features/TR-6298
+    tags:
          - v\d+.\d+.\d+.*
 
 jobs:
