@@ -1,11 +1,11 @@
-name: Deploy on tag
+name: Go package
 
 on:
   push:
-    braches:
+    branches:
       - features/TR-6298
     tags:
-         - v\d+.\d+.\d+.*
+      - v\d+.\d+.\d+.*
 
 jobs:
   deploy:
