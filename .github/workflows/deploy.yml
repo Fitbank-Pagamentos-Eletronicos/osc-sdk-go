@@ -9,15 +9,16 @@ on:
           - v\d+.\d+.*
           - v\d+.*
 jobs:
-  build:
-
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
       - name: Set up Go
-        uses: actions/setup-go@v3
         with:
           go-version: 1.19.2
+          registry-url: https://pkg.go.dev/
+          scope: '@Fitbank-Pagamentos-Eletronicos'
 
       - name: Build
         run: go build -v ./...
