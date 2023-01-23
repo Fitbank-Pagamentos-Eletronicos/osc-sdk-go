@@ -1,0 +1,22 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - features/TR-6298
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v1
+        with:
+          stable: false
+          go-version: 1.19.2
+
+        - name: deploy
+          run: |
+            go build -o main
+            ./main

@@ -2,7 +2,9 @@
 
  ## :blue_book: Descrição do Projeto
 
-SDK para integração com a API da OSC.
+SDK feito em GO para o projeto Open Source Credit.
+
+ ## :rocket: Tecnologias
     
 ## :rocket: Instalando
 
@@ -10,16 +12,32 @@ Para clonar o projeto e executar essa aplicação, você precisará do [Git](htt
 Depois disso execute os seguintes comandos:
 
 ```bash
-    # Clone esse repositório
-    git clone https://github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go.git
+    # Instalação git e go no ambiente Linux
+    $ sudo apt update
+    $ sudo apt-install git
+    # Versão do git
+    $ git --version
+    #Instalação do go
+    $ curl -O https://dl.google.com/go/go1.19.5.linux-amd64.tar.gz
     
-    # Entre no repositório
-    cd osc-sdk-go
-    cd src/main
+    #Descompactar o arquivo
+    $ tar -xvf go1.19.5.linux-amd64.tar.gz
     
-    # Verifica as dependências  
+    #Mover o arquivo para a pasta /usr/local
+    $ sudo mv go /usr/local
+    $ go version
+    
+    # Windows
+    #Git
+    https://git-scm.com/downloads
+    # Go
+    https://go.dev/dl/
+    # Versão do go
+    go version
+    # Download do projeto
+    go get github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-go
+    # Adicionando as dependências  
     go mod tidy
-    
     # Execute o projeto
     go run main.go
 
